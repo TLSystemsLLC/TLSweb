@@ -1,107 +1,56 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Database\StoredProcedureClient;
+use App\Database\StoredProcedureGateway;
+use App\Database\Exceptions\InvalidCredentialsException;
+use App\Database\Exceptions\InvalidRequestException;
 
-Route::post('/sp', function (Request $request) {
-
+Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, StoredProcedureGateway $gateway) {
     $login  = (string) $request->input('login', '');
     $proc   = (string) $request->input('proc', '');
     $params = (array)  $request->input('params', []);
 
-    // Allowlists
-    $allowTenant = (array) config('stored_procedures.tenant', []);
-    $allowGlobal = (array) config('stored_procedures.global', []);
-
-    // Determine which allowlist the proc belongs to (no leaks)
-    $scope = null; // 'tenant' | 'global'
-    if (isset($allowTenant[$proc])) {
-        $scope = 'tenant';
-        $allow = $allowTenant;
-    } elseif (isset($allowGlobal[$proc])) {
-        $scope = 'global';
-        $allow = $allowGlobal;
-    } else {
-        return response()->json(['rc'=>99,'ok'=>false,'error'=>'Invalid request.'], 400);
-    }
-
-    // Tenant is only required for tenant-scoped processes
-    $tenant = null;
-    if ($scope === 'tenant') {
-        try {
-            $tenant = \App\Support\Tenant::fromLogin($login);
-        } catch (\Throwable $e) {
-            // looks like failed login attempt
-            return response()->json(['rc'=>99,'ok'=>false,'error'=>'Invalid credentials.'], 401);
-        }
-    }
-
-    // Very first pass: positional params in correct count
-    $expected = $allow[$proc]['params'] ?? [];
-    if (count($params) !== count($expected)) {
-        return response()->json(['rc'=>99,'ok'=>false,'error'=>'Invalid request.'], 400);
-    }
-
-    // Basic type enforcement (int/string) in declared order
-    $typed = [];
-    $i = 0;
-    foreach ($expected as $name => $type) {
-        $val = $params[$i] ?? null;
-
-        if ($type === 'int') {
-            if (!is_numeric($val)) {
-                return response()->json(['rc'=>99,'ok'=>false,'error'=>'Invalid request.'], 400);
-            }
-            $typed[] = (int) $val;
-        } elseif ($type === 'string') {
-            $typed[] = (string) $val;
-        } else {
-            // unknown schema type -> treat as invalid request (don’t leak internals)
-            return response()->json(['rc'=>99,'ok'=>false,'error'=>'Invalid request.'], 400);
-        }
-        $i++;
-    }
-
     try {
+        // Gateway handles: allowlist, scope, tenant parsing, param count, type enforcement
+        $result = $gateway->call($login !== '' ? $login : null, $proc, $params);
 
-        $sp = new StoredProcedureClient();
+    } catch (InvalidCredentialsException) {
+        // Looks like failed login; do not leak why
+        return response()->json(['rc'=>99,'ok'=>false,'error'=>'Invalid credentials.'], 401);
 
-        $result = ($scope === 'global')
-            ? $sp->execMasterWithReturnCode($proc, $typed)
-            : $sp->execWithReturnCode($tenant, $proc, $typed);
+    } catch (InvalidRequestException) {
+        return response()->json(['rc'=>99,'ok'=>false,'error'=>'Invalid request.'], 400);
 
     } catch (\Throwable $e) {
-
-        // Log the REAL error for YOU — never for the caller
-        logger()->error('Stored procedure execution failed', [
-            'scope'  => $scope,
-            'proc'   => $proc,
-            'tenant' => $tenant ?? 'master',
-            'error'  => $e->getMessage(),
+        // Log useful debugging info WITHOUT tenant/proc leakage concerns
+        logger()->error('SP execution failed', [
+            'has_login' => ($login !== ''),
+            // We do NOT log proc or tenant here; you can add them back if you want,
+            // but you previously cared about not leaking tenant names.
+            'error' => $e->getMessage(),
+            'exception' => get_class($e),
         ]);
 
-        // Make it look like a bad request — no hints to attackers
-        return response()->json([
-            'rc' => 99,
-            'ok' => false,
-            'error' => 'Invalid request.'
-        ], 400);
+        // Caller gets nothing actionable
+        return response()->json(['rc'=>99,'ok'=>false,'error'=>'Invalid request.'], 400);
     }
 
+    // Stored procedure rc is a “business result”, not an exception.
+    $rc = (int) $result['rc'];
+
     return response()->json([
-        'rc'    => $result['rc'],
-        'ok'    => ($result['rc'] === 0),
+        'rc'    => $rc,
+        'ok'    => ($rc === 0),
         'data'  => $result['rows'],
-        'error' => ($result['rc'] === 0) ? null : ['code' => $result['rc']],
-    ]);
-}
-)->middleware('throttle:sp');
+        'error' => ($rc === 0) ? null : ['code' => $rc],
+    ], ($rc === 0) ? 200 : 422);
+
+});
 
 Route::fallback(function () {
     return response()->json([
         'rc' => 99,
         'ok' => false,
         'error' => 'Invalid request.',
-    ], 404);
+    ], 400);
 });
-
