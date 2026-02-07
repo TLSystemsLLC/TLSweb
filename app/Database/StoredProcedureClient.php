@@ -2,6 +2,8 @@
 
 namespace App\Database;
 
+use App\Database\Exceptions\InvalidCredentialsException;
+use App\Database\Exceptions\InvalidRequestException;
 use PDO;
 use PDOException;
 
@@ -11,106 +13,102 @@ final class StoredProcedureClient
 
     public function __construct()
     {
-        // Example: "Driver={ODBC Driver 18 for SQL Server};Server=TLS-SQL1,1433;Encrypt=yes;TrustServerCertificate=yes;"
         $dsn  = env('TLS_ODBC_DSN');
         $user = env('TLS_SQL_USER');
         $pass = env('TLS_SQL_PASS');
 
         if (!$dsn || !$user) {
-            throw new \RuntimeException('Missing TLS_ODBC_DSN / TLS_SQL_USER in .env');
+            // server misconfig (never user’s fault)
+            throw new \RuntimeException('Database configuration error.');
         }
 
         try {
             $this->pdo = new PDO("odbc:$dsn", $user, $pass, [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES   => false,
             ]);
         } catch (PDOException $e) {
+            // bubble up; route logs CID + message; caller gets generic
             throw new \RuntimeException("ODBC connect failed: " . $e->getMessage(), 0, $e);
         }
     }
 
     /**
-     * Execute a stored procedure in a tenant database and capture the integer return code.
-     * Assumes T-SQL return value pattern: EXEC @rc = [db].dbo.proc ?, ?
-     *
      * @return array{rc:int, rows:array<int, array<string,mixed>>}
      */
     public function execWithReturnCode(string $tenantDb, string $procedure, array $params = []): array
     {
         $tenantDb = strtolower(trim($tenantDb));
+        $procedure = trim($procedure);
 
-// Allow SQL Server DB names like: master, test, tenant_01, etc.
-// Disallow anything that could be used for injection.
+        // These are defense-in-depth; gateway should already have validated.
         if (!preg_match('/^[A-Za-z0-9_]{1,128}$/', $tenantDb)) {
-            throw new \InvalidArgumentException('Invalid credentials.');
+            throw new InvalidCredentialsException('Invalid credentials.');
         }
-        if (!preg_match('/^[a-z0-9_]+$/i', $procedure)) {
-            throw new \InvalidArgumentException("Invalid stored procedure name.");
+        if (!preg_match('/^[A-Za-z0-9_]+$/', $procedure)) {
+            throw new InvalidRequestException('Invalid request.');
         }
 
         $placeholders = implode(', ', array_fill(0, count($params), '?'));
 
         $sql = "
+            SET NOCOUNT ON;
             DECLARE @rc int;
             EXEC @rc = [{$tenantDb}].dbo.{$procedure} " . ($placeholders ? $placeholders : "") . ";
             SELECT @rc AS rc;
         ";
 
+        return $this->runAndCaptureRc($sql, $params);
+    }
+
+    /**
+     * @return array{rc:int, rows:array<int, array<string,mixed>>}
+     */
+    public function execMasterWithReturnCode(string $procedure, array $params = []): array
+    {
+        $procedure = trim($procedure);
+
+        if (!preg_match('/^[A-Za-z0-9_]+$/', $procedure)) {
+            throw new InvalidRequestException('Invalid request.');
+        }
+
+        $placeholders = implode(', ', array_fill(0, count($params), '?'));
+
+        $sql = "
+            SET NOCOUNT ON;
+            DECLARE @rc int;
+            EXEC @rc = dbo.{$procedure} " . ($placeholders ? $placeholders : "") . ";
+            SELECT @rc AS rc;
+        ";
+
+        return $this->runAndCaptureRc($sql, $params);
+    }
+
+    /**
+     * @return array{rc:int, rows:array<int, array<string,mixed>>}
+     */
+    private function runAndCaptureRc(string $sql, array $params): array
+    {
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(array_values($params));
 
         // Result set 1: procedure rows (if any)
         $rows = $stmt->fetchAll();
 
-        // Result set 2: rc
-        $rc = -1;
-        if ($stmt->nextRowset()) {
+        // Advance until we find a rowset that has column "rc"
+        $rc = null;
+        while ($stmt->nextRowset()) {
             $rcRow = $stmt->fetch();
             if (is_array($rcRow) && array_key_exists('rc', $rcRow)) {
-                $rc = (int)$rcRow['rc'];
+                $rc = (int) $rcRow['rc'];
+                break;
             }
         }
 
-        return [
-            'rc' => $rc,
-            'rows' => $this->stripColumns($rows, ['Logo'])
-        ];
-
-    }
-
-    /**
-     * Execute a stored procedure in the master/global database and capture return code.
-     * Uses the default DB of the connection (typically master).
-     *
-     * @return array{rc:int, rows:array<int, array<string,mixed>>}
-     */
-    public function execMasterWithReturnCode(string $procedure, array $params = []): array
-    {
-        if (!preg_match('/^[a-z0-9_]+$/i', $procedure)) {
-            // don’t leak anything useful
-            throw new \InvalidArgumentException("Invalid request.");
-        }
-
-        $placeholders = implode(', ', array_fill(0, count($params), '?'));
-
-        $sql = "
-        DECLARE @rc int;
-        EXEC @rc = dbo.{$procedure} " . ($placeholders ? $placeholders : "") . ";
-        SELECT @rc AS rc;
-    ";
-
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(array_values($params));
-
-        $rows = $stmt->fetchAll();
-
-        $rc = -1;
-        if ($stmt->nextRowset()) {
-            $rcRow = $stmt->fetch();
-            if (is_array($rcRow) && array_key_exists('rc', $rcRow)) {
-                $rc = (int)$rcRow['rc'];
-            }
+        if ($rc === null) {
+            // Contract broken: we didn't find the return code rowset.
+            throw new \RuntimeException('Stored procedure did not return a return code.');
         }
 
         return [
@@ -133,4 +131,3 @@ final class StoredProcedureClient
         return $rows;
     }
 }
-

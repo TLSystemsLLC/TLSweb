@@ -26,10 +26,10 @@ final class StoredProcedureGateway
 
         // Determine scope WITHOUT leaking anything
         if (isset($allowTenant[$proc])) {
-            $scope = 'tenant';
+            $scope  = 'tenant';
             $schema = $allowTenant[$proc];
         } elseif (isset($allowGlobal[$proc])) {
-            $scope = 'global';
+            $scope  = 'global';
             $schema = $allowGlobal[$proc];
         } else {
             throw new InvalidRequestException('Invalid request.');
@@ -51,10 +51,16 @@ final class StoredProcedureGateway
 
             switch ($type) {
                 case 'int':
-                    if (!is_numeric($val)) {
+                    // tighter than is_numeric(): disallow floats like "1.2"
+                    if (is_int($val)) {
+                        $typed[] = $val;
+                    } elseif (is_string($val) && preg_match('/^-?\d+$/', $val)) {
+                        $typed[] = (int) $val;
+                    } elseif (is_float($val) && (int)$val == $val) {
+                        $typed[] = (int) $val;
+                    } else {
                         throw new InvalidRequestException('Invalid request.');
                     }
-                    $typed[] = (int) $val;
                     break;
 
                 case 'string':
@@ -68,32 +74,24 @@ final class StoredProcedureGateway
             $i++;
         }
 
-        try {
-            // Tenant only required for tenant scope
-            if ($scope === 'tenant') {
-                if ($login === null || trim($login) === '') {
-                    throw new InvalidCredentialsException('Invalid credentials.');
-                }
-
-                try {
-                    $tenant = \App\Support\Tenant::fromLogin($login);
-                } catch (\Throwable) {
-                    throw new InvalidCredentialsException('Invalid credentials.');
-                }
-
-                return $this->client->execWithReturnCode($tenant, $proc, $typed);
+        // Tenant only required for tenant scope
+        if ($scope === 'tenant') {
+            if ($login === null || trim($login) === '') {
+                throw new InvalidCredentialsException('Invalid credentials.');
             }
 
-            // Global scope runs in master
-            return $this->client->execMasterWithReturnCode($proc, $typed);
+            try {
+                $tenant = \App\Support\Tenant::fromLogin($login);
+            } catch (\Throwable) {
+                throw new InvalidCredentialsException('Invalid credentials.');
+            }
 
-        } catch (InvalidCredentialsException|InvalidRequestException $e) {
-            // Preserve our intentionally vague exceptions
-            throw $e;
-        } catch (\Throwable $e) {
-            // Any SQL/ODBC/runtime errors become a generic invalid request at the gateway boundary.
-            // The route logs the real exception already.
-            throw new InvalidRequestException('Invalid request.', 0, $e);
+            // IMPORTANT: let SQL/ODBC/runtime exceptions bubble to route (for logging + 500)
+            return $this->client->execWithReturnCode($tenant, $proc, $typed);
         }
+
+        // Global scope runs in master
+        // IMPORTANT: let SQL/ODBC/runtime exceptions bubble to route (for logging + 500)
+        return $this->client->execMasterWithReturnCode($proc, $typed);
     }
 }
