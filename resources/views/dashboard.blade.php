@@ -4,39 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - TLS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-100 min-h-screen">
-    <nav class="bg-indigo-600 p-4 text-white shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">TLS Dashboard</h1>
-            <div class="space-x-4">
-                <span id="user-display" class="text-sm opacity-90"></span>
-                <form action="/logout" method="POST" class="inline">
+<body class="bg-light min-vh-100">
+    <nav class="navbar navbar-expand navbar-dark bg-primary shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">TLS Dashboard</a>
+            <div class="navbar-nav ms-auto align-items-center">
+                <span id="user-display" class="nav-link text-white-50 small me-3"></span>
+                <form action="/logout" method="POST" class="d-inline">
                     @csrf
-                    <button type="submit" class="text-sm bg-indigo-700 hover:bg-indigo-800 px-3 py-1 rounded">Logout</button>
+                    <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
                 </form>
             </div>
         </div>
     </nav>
 
-    <main class="container mx-auto p-8">
-        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Welcome to TLS</h2>
-            <p class="text-gray-600">You have successfully logged in.</p>
-        </div>
-
-        <div id="company-info" class="bg-white p-6 rounded-lg shadow-md hidden mb-6">
-            <h3 class="text-xl font-semibold mb-4 text-gray-800">Company Information</h3>
-            <div id="company-data" class="space-y-2 text-gray-600">
-                <!-- Data will be injected here -->
+    <main class="container py-5">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body p-4">
+                <h2 class="card-title h4 fw-bold mb-3">Welcome to TLS</h2>
+                <p class="card-text text-muted">You have successfully logged in.</p>
             </div>
         </div>
 
-        <div id="user-info" class="bg-white p-6 rounded-lg shadow-md hidden">
-            <h3 class="text-xl font-semibold mb-4 text-gray-800">User Information</h3>
-            <div id="user-data" class="space-y-2 text-gray-600">
-                <!-- Data will be injected here -->
+        <div id="company-info" class="card shadow-sm d-none mb-4">
+            <div class="card-body p-4">
+                <h3 class="card-title h5 fw-bold mb-3">Company Information</h3>
+                <div id="company-data" class="vstack gap-2 text-muted">
+                    <!-- Data will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <div id="user-info" class="card shadow-sm d-none">
+            <div class="card-body p-4">
+                <h3 class="card-title h5 fw-bold mb-3">User Information</h3>
+                <div id="user-data" class="vstack gap-2 text-muted">
+                    <!-- Data will be injected here -->
+                </div>
             </div>
         </div>
     </main>
@@ -69,7 +75,7 @@
                 if (result.ok && result.data.length > 0) {
                     const company = result.data[0];
                     const container = document.getElementById('company-data');
-                    document.getElementById('company-info').classList.remove('hidden');
+                    document.getElementById('company-info').classList.remove('d-none');
 
                     container.innerHTML = Object.entries(company)
                         .map(([key, value]) => `<div><strong>${key}:</strong> ${value}</div>`)
@@ -97,7 +103,7 @@
                 if (result.ok && result.data.length > 0) {
                     const user = result.data[0];
                     const container = document.getElementById('user-data');
-                    document.getElementById('user-info').classList.remove('hidden');
+                    document.getElementById('user-info').classList.remove('d-none');
 
                     container.innerHTML = Object.entries(user)
                         .map(([key, value]) => `<div><strong>${key}:</strong> ${value}</div>`)

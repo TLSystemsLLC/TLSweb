@@ -30,7 +30,7 @@ The system uses a database-per-tenant isolation model. Tenants are resolved via 
 - PHP 8.2+
 - SQL Server with ODBC Driver 17/18
 - Composer
-- Node.js & NPM (for Tailwind/Vite)
+- Node.js & NPM (for Bootstrap/Vite)
 
 ### Environment Setup
 1. Copy `.env.example` to `.env`.
