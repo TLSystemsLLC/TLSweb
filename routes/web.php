@@ -1,34 +1,52 @@
 <?php
 
+use App\Database\StoredProcedureGateway;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-use App\Database\StoredProcedureClient;
-use App\Support\Tenant;
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
 
-Route::get('/sp-test2', function (\Illuminate\Http\Request $request) {
+Route::post('/login', function (Request $request, StoredProcedureGateway $gateway) {
+    $login = (string) $request->input('login', '');
+    $password = (string) $request->input('password', '');
+
+    // Extract username (UserID) from login (tenant.username)
+    $parts = explode('.', $login);
+    $username = count($parts) > 1 ? implode('.', array_slice($parts, 1)) : $login;
+
     try {
-        $login  = (string) $request->query('login', '');
-        $tenant = Tenant::fromLogin($login);
+        $result = $gateway->call($login, 'spUser_Login', [$username, $password]);
+
+        if ($result['rc'] === 0) {
+            session(['user_login' => $login]);
+            return response()->json(['rc' => 0, 'ok' => true]);
+        }
+
+        return response()->json(['rc' => $result['rc'], 'ok' => false, 'error' => 'Invalid credentials.'], 401);
     } catch (\Throwable $e) {
-        // Indistinguishable from a bad login attempt
-        return response()->json([
-            'rc'    => 99,
-            'ok'    => false,
-            'error' => 'Invalid credentials.',
-        ], 401);
+        // Log the actual error for debugging, but keep response generic
+        logger()->error('Login failure', [
+            'login' => $login,
+            'error' => $e->getMessage()
+        ]);
+        return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
     }
-
-    $sp = new StoredProcedureClient();
-    $result = $sp->execWithReturnCode($tenant, 'spCompany_Get', [1]);
-
-    return response()->json([
-        'rc'    => $result['rc'],
-        'ok'    => ($result['rc'] === 0),
-        'data'  => $result['rows'],
-        'error' => ($result['rc'] === 0) ? null : ['code' => $result['rc']],
-    ]);
 });
+
+Route::get('/dashboard', function () {
+    if (!session()->has('user_login')) {
+        return redirect()->route('login');
+    }
+    return view('dashboard');
+})->name('dashboard');
+
+Route::post('/logout', function () {
+    session()->forget('user_login');
+    return redirect()->route('login');
+})->name('logout');

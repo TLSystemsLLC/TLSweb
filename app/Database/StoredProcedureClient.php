@@ -7,7 +7,7 @@ use App\Database\Exceptions\InvalidRequestException;
 use PDO;
 use PDOException;
 
-final class StoredProcedureClient
+class StoredProcedureClient
 {
     private PDO $pdo;
 
@@ -93,21 +93,31 @@ final class StoredProcedureClient
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(array_values($params));
 
-        // Result set 1: procedure rows (if any)
-        $rows = $stmt->fetchAll();
-
-        // Advance until we find a rowset that has column "rc"
+        $rows = [];
         $rc = null;
-        while ($stmt->nextRowset()) {
-            $rcRow = $stmt->fetch();
-            if (is_array($rcRow) && array_key_exists('rc', $rcRow)) {
-                $rc = (int) $rcRow['rc'];
-                break;
+
+        do {
+            try {
+                $rowset = $stmt->fetchAll();
+            } catch (\PDOException $e) {
+                // Skip if this rowset isn't fetchable
+                continue;
             }
-        }
+
+            if (empty($rowset)) {
+                continue;
+            }
+
+            // Is this our Return Code rowset?
+            if (count($rowset) === 1 && array_key_exists('rc', $rowset[0])) {
+                $rc = (int)$rowset[0]['rc'];
+            } else {
+                // If it's not the RC, it's actual data rows
+                $rows = array_merge($rows, $rowset);
+            }
+        } while ($stmt->nextRowset());
 
         if ($rc === null) {
-            // Contract broken: we didn't find the return code rowset.
             throw new \RuntimeException('Stored procedure did not return a return code.');
         }
 

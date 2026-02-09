@@ -6,6 +6,12 @@ return [
         'spCompany_Get' => [
             'params' => ['CompanyID' => 'int'],
         ],
+        'spUser_Login' => [
+            'params' => [
+                'UserID'   => 'string',
+                'Password' => 'string',
+            ],
+        ],
         // add more as you expose them
     ],
 

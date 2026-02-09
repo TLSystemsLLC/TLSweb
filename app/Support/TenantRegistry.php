@@ -27,7 +27,7 @@ final class TenantRegistry
 
         // Call master..getTenants (no tenant DB prefix)
         $sp = new StoredProcedureClient();
-        $result = $sp->execWithReturnCode('master', 'getTenants', []);
+        $result = $sp->execMasterWithReturnCode('getTenants', []);
 
         // If master call fails, be safe: return empty allowlist
         if (($result['rc'] ?? -1) !== 0) {
