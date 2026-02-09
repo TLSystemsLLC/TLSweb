@@ -12,6 +12,9 @@ return [
                 'Password' => 'string',
             ],
         ],
+        'spUser_GetByID' => [
+            'params' => ['UserID' => 'string'],
+        ],
         // add more as you expose them
     ],
 

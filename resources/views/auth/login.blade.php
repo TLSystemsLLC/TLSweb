@@ -17,10 +17,9 @@
         <form id="login-form" class="space-y-4">
             @csrf
             <div>
-                <label for="login" class="block text-sm font-medium text-gray-700">Login (tenant.username)</label>
+                <label for="login" class="block text-sm font-medium text-gray-700">Login</label>
                 <input type="text" id="login" name="login" required
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="mrwr.tlyle">
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
