@@ -1,214 +1,844 @@
 
-> build
-> vite build
-vite v7.3.1 building client environment for production...
-transforming (1) resources/js/app.jsDeprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
-More info and automated migrator: https://sass-lang.com/d/import
-  ╷
-5 │ @import 'variables';
-  │         ^^^^^^^^^^^
-  ╵
-    resources/sass/app.scss 5:9  root stylesheet
-Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
-More info and automated migrator: https://sass-lang.com/d/import
-  ╷
-8 │ @import 'bootstrap/scss/bootstrap';
-  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  ╵
-    resources/sass/app.scss 8:9  root stylesheet
-transforming (4) node_modules/axios/index.jsDeprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
-More info and automated migrator: https://sass-lang.com/d/import
-  ╷
-1 │ @import "mixins/banner";
-  │         ^^^^^^^^^^^^^^^
-  ╵
-    node_modules/bootstrap/scss/bootstrap.scss 1:9  @import
-    resources/sass/app.scss 8:9                     root stylesheet
-Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
-More info and automated migrator: https://sass-lang.com/d/import
-  ╷
-7 │ @import "functions";
-  │         ^^^^^^^^^^^
-  ╵
-    node_modules/bootstrap/scss/bootstrap.scss 7:9  @import
-    resources/sass/app.scss 8:9                     root stylesheet
-Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
-More info and automated migrator: https://sass-lang.com/d/import
-  ╷
-8 │ @import "variables";
-  │         ^^^^^^^^^^^
-  ╵
-    node_modules/bootstrap/scss/bootstrap.scss 8:9  @import
-    resources/sass/app.scss 8:9                     root stylesheet
-Deprecation Warning [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
-Suggestion: if(sass($arg == "$value"): $value; else: $arg)
-More info: https://sass-lang.com/d/if-function
-   ╷
-58 │       $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
-   │                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   ╵
-    node_modules/bootstrap/scss/_functions.scss 58:55  @import
-    node_modules/bootstrap/scss/bootstrap.scss 7:9     @import
-    resources/sass/app.scss 8:9                        root stylesheet
-Deprecation Warning [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
-Suggestion: if(sass($arg == "$key"): $key; else: if($arg == "$value", $value, $arg))
-More info: https://sass-lang.com/d/if-function
-   ╷
-58 │       $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
-   │                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   ╵
-    node_modules/bootstrap/scss/_functions.scss 58:30  @import
-    node_modules/bootstrap/scss/bootstrap.scss 7:9     @import
-    resources/sass/app.scss 8:9                        root stylesheet
-Deprecation Warning [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
-Suggestion: if(sass($l1 > $l2): divide($l1 + 0.05, $l2 + 0.05); else: divide($l2 + 0.05, $l1 + 0.05))
-More info: https://sass-lang.com/d/if-function
-    ╷
-177 │   @return if($l1 > $l2, divide($l1 + .05, $l2 + .05), divide($l2 + .05, $l1 + .05));
-    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ╵
-    node_modules/bootstrap/scss/_functions.scss 177:11  @import
-    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-Deprecation Warning [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
-Suggestion: if(sass(divide($value, 255) < 0.04045): divide(divide($value, 255), 12.92); else: nth($_luminance-list, $value + 1))
-More info: https://sass-lang.com/d/if-function
-    ╷
-191 │     $value: if(divide($value, 255) < .04045, divide(divide($value, 255), 12.92), nth($_luminance-list, $value + 1));
-    │             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ╵
-    node_modules/bootstrap/scss/_functions.scss 191:13  @import
-    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-Deprecation Warning [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
-Suggestion: if(sass($weight > 0): shade-color($color, $weight); else: tint-color($color, -$weight))
-More info: https://sass-lang.com/d/if-function
-    ╷
-217 │   @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
-    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ╵
-    node_modules/bootstrap/scss/_functions.scss 217:11  @import
-    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-Deprecation Warning [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
-Use color.mix instead.
-More info and automated migrator: https://sass-lang.com/d/import
-    ╷
-207 │   @return mix(white, $color, $weight);
-    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ╵
-    node_modules/bootstrap/scss/_functions.scss 207:11  tint-color()
-    node_modules/bootstrap/scss/_variables.scss 79:12   @import
-    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-Deprecation Warning [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
-Use color.mix instead.
-More info and automated migrator: https://sass-lang.com/d/import
-    ╷
-212 │   @return mix(black, $color, $weight);
-    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ╵
-    node_modules/bootstrap/scss/_functions.scss 212:11  shade-color()
-    node_modules/bootstrap/scss/_variables.scss 84:12   @import
-    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-Deprecation Warning [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
-Use color.mix instead.
-More info and automated migrator: https://sass-lang.com/d/import
-    ╷
-342 │ $light-bg-subtle:         mix($gray-100, $white) !default;
-    │                           ^^^^^^^^^^^^^^^^^^^^^^
-    ╵
-    node_modules/bootstrap/scss/_variables.scss 342:27  @import
-    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-Deprecation Warning [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
-Use math.unit instead.
-More info and automated migrator: https://sass-lang.com/d/import
-   ╷
-11 │     @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
-   │                              ^^^^^^^^^^
-   ╵
-    node_modules/bootstrap/scss/_functions.scss 11:30  -assert-ascending()
-    node_modules/bootstrap/scss/_variables.scss 494:1  @import
-    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
-    resources/sass/app.scss 8:9                        root stylesheet
-Deprecation Warning [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
-Use math.unit instead.
-More info and automated migrator: https://sass-lang.com/d/import
-   ╷
-11 │     @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
-   │                                                   ^^^^^^^^^^^^^^^
-   ╵
-    node_modules/bootstrap/scss/_functions.scss 11:51  -assert-ascending()
-    node_modules/bootstrap/scss/_variables.scss 494:1  @import
-    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
-    resources/sass/app.scss 8:9                        root stylesheet
-Deprecation Warning [color-functions]: red() is deprecated. Suggestion:
-color.channel($color, "red", $space: rgb)
-More info: https://sass-lang.com/d/color-functions
-    ╷
-185 │     "r": red($color),
-    │          ^^^^^^^^^^^
-    ╵
-    node_modules/bootstrap/scss/_functions.scss 185:10  luminance()
-    node_modules/bootstrap/scss/_functions.scss 174:8   contrast-ratio()
-    node_modules/bootstrap/scss/_functions.scss 159:22  color-contrast()
-    node_modules/bootstrap/scss/_variables.scss 846:42  @import
-    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-Deprecation Warning [color-functions]: green() is deprecated. Suggestion:
-color.channel($color, "green", $space: rgb)
-More info: https://sass-lang.com/d/color-functions
-    ╷
-186 │     "g": green($color),
-    │          ^^^^^^^^^^^^^
-    ╵
-    node_modules/bootstrap/scss/_functions.scss 186:10  luminance()
-    node_modules/bootstrap/scss/_functions.scss 174:8   contrast-ratio()
-    node_modules/bootstrap/scss/_functions.scss 159:22  color-contrast()
-    node_modules/bootstrap/scss/_variables.scss 846:42  @import
-    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-Deprecation Warning [color-functions]: blue() is deprecated. Suggestion:
-color.channel($color, "blue", $space: rgb)
-More info: https://sass-lang.com/d/color-functions
-    ╷
-187 │     "b": blue($color)
-    │          ^^^^^^^^^^^^
-    ╵
-    node_modules/bootstrap/scss/_functions.scss 187:10  luminance()
-    node_modules/bootstrap/scss/_functions.scss 174:8   contrast-ratio()
-    node_modules/bootstrap/scss/_functions.scss 159:22  color-contrast()
-    node_modules/bootstrap/scss/_variables.scss 846:42  @import
-    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-Deprecation Warning [color-functions]: red() is deprecated. Suggestion:
-color.channel($color, "red", $space: rgb)
-More info: https://sass-lang.com/d/color-functions
-   ╷
-37 │   @return red($value), green($value), blue($value);
-   │           ^^^^^^^^^^^
-   ╵
-    node_modules/bootstrap/scss/_functions.scss 37:11   to-rgb()
-    node_modules/bootstrap/scss/_variables.scss 846:31  @import
-    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-Deprecation Warning [color-functions]: green() is deprecated. Suggestion:
-color.channel($color, "green", $space: rgb)
-More info: https://sass-lang.com/d/color-functions
-   ╷
-37 │   @return red($value), green($value), blue($value);
-   │                        ^^^^^^^^^^^^^
-   ╵
-    node_modules/bootstrap/scss/_functions.scss 37:24   to-rgb()
-    node_modules/bootstrap/scss/_variables.scss 846:31  @import
-    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
-    resources/sass/app.scss 8:9                         root stylesheet
-transforming (104) node_modules/axios/lib/helpers/isURLSameOrigin.jsWarning: 312 repetitive deprecation warnings omitted.
-Run in verbose mode to see all warnings.
-✓ 111 modules transformed.
-public/build/manifest.json              0.34 kB │ gzip:  0.17 kB
-public/build/assets/app-CjbEYf5Q.css  226.76 kB │ gzip: 30.79 kB
-public/build/assets/app-CRjt_5EG.js   118.29 kB │ gzip: 38.84 kB
-✓ built in 1.48s
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true
+   PASS  Tests\Feature\ExampleTest
+  ✓ the application returns a successful response                        0.05s
+   PASS  Tests\Feature\LoginTest
+  ✓ login success                                                        0.01s
+  ✓ login failure
+   PASS  Tests\Feature\LoginUiTest
+  ✓ login page is accessible                                             0.01s
+  ✓ ui login success
+  ✓ ui login failure
+  ✓ dashboard requires login
+  ✓ dashboard accessible when logged in
+  ✓ logout works
+   FAIL  Tests\Feature\StoredProcedureApiTest
+  ⨯ api requires login for tenant proc                                   0.05s
+  ⨯ api rejects unlisted proc                                            0.03s
+  ⨯ api rejects invalid param count                                      0.03s
+  ⨯ api rejects invalid param type                                       0.03s
+  ✓ api handles business failure rc
+  ✓ api handles success
+   PASS  Tests\Unit\TenantRegistryAllowedTenantsTest
+  ✓ allowed tenants calls gateway in global scope and caches             0.01s
+   PASS  Tests\Feature\UserGetByIdTest
+  ✓ api can fetch user by id
+   PASS  Tests\Feature\UserMenuTest
+  ✓ authorized user menu returns rc 0
+  ✓ unauthorized user menu returns rc 99
+   FAIL  Tests\Feature\UserMenusTest
+  ✓ api can fetch user menus
+  ⨯ fails if param count mismatch                                        0.03s
+  ────────────────────────────────────────────────────────────────────────────
+   FAILED  Tests\Feature\StoredProcedureApiTest > api requires login for ten…
+  Expected response status code [401] but received 500.
+Failed asserting that 500 is identical to 401.
+The following exception occurred during the last request:
+PDOException: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed. in /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php:33
+Stack trace:
+#0 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php(33): PDO->__construct('odbc:Driver={OD...', 'Admin', Object(SensitiveParameterValue), Array)
+#1 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1168): App\Database\StoredProcedureClient->__construct()
+#2 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#3 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#4 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#5 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#6 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1336): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#7 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1237): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#8 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1162): Illuminate\Container\Container->resolveDependencies(Array)
+#9 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#10 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#11 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#12 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#13 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(92): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#14 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(51): Illuminate\Routing\CallableDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#15 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(51): Illuminate\Routing\CallableDispatcher->resolveMethodDependencies(Array, Object(ReflectionFunction))
+#16 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(39): Illuminate\Routing\CallableDispatcher->resolveParameters(Object(Illuminate\Routing\Route), Object(Closure))
+#17 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(243): Illuminate\Routing\CallableDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#18 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(214): Illuminate\Routing\Route->runCallable()
+#19 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(822): Illuminate\Routing\Route->run()
+#20 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Routing\Router->{closure:Illuminate\Routing\Router::runRouteWithinStack():821}(Object(Illuminate\Http\Request))
+#21 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Http/Middleware/ForceJson.php(15): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#22 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): App\Http\Middleware\ForceJson->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#24 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(166): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#26 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\Routing\Middleware\ThrottleRequests->handleRequest(Object(Illuminate\Http\Request), Object(Closure), Array)
+#27 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\ThrottleRequests->handle(Object(Illuminate\Http\Request), Object(Closure), '30', '1')
+#28 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#29 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#30 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#31 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#32 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#33 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#34 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Foundation\Http\Kernel->{closure:Illuminate\Foundation\Http\Kernel::dispatchToRouter():197}(Object(Illuminate\Http\Request))
+#35 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#36 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#39 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#41 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#42 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#43 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#44 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#45 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(74): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#46 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#47 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#48 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#50 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#51 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#52 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#53 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#54 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#55 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#56 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#57 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/sp', Array, Array, Array, Array, '{"proc":"spComp...')
+#58 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/sp', Array, Array, 0)
+#59 /Users/tonylyle/PhpstormProjects/TLS/tls/tests/Feature/StoredProcedureApiTest.php(21): Illuminate\Foundation\Testing\TestCase->postJson('/api/sp', Array)
+#60 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(1667): Tests\Feature\StoredProcedureApiTest->test_api_requires_login_for_tenant_proc()
+#61 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#62 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#63 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\StoredProcedureApiTest))
+#64 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#65 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#66 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#67 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#68 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#69 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#70 {main}
+Next RuntimeException: ODBC connect failed: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed. in /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php:40
+Stack trace:
+#0 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1168): App\Database\StoredProcedureClient->__construct()
+#1 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#2 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#3 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#4 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#5 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1336): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#6 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1237): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#7 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1162): Illuminate\Container\Container->resolveDependencies(Array)
+#8 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#9 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#10 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#11 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#12 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(92): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#13 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(51): Illuminate\Routing\CallableDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#14 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(51): Illuminate\Routing\CallableDispatcher->resolveMethodDependencies(Array, Object(ReflectionFunction))
+#15 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(39): Illuminate\Routing\CallableDispatcher->resolveParameters(Object(Illuminate\Routing\Route), Object(Closure))
+#16 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(243): Illuminate\Routing\CallableDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#17 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(214): Illuminate\Routing\Route->runCallable()
+#18 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(822): Illuminate\Routing\Route->run()
+#19 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Routing\Router->{closure:Illuminate\Routing\Router::runRouteWithinStack():821}(Object(Illuminate\Http\Request))
+#20 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Http/Middleware/ForceJson.php(15): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#21 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): App\Http\Middleware\ForceJson->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#23 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(166): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#25 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\Routing\Middleware\ThrottleRequests->handleRequest(Object(Illuminate\Http\Request), Object(Closure), Array)
+#26 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\ThrottleRequests->handle(Object(Illuminate\Http\Request), Object(Closure), '30', '1')
+#27 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#28 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#29 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#30 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#31 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#32 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#33 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Foundation\Http\Kernel->{closure:Illuminate\Foundation\Http\Kernel::dispatchToRouter():197}(Object(Illuminate\Http\Request))
+#34 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#35 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#36 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#38 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#39 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#41 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#43 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#44 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(74): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#45 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#46 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#47 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#48 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#49 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#50 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#51 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#52 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#53 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#54 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#55 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#56 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/sp', Array, Array, Array, Array, '{"proc":"spComp...')
+#57 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/sp', Array, Array, 0)
+#58 /Users/tonylyle/PhpstormProjects/TLS/tls/tests/Feature/StoredProcedureApiTest.php(21): Illuminate\Foundation\Testing\TestCase->postJson('/api/sp', Array)
+#59 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(1667): Tests\Feature\StoredProcedureApiTest->test_api_requires_login_for_tenant_proc()
+#60 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#61 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#62 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\StoredProcedureApiTest))
+#63 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#64 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#65 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#66 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#67 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#68 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#69 {main}
+----------------------------------------------------------------------------------
+ODBC connect failed: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed.
+  at tests/Feature/StoredProcedureApiTest.php:26
+     22▕             'proc' => 'spCompany_Get',
+     23▕             'params' => [1]
+     24▕         ]);
+     25▕
+  ➜  26▕         $response->assertStatus(401)
+     27▕                  ->assertJson([
+     28▕                      'rc' => 99,
+     29▕                      'ok' => false,
+     30▕                      'error' => 'Invalid credentials.'
+  ────────────────────────────────────────────────────────────────────────────
+   FAILED  Tests\Feature\StoredProcedureApiTest > api rejects unlisted proc
+  Expected response status code [400] but received 500.
+Failed asserting that 500 is identical to 400.
+The following exception occurred during the last request:
+PDOException: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed. in /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php:33
+Stack trace:
+#0 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php(33): PDO->__construct('odbc:Driver={OD...', 'Admin', Object(SensitiveParameterValue), Array)
+#1 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1168): App\Database\StoredProcedureClient->__construct()
+#2 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#3 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#4 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#5 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#6 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1336): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#7 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1237): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#8 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1162): Illuminate\Container\Container->resolveDependencies(Array)
+#9 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#10 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#11 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#12 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#13 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(92): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#14 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(51): Illuminate\Routing\CallableDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#15 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(51): Illuminate\Routing\CallableDispatcher->resolveMethodDependencies(Array, Object(ReflectionFunction))
+#16 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(39): Illuminate\Routing\CallableDispatcher->resolveParameters(Object(Illuminate\Routing\Route), Object(Closure))
+#17 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(243): Illuminate\Routing\CallableDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#18 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(214): Illuminate\Routing\Route->runCallable()
+#19 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(822): Illuminate\Routing\Route->run()
+#20 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Routing\Router->{closure:Illuminate\Routing\Router::runRouteWithinStack():821}(Object(Illuminate\Http\Request))
+#21 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Http/Middleware/ForceJson.php(15): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#22 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): App\Http\Middleware\ForceJson->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#24 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(166): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#26 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\Routing\Middleware\ThrottleRequests->handleRequest(Object(Illuminate\Http\Request), Object(Closure), Array)
+#27 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\ThrottleRequests->handle(Object(Illuminate\Http\Request), Object(Closure), '30', '1')
+#28 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#29 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#30 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#31 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#32 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#33 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#34 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Foundation\Http\Kernel->{closure:Illuminate\Foundation\Http\Kernel::dispatchToRouter():197}(Object(Illuminate\Http\Request))
+#35 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#36 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#39 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#41 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#42 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#43 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#44 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#45 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(74): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#46 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#47 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#48 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#50 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#51 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#52 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#53 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#54 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#55 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#56 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#57 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/sp', Array, Array, Array, Array, '{"login":"mrwr....')
+#58 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/sp', Array, Array, 0)
+#59 /Users/tonylyle/PhpstormProjects/TLS/tls/tests/Feature/StoredProcedureApiTest.php(36): Illuminate\Foundation\Testing\TestCase->postJson('/api/sp', Array)
+#60 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(1667): Tests\Feature\StoredProcedureApiTest->test_api_rejects_unlisted_proc()
+#61 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#62 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#63 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\StoredProcedureApiTest))
+#64 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#65 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#66 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#67 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#68 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#69 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#70 {main}
+Next RuntimeException: ODBC connect failed: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed. in /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php:40
+Stack trace:
+#0 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1168): App\Database\StoredProcedureClient->__construct()
+#1 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#2 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#3 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#4 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#5 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1336): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#6 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1237): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#7 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1162): Illuminate\Container\Container->resolveDependencies(Array)
+#8 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#9 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#10 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#11 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#12 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(92): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#13 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(51): Illuminate\Routing\CallableDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#14 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(51): Illuminate\Routing\CallableDispatcher->resolveMethodDependencies(Array, Object(ReflectionFunction))
+#15 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(39): Illuminate\Routing\CallableDispatcher->resolveParameters(Object(Illuminate\Routing\Route), Object(Closure))
+#16 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(243): Illuminate\Routing\CallableDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#17 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(214): Illuminate\Routing\Route->runCallable()
+#18 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(822): Illuminate\Routing\Route->run()
+#19 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Routing\Router->{closure:Illuminate\Routing\Router::runRouteWithinStack():821}(Object(Illuminate\Http\Request))
+#20 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Http/Middleware/ForceJson.php(15): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#21 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): App\Http\Middleware\ForceJson->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#23 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(166): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#25 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\Routing\Middleware\ThrottleRequests->handleRequest(Object(Illuminate\Http\Request), Object(Closure), Array)
+#26 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\ThrottleRequests->handle(Object(Illuminate\Http\Request), Object(Closure), '30', '1')
+#27 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#28 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#29 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#30 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#31 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#32 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#33 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Foundation\Http\Kernel->{closure:Illuminate\Foundation\Http\Kernel::dispatchToRouter():197}(Object(Illuminate\Http\Request))
+#34 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#35 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#36 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#38 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#39 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#41 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#43 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#44 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(74): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#45 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#46 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#47 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#48 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#49 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#50 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#51 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#52 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#53 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#54 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#55 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#56 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/sp', Array, Array, Array, Array, '{"login":"mrwr....')
+#57 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/sp', Array, Array, 0)
+#58 /Users/tonylyle/PhpstormProjects/TLS/tls/tests/Feature/StoredProcedureApiTest.php(36): Illuminate\Foundation\Testing\TestCase->postJson('/api/sp', Array)
+#59 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(1667): Tests\Feature\StoredProcedureApiTest->test_api_rejects_unlisted_proc()
+#60 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#61 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#62 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\StoredProcedureApiTest))
+#63 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#64 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#65 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#66 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#67 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#68 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#69 {main}
+----------------------------------------------------------------------------------
+ODBC connect failed: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed.
+  at tests/Feature/StoredProcedureApiTest.php:42
+     38▕             'proc' => 'spUnknown_Proc',
+     39▕             'params' => []
+     40▕         ]);
+     41▕
+  ➜  42▕         $response->assertStatus(400)
+     43▕                  ->assertJson([
+     44▕                      'rc' => 99,
+     45▕                      'ok' => false,
+     46▕                      'error' => 'Invalid request.'
+  ────────────────────────────────────────────────────────────────────────────
+   FAILED  Tests\Feature\StoredProcedureApiTest > api rejects invalid param…
+  Expected response status code [400] but received 500.
+Failed asserting that 500 is identical to 400.
+The following exception occurred during the last request:
+PDOException: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed. in /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php:33
+Stack trace:
+#0 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php(33): PDO->__construct('odbc:Driver={OD...', 'Admin', Object(SensitiveParameterValue), Array)
+#1 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1168): App\Database\StoredProcedureClient->__construct()
+#2 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#3 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#4 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#5 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#6 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1336): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#7 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1237): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#8 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1162): Illuminate\Container\Container->resolveDependencies(Array)
+#9 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#10 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#11 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#12 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#13 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(92): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#14 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(51): Illuminate\Routing\CallableDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#15 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(51): Illuminate\Routing\CallableDispatcher->resolveMethodDependencies(Array, Object(ReflectionFunction))
+#16 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(39): Illuminate\Routing\CallableDispatcher->resolveParameters(Object(Illuminate\Routing\Route), Object(Closure))
+#17 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(243): Illuminate\Routing\CallableDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#18 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(214): Illuminate\Routing\Route->runCallable()
+#19 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(822): Illuminate\Routing\Route->run()
+#20 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Routing\Router->{closure:Illuminate\Routing\Router::runRouteWithinStack():821}(Object(Illuminate\Http\Request))
+#21 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Http/Middleware/ForceJson.php(15): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#22 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): App\Http\Middleware\ForceJson->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#24 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(166): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#26 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\Routing\Middleware\ThrottleRequests->handleRequest(Object(Illuminate\Http\Request), Object(Closure), Array)
+#27 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\ThrottleRequests->handle(Object(Illuminate\Http\Request), Object(Closure), '30', '1')
+#28 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#29 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#30 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#31 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#32 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#33 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#34 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Foundation\Http\Kernel->{closure:Illuminate\Foundation\Http\Kernel::dispatchToRouter():197}(Object(Illuminate\Http\Request))
+#35 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#36 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#39 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#41 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#42 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#43 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#44 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#45 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(74): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#46 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#47 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#48 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#50 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#51 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#52 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#53 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#54 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#55 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#56 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#57 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/sp', Array, Array, Array, Array, '{"login":"mrwr....')
+#58 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/sp', Array, Array, 0)
+#59 /Users/tonylyle/PhpstormProjects/TLS/tls/tests/Feature/StoredProcedureApiTest.php(53): Illuminate\Foundation\Testing\TestCase->postJson('/api/sp', Array)
+#60 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(1667): Tests\Feature\StoredProcedureApiTest->test_api_rejects_invalid_param_count()
+#61 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#62 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#63 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\StoredProcedureApiTest))
+#64 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#65 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#66 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#67 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#68 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#69 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#70 {main}
+Next RuntimeException: ODBC connect failed: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed. in /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php:40
+Stack trace:
+#0 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1168): App\Database\StoredProcedureClient->__construct()
+#1 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#2 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#3 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#4 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#5 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1336): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#6 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1237): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#7 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1162): Illuminate\Container\Container->resolveDependencies(Array)
+#8 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#9 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#10 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#11 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#12 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(92): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#13 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(51): Illuminate\Routing\CallableDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#14 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(51): Illuminate\Routing\CallableDispatcher->resolveMethodDependencies(Array, Object(ReflectionFunction))
+#15 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(39): Illuminate\Routing\CallableDispatcher->resolveParameters(Object(Illuminate\Routing\Route), Object(Closure))
+#16 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(243): Illuminate\Routing\CallableDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#17 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(214): Illuminate\Routing\Route->runCallable()
+#18 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(822): Illuminate\Routing\Route->run()
+#19 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Routing\Router->{closure:Illuminate\Routing\Router::runRouteWithinStack():821}(Object(Illuminate\Http\Request))
+#20 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Http/Middleware/ForceJson.php(15): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#21 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): App\Http\Middleware\ForceJson->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#23 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(166): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#25 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\Routing\Middleware\ThrottleRequests->handleRequest(Object(Illuminate\Http\Request), Object(Closure), Array)
+#26 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\ThrottleRequests->handle(Object(Illuminate\Http\Request), Object(Closure), '30', '1')
+#27 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#28 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#29 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#30 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#31 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#32 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#33 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Foundation\Http\Kernel->{closure:Illuminate\Foundation\Http\Kernel::dispatchToRouter():197}(Object(Illuminate\Http\Request))
+#34 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#35 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#36 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#38 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#39 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#41 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#43 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#44 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(74): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#45 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#46 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#47 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#48 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#49 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#50 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#51 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#52 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#53 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#54 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#55 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#56 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/sp', Array, Array, Array, Array, '{"login":"mrwr....')
+#57 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/sp', Array, Array, 0)
+#58 /Users/tonylyle/PhpstormProjects/TLS/tls/tests/Feature/StoredProcedureApiTest.php(53): Illuminate\Foundation\Testing\TestCase->postJson('/api/sp', Array)
+#59 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(1667): Tests\Feature\StoredProcedureApiTest->test_api_rejects_invalid_param_count()
+#60 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#61 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#62 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\StoredProcedureApiTest))
+#63 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#64 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#65 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#66 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#67 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#68 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#69 {main}
+----------------------------------------------------------------------------------
+ODBC connect failed: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed.
+  at tests/Feature/StoredProcedureApiTest.php:59
+     55▕             'proc' => 'spCompany_Get',
+     56▕             'params' => [1, 2]
+     57▕         ]);
+     58▕
+  ➜  59▕         $response->assertStatus(400)
+     60▕                  ->assertJson([
+     61▕                      'rc' => 99,
+     62▕                      'ok' => false,
+     63▕                      'error' => 'Invalid request.'
+  ────────────────────────────────────────────────────────────────────────────
+   FAILED  Tests\Feature\StoredProcedureApiTest > api rejects invalid param…
+  Expected response status code [400] but received 500.
+Failed asserting that 500 is identical to 400.
+The following exception occurred during the last request:
+PDOException: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed. in /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php:33
+Stack trace:
+#0 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php(33): PDO->__construct('odbc:Driver={OD...', 'Admin', Object(SensitiveParameterValue), Array)
+#1 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1168): App\Database\StoredProcedureClient->__construct()
+#2 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#3 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#4 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#5 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#6 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1336): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#7 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1237): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#8 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1162): Illuminate\Container\Container->resolveDependencies(Array)
+#9 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#10 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#11 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#12 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#13 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(92): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#14 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(51): Illuminate\Routing\CallableDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#15 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(51): Illuminate\Routing\CallableDispatcher->resolveMethodDependencies(Array, Object(ReflectionFunction))
+#16 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(39): Illuminate\Routing\CallableDispatcher->resolveParameters(Object(Illuminate\Routing\Route), Object(Closure))
+#17 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(243): Illuminate\Routing\CallableDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#18 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(214): Illuminate\Routing\Route->runCallable()
+#19 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(822): Illuminate\Routing\Route->run()
+#20 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Routing\Router->{closure:Illuminate\Routing\Router::runRouteWithinStack():821}(Object(Illuminate\Http\Request))
+#21 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Http/Middleware/ForceJson.php(15): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#22 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): App\Http\Middleware\ForceJson->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#24 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(166): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#26 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\Routing\Middleware\ThrottleRequests->handleRequest(Object(Illuminate\Http\Request), Object(Closure), Array)
+#27 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\ThrottleRequests->handle(Object(Illuminate\Http\Request), Object(Closure), '30', '1')
+#28 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#29 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#30 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#31 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#32 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#33 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#34 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Foundation\Http\Kernel->{closure:Illuminate\Foundation\Http\Kernel::dispatchToRouter():197}(Object(Illuminate\Http\Request))
+#35 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#36 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#39 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#41 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#42 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#43 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#44 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#45 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(74): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#46 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#47 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#48 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#50 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#51 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#52 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#53 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#54 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#55 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#56 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#57 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/sp', Array, Array, Array, Array, '{"login":"mrwr....')
+#58 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/sp', Array, Array, 0)
+#59 /Users/tonylyle/PhpstormProjects/TLS/tls/tests/Feature/StoredProcedureApiTest.php(70): Illuminate\Foundation\Testing\TestCase->postJson('/api/sp', Array)
+#60 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(1667): Tests\Feature\StoredProcedureApiTest->test_api_rejects_invalid_param_type()
+#61 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#62 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#63 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\StoredProcedureApiTest))
+#64 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#65 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#66 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#67 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#68 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#69 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#70 {main}
+Next RuntimeException: ODBC connect failed: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed. in /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php:40
+Stack trace:
+#0 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1168): App\Database\StoredProcedureClient->__construct()
+#1 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#2 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#3 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#4 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#5 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1336): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#6 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1237): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#7 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1162): Illuminate\Container\Container->resolveDependencies(Array)
+#8 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#9 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#10 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#11 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#12 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(92): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#13 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(51): Illuminate\Routing\CallableDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#14 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(51): Illuminate\Routing\CallableDispatcher->resolveMethodDependencies(Array, Object(ReflectionFunction))
+#15 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(39): Illuminate\Routing\CallableDispatcher->resolveParameters(Object(Illuminate\Routing\Route), Object(Closure))
+#16 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(243): Illuminate\Routing\CallableDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#17 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(214): Illuminate\Routing\Route->runCallable()
+#18 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(822): Illuminate\Routing\Route->run()
+#19 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Routing\Router->{closure:Illuminate\Routing\Router::runRouteWithinStack():821}(Object(Illuminate\Http\Request))
+#20 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Http/Middleware/ForceJson.php(15): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#21 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): App\Http\Middleware\ForceJson->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#23 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(166): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#25 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\Routing\Middleware\ThrottleRequests->handleRequest(Object(Illuminate\Http\Request), Object(Closure), Array)
+#26 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\ThrottleRequests->handle(Object(Illuminate\Http\Request), Object(Closure), '30', '1')
+#27 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#28 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#29 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#30 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#31 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#32 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#33 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Foundation\Http\Kernel->{closure:Illuminate\Foundation\Http\Kernel::dispatchToRouter():197}(Object(Illuminate\Http\Request))
+#34 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#35 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#36 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#38 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#39 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#41 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#43 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#44 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(74): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#45 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#46 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#47 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#48 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#49 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#50 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#51 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#52 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#53 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#54 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#55 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#56 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/sp', Array, Array, Array, Array, '{"login":"mrwr....')
+#57 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/sp', Array, Array, 0)
+#58 /Users/tonylyle/PhpstormProjects/TLS/tls/tests/Feature/StoredProcedureApiTest.php(70): Illuminate\Foundation\Testing\TestCase->postJson('/api/sp', Array)
+#59 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(1667): Tests\Feature\StoredProcedureApiTest->test_api_rejects_invalid_param_type()
+#60 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#61 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#62 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\StoredProcedureApiTest))
+#63 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#64 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#65 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#66 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#67 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#68 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#69 {main}
+----------------------------------------------------------------------------------
+ODBC connect failed: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed.
+  at tests/Feature/StoredProcedureApiTest.php:76
+     72▕             'proc' => 'spCompany_Get',
+     73▕             'params' => ['not-an-int']
+     74▕         ]);
+     75▕
+  ➜  76▕         $response->assertStatus(400)
+     77▕                  ->assertJson([
+     78▕                      'rc' => 99,
+     79▕                      'ok' => false,
+     80▕                      'error' => 'Invalid request.'
+  ────────────────────────────────────────────────────────────────────────────
+   FAILED  Tests\Feature\UserMenusTest > fails if param count mismatch
+  Expected response status code [400] but received 500.
+Failed asserting that 500 is identical to 400.
+The following exception occurred during the last request:
+PDOException: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed. in /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php:33
+Stack trace:
+#0 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php(33): PDO->__construct('odbc:Driver={OD...', 'Admin', Object(SensitiveParameterValue), Array)
+#1 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1168): App\Database\StoredProcedureClient->__construct()
+#2 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#3 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#4 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#5 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#6 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1336): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#7 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1237): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#8 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1162): Illuminate\Container\Container->resolveDependencies(Array)
+#9 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#10 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#11 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#12 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#13 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(92): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#14 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(51): Illuminate\Routing\CallableDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#15 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(51): Illuminate\Routing\CallableDispatcher->resolveMethodDependencies(Array, Object(ReflectionFunction))
+#16 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(39): Illuminate\Routing\CallableDispatcher->resolveParameters(Object(Illuminate\Routing\Route), Object(Closure))
+#17 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(243): Illuminate\Routing\CallableDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#18 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(214): Illuminate\Routing\Route->runCallable()
+#19 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(822): Illuminate\Routing\Route->run()
+#20 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Routing\Router->{closure:Illuminate\Routing\Router::runRouteWithinStack():821}(Object(Illuminate\Http\Request))
+#21 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Http/Middleware/ForceJson.php(15): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#22 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): App\Http\Middleware\ForceJson->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#24 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(166): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#26 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\Routing\Middleware\ThrottleRequests->handleRequest(Object(Illuminate\Http\Request), Object(Closure), Array)
+#27 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\ThrottleRequests->handle(Object(Illuminate\Http\Request), Object(Closure), '30', '1')
+#28 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#29 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#30 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#31 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#32 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#33 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#34 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Foundation\Http\Kernel->{closure:Illuminate\Foundation\Http\Kernel::dispatchToRouter():197}(Object(Illuminate\Http\Request))
+#35 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#36 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#39 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#41 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#42 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#43 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#44 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#45 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(74): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#46 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#47 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#48 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#50 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#51 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#52 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#53 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#54 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#55 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#56 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#57 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/sp', Array, Array, Array, Array, '{"login":"mrwr....')
+#58 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/sp', Array, Array, 0)
+#59 /Users/tonylyle/PhpstormProjects/TLS/tls/tests/Feature/UserMenusTest.php(59): Illuminate\Foundation\Testing\TestCase->postJson('/api/sp', Array)
+#60 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(1667): Tests\Feature\UserMenusTest->test_fails_if_param_count_mismatch()
+#61 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#62 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#63 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\UserMenusTest))
+#64 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#65 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#66 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#67 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#68 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#69 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#70 {main}
+Next RuntimeException: ODBC connect failed: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed. in /Users/tonylyle/PhpstormProjects/TLS/tls/app/Database/StoredProcedureClient.php:40
+Stack trace:
+#0 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1168): App\Database\StoredProcedureClient->__construct()
+#1 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#2 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#3 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#4 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#5 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1336): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#6 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1237): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#7 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(1162): Illuminate\Container\Container->resolveDependencies(Array)
+#8 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(933): Illuminate\Container\Container->build('App\\Database\\St...')
+#9 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\Container\Container->resolve('App\\Database\\St...', Array, true)
+#10 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\Foundation\Application->resolve('App\\Database\\St...', Array)
+#11 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\Container\Container->make('App\\Database\\St...', Array)
+#12 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(92): Illuminate\Foundation\Application->make('App\\Database\\St...')
+#13 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/ResolvesRouteDependencies.php(51): Illuminate\Routing\CallableDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#14 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(51): Illuminate\Routing\CallableDispatcher->resolveMethodDependencies(Array, Object(ReflectionFunction))
+#15 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php(39): Illuminate\Routing\CallableDispatcher->resolveParameters(Object(Illuminate\Routing\Route), Object(Closure))
+#16 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(243): Illuminate\Routing\CallableDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Closure))
+#17 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Route.php(214): Illuminate\Routing\Route->runCallable()
+#18 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(822): Illuminate\Routing\Route->run()
+#19 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Routing\Router->{closure:Illuminate\Routing\Router::runRouteWithinStack():821}(Object(Illuminate\Http\Request))
+#20 /Users/tonylyle/PhpstormProjects/TLS/tls/app/Http/Middleware/ForceJson.php(15): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#21 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): App\Http\Middleware\ForceJson->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#23 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(166): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#25 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\Routing\Middleware\ThrottleRequests->handleRequest(Object(Illuminate\Http\Request), Object(Closure), Array)
+#26 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Routing\Middleware\ThrottleRequests->handle(Object(Illuminate\Http\Request), Object(Closure), '30', '1')
+#27 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#28 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#29 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#30 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#31 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Routing/Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#32 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#33 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\Foundation\Http\Kernel->{closure:Illuminate\Foundation\Http\Kernel::dispatchToRouter():197}(Object(Illuminate\Http\Request))
+#34 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:Illuminate\Pipeline\Pipeline::prepareDestination():178}(Object(Illuminate\Http\Request))
+#35 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#36 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#38 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#39 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#41 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#43 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#44 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(74): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#45 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#46 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#47 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#48 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#49 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#50 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#51 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#52 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Pipeline\Pipeline->{closure:{closure:Illuminate\Pipeline\Pipeline::carry():194}:195}(Object(Illuminate\Http\Request))
+#53 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#54 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#55 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#56 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/sp', Array, Array, Array, Array, '{"login":"mrwr....')
+#57 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/sp', Array, Array, 0)
+#58 /Users/tonylyle/PhpstormProjects/TLS/tls/tests/Feature/UserMenusTest.php(59): Illuminate\Foundation\Testing\TestCase->postJson('/api/sp', Array)
+#59 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(1667): Tests\Feature\UserMenusTest->test_fails_if_param_count_mismatch()
+#60 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#61 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#62 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\UserMenusTest))
+#63 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#64 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#65 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/Framework/TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#66 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#67 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/src/TextUI/Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#68 /Users/tonylyle/PhpstormProjects/TLS/tls/vendor/phpunit/phpunit/phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#69 {main}
+----------------------------------------------------------------------------------
+ODBC connect failed: SQLSTATE[42000] SQLDriverConnect: 4060 [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Cannot open database "tls_tenant" requested by the login. The login failed.
+  at tests/Feature/UserMenusTest.php:65
+     61▕             'proc' => 'spUser_Menus',
+     62▕             'params' => [] // Missing UserID
+     63▕         ]);
+     64▕
+  ➜  65▕         $response->assertStatus(400)
+     66▕                  ->assertJson([
+     67▕                      'rc' => 99,
+     68▕                      'ok' => false,
+     69▕                      'error' => 'Invalid request.'
+  Tests:    5 failed, 17 passed (42 assertions)
+  Duration: 0.31s

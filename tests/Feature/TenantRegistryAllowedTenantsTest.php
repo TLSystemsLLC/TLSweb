@@ -28,8 +28,8 @@ final class TenantRegistryAllowedTenantsTest extends TestCase
             ->andReturn([
                 'rc' => 0,
                 'rows' => [
-                    ['name' => 'tenant_a'],
-                    ['name' => 'tenant_b'],
+                    ['tenant_id' => 'tenant_a'],
+                    ['tenant_id' => 'tenant_b'],
                 ],
             ]);
 

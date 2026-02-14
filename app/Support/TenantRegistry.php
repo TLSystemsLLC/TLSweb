@@ -46,10 +46,10 @@ final class TenantRegistry
             return [];
         }
 
-        // Expect rows with a "name" column
+        // Expect rows with a "tenant_id" column
         $map = [];
         foreach (($result['rows'] ?? []) as $row) {
-            $name = strtolower(trim((string) ($row['name'] ?? '')));
+            $name = strtolower(trim((string) ($row['tenant_id'] ?? '')));
             if ($name !== '') {
                 $map[$name] = true;
             }

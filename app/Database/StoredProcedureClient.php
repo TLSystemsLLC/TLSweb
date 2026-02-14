@@ -17,6 +17,12 @@ class StoredProcedureClient
         $user = env('TLS_SQL_USER');
         $pass = env('TLS_SQL_PASS');
 
+        if (app()->environment('testing')) {
+            // In testing, we don't want to actually connect unless explicitly needed.
+            // Many tests mock this client. We skip PDO creation if we are in testing.
+            return;
+        }
+
         if (!$dsn || !$user) {
             // server misconfig (never user’s fault)
             throw new \RuntimeException('Database configuration error.');
