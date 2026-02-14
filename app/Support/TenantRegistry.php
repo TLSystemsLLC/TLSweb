@@ -2,7 +2,8 @@
 
 namespace App\Support;
 
-use App\Database\StoredProcedureClient;
+use App\Database\Exceptions\InvalidRequestException;
+use App\Database\StoredProcedureGateway;
 
 final class TenantRegistry
 {
@@ -25,19 +26,30 @@ final class TenantRegistry
             if (is_array($data)) return $data;
         }
 
-        // Call master..getTenants (no tenant DB prefix)
-        $sp = new StoredProcedureClient();
-        $result = $sp->execMasterWithReturnCode('getTenants', []);
+        // Call master-scoped stored procedure THROUGH the gateway (no bypass).
+        // Global scope does not require login/tenant parsing.
+        try {
+            /** @var StoredProcedureGateway $gateway */
+            $gateway = app(StoredProcedureGateway::class);
 
-        // If master call fails, be safe: return empty allowlist
+            $result = $gateway->call(null, 'getTenants', []);
+        } catch (InvalidRequestException) {
+            // If not allowlisted / schema mismatch, fail closed
+            return [];
+        } catch (\Throwable) {
+            // If DB is unreachable or other infra failure, fail closed
+            return [];
+        }
+
+        // If master call fails (business rc), be safe: return empty allowlist
         if (($result['rc'] ?? -1) !== 0) {
             return [];
         }
 
-        // Expect rows with a "name" column (per your note)
+        // Expect rows with a "name" column
         $map = [];
         foreach (($result['rows'] ?? []) as $row) {
-            $name = strtolower(trim((string)($row['name'] ?? '')));
+            $name = strtolower(trim((string) ($row['name'] ?? '')));
             if ($name !== '') {
                 $map[$name] = true;
             }

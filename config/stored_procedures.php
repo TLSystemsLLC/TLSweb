@@ -15,6 +15,15 @@ return [
         'spUser_GetByID' => [
             'params' => ['UserID' => 'string'],
         ],
+        'spUser_Menus' => [
+            'params' => ['UserID' => 'string'],
+        ],
+        'spUser_Menu' => [
+            'params' => [
+                'UserID' => 'string',
+                'MenuID' => 'int',
+            ],
+        ],
         // add more as you expose them
     ],
 

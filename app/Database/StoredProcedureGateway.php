@@ -5,7 +5,7 @@ namespace App\Database;
 use App\Database\Exceptions\InvalidCredentialsException;
 use App\Database\Exceptions\InvalidRequestException;
 
-final class StoredProcedureGateway
+class StoredProcedureGateway
 {
     public function __construct(
         private readonly StoredProcedureClient $client
