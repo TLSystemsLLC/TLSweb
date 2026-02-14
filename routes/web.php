@@ -3,12 +3,15 @@
 use App\Database\StoredProcedureGateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
 Route::get('/', function () {
+    \App\Support\TenantRegistry::allowedTenants();
     return view('auth.login');
 });
 
 Route::get('/login', function () {
+    \App\Support\TenantRegistry::allowedTenants();
     return view('auth.login');
 })->name('login');
 
@@ -29,6 +32,8 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
         }
 
         return response()->json(['rc' => $result['rc'], 'ok' => false, 'error' => 'Invalid credentials.'], 401);
+    } catch (ServiceUnavailableHttpException $e) {
+        throw $e;
     } catch (\Throwable $e) {
         // Log the actual error for debugging, but keep response generic
         logger()->error('Login failure', [

@@ -4,6 +4,7 @@ namespace App\Database;
 
 use App\Database\Exceptions\InvalidCredentialsException;
 use App\Database\Exceptions\InvalidRequestException;
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
 class StoredProcedureGateway
 {
@@ -82,6 +83,8 @@ class StoredProcedureGateway
 
             try {
                 $tenant = \App\Support\Tenant::fromLogin($login);
+            } catch (ServiceUnavailableHttpException $e) {
+                throw $e;
             } catch (\Throwable) {
                 throw new InvalidCredentialsException('Invalid credentials.');
             }

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Database\StoredProcedureGateway;
 use App\Database\Exceptions\InvalidCredentialsException;
 use App\Database\Exceptions\InvalidRequestException;
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
 Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, StoredProcedureGateway $gateway) {
     $login  = (string) $request->input('login', '');
@@ -24,6 +25,10 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     } catch (InvalidRequestException) {
         // Invalid proc/params/scope/etc. (no details leaked)
         return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid request.'], 400);
+
+    } catch (ServiceUnavailableHttpException $e) {
+        // Re-throw to let the global handler in bootstrap/app.php catch it
+        throw $e;
 
     } catch (\Throwable $e) {
         // Log real error for you; do not leak tenant/proc/sql details to caller

@@ -4,6 +4,7 @@ namespace App\Support;
 
 use App\Database\Exceptions\InvalidRequestException;
 use App\Database\StoredProcedureGateway;
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
 final class TenantRegistry
 {
@@ -36,8 +37,11 @@ final class TenantRegistry
         } catch (InvalidRequestException) {
             // If not allowlisted / schema mismatch, fail closed
             return [];
+        } catch (ServiceUnavailableHttpException $e) {
+            // Re-throw to trigger maintenance mode
+            throw $e;
         } catch (\Throwable) {
-            // If DB is unreachable or other infra failure, fail closed
+            // If other infra failure, fail closed
             return [];
         }
 

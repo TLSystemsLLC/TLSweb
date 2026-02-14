@@ -7,6 +7,8 @@ use App\Database\Exceptions\InvalidRequestException;
 use PDO;
 use PDOException;
 
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
+
 class StoredProcedureClient
 {
     private PDO $pdo;
@@ -35,8 +37,14 @@ class StoredProcedureClient
                 PDO::ATTR_EMULATE_PREPARES   => false,
             ]);
         } catch (PDOException $e) {
-            // bubble up; route logs CID + message; caller gets generic
-            throw new \RuntimeException("ODBC connect failed: " . $e->getMessage(), 0, $e);
+            // Log real error internally
+            logger()->critical("ODBC connect failed: " . $e->getMessage(), [
+                'dsn' => $dsn,
+                'user' => $user
+            ]);
+
+            // Trigger maintenance mode response
+            throw new ServiceUnavailableHttpException(null, 'Database is down.', $e);
         }
     }
 

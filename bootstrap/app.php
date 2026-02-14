@@ -7,6 +7,8 @@ use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
+
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
@@ -43,6 +45,17 @@ return Application::configure(basePath: dirname(__DIR__))
                 'ok' => false,
                 'error' => 'Invalid request.',
             ], 429);
+        });
+
+        $exceptions->render(function (ServiceUnavailableHttpException $e, $request) {
+            if ($request->is('api/*') || $request->expectsJson()) {
+                return response()->json([
+                    'rc' => 99,
+                    'ok' => false,
+                    'error' => 'Maintenance.',
+                ], 503);
+            }
+            // For web, it will naturally use 503.blade.php if we don't return anything here
         });
 
         // IMPORTANT: any generic/catch-all renderer must NOT override this
