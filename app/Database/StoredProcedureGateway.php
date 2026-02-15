@@ -97,4 +97,25 @@ class StoredProcedureGateway
         // IMPORTANT: let SQL/ODBC/runtime exceptions bubble to route (for logging + 500)
         return $this->client->execMasterWithReturnCode($proc, $typed);
     }
+
+    /**
+     * Fallback for when cross-database access is restricted.
+     * Tries to call the procedure in the current database if cross-db fails.
+     */
+    public function callWithFallback(?string $login, string $proc, array $params): array
+    {
+        try {
+            return $this->call($login, $proc, $params);
+        } catch (\Throwable $e) {
+            // Check if it's a permission error (916) or similar connection error
+            if (str_contains($e->getMessage(), '916') || str_contains($e->getMessage(), '08004')) {
+                logger()->warning("Cross-database access failed for $proc, falling back to current DB.", [
+                    'error' => $e->getMessage(),
+                    'proc' => $proc
+                ]);
+                return $this->client->execMasterWithReturnCode($proc, $params);
+            }
+            throw $e;
+        }
+    }
 }

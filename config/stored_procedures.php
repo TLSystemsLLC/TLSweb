@@ -33,6 +33,10 @@ return [
             'params' => [],
         ],
 
+        'GetMenuItems' => [
+            'params' => [],
+        ],
+
         // 'spValidationItem_Get' => ['params' => ['Item' => 'string']],
     ],
 ];

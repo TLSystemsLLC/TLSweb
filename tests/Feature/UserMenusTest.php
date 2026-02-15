@@ -23,8 +23,9 @@ class UserMenusTest extends TestCase
             ->andReturn([
                 'rc' => 0,
                 'rows' => [
-                    ['MenuID' => 1, 'MenuName' => 'Dashboard', 'Url' => '/dashboard'],
-                    ['MenuID' => 2, 'MenuName' => 'Settings', 'Url' => '/settings']
+                    ['MenuKey' => 'mnuMainDashboard'],
+                    ['MenuKey' => 'mnuMainSettings'],
+                    ['MenuKey' => 'secAdminPanel'],
                 ]
             ]);
 
@@ -46,8 +47,9 @@ class UserMenusTest extends TestCase
                      'rc' => 0,
                      'ok' => true,
                      'data' => [
-                         ['MenuID' => 1, 'MenuName' => 'Dashboard', 'Url' => '/dashboard'],
-                         ['MenuID' => 2, 'MenuName' => 'Settings', 'Url' => '/settings']
+                         ['MenuKey' => 'mnuMainDashboard'],
+                         ['MenuKey' => 'mnuMainSettings'],
+                         ['MenuKey' => 'secAdminPanel'],
                      ]
                  ]);
 

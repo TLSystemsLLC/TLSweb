@@ -16,7 +16,7 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
 
     try {
         // Gateway handles: allowlist, scope, tenant parsing, param count, type enforcement
-        $result = $gateway->call($login !== '' ? $login : null, $proc, $params);
+        $result = $gateway->callWithFallback($login !== '' ? $login : null, $proc, $params);
 
     } catch (InvalidCredentialsException) {
         // Looks like failed login; do not leak why

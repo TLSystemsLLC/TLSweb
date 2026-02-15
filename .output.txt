@@ -1,1438 +1,2125 @@
-locale is "C.UTF-8/UTF-8/C.UTF-8/C.UTF-8/C.UTF-8/C.UTF-8"
-locale charset is "UTF-8"
-using default charset "UTF-8"
-1> 2> name
-ProEDI_Status_X6
-spMobileMessages
-ccUpdatetWebServiceLogin
-spGLAccountHistory_Detail
-wsTenderSave
-spEFSPolicyHeader_Delete
-spUpdatetDivision
-spDeposit_PostBatch
-spTender_Save
-spAvailBrokerLoads
-XMLReport_UserLoginHistory
-spMobileMessageStatus
-CheckLogin
-XMLReport_MultiplePayLoads
-spGLAccountHistory_Month
-wsUserForgotPassword
-spEFSPolicyHeader_Get
-spUpdatetTeam
-XMLReport_AgingSummary
-spDeposit_PostingReport
-spTenderEDI_Delete
-spAvailBrokerLoadsXML
-XMLReport_TractorMaintenanceLog
-spMobileMessageStatuses
-deleteCompany
-spGLAccountHistory_Year
-wsUtilityLogAccess
-spEFSPolicyHeader_GetAll
-spUser_Delete
-spDeposit_Save
-spTenderEDI_Get
-spAvailTruck_Delete
-XMLReport_TrailerMaintenanceLog
-spMobileOutboundMessage
-deleteCustomer
-XMLReport_NewHireListing
-spGLExport
-wsUtilityLogin
-spEFSPolicyInfo
-spUser_Get
-spDeposit_Validate
-spTenderEDI_Save
-spAvailTruck_Save
-spMobileOutboundMessageNumber
-deleteDivision
-spGLRecalculate
-wsUtilityUserSecurity
-spEFSPolicyInfo_Delete
-spEDI_NotifyUpdate
-spUser_GetByID
-TFMPProcessLoads
-spDepositApplication_Delete
-spTenderEDIs_Get
-spAvailTrucks
-spMobileOutboundQueued
-deleteSalesLead
-XMLReport_NonPayment
-spHeldUnits
-wsUtilityValidateCarrierID
-spEFSPolicyInfo_Get
-spUser_GetByKey
-TFMPProcessLoadStatus
-spDepositApplication_Get
-XMLReport_LoadProfitReport
-spTestTheory
-spBankAccount_NextCheck
-spMobilePositionReport
-deleteSalesLeadLocation
-spHoldExpiredUnits
-wsValidateCarrier
-spEFSPolicyInfo_GetAll
-spUser_GetUser
-TFMPProcessLocations
-spDepositApplication_Save
-spTINAdd
-spBankRec_AutoClear
-spMobileSendDirections
-deleteTeam
-XMLReport_NotReloading
-spHoldLoad
-XMLReport_1099MISC_Report
-spEFSPolicyLimit
-spUser_Login
-TFMPProcessRegistration
-spDepositApplications
-spTINGet
-spBankRec_Delete
-spMobileSendLoad
-deleteUser
-XMLReport_OfficeBookedRevenue
-spHoldLoad2
-spEFSPolicyLimit_Delete
-spNotifyProfitException
-spUser_Menu
-TFMPProcessInboundMessage
-spDepositDetail_Delete
-spTINGetHistory
-spBankRec_DetailAdd
-spMobileStopComplete
-deleteUserRole
-XMLReport_Over45DaysAccounts
-spHoldOver
-spEFSPolicyLimit_Get
-spUser_Menu_Save
-TFMPDeleteLoads
-spDepositDetail_Get
-spTINValidationFile
-spBankRec_DetailClear
-spMobileTimeZoneUpdate
-doLogin
-XMLReport_OwnerCheckReport
-spImage_Add
-XMLReport_ActiveAgentContacts
-spEFSPolicyLimit_GetAll
-spUser_Menus
-TFMPProcessEvents
-spDepositDetail_Save
-spTPO_CustomerMaster
-spBankRec_Email
-spMobileUndelivered
-EFSMoneyCodeRequest_Get
-XMLReport_OwnerContractSigned
-spImage_Get
-XMLReport_ActiveCarrierContacts
-spEFSPolicyTimeRestriction
-spEDI_CreateOutbound210_HOWMET
-spUser_Save
-Transflo_ProcessOutboundMessage
-spDepositDetails
-spTPO_Driver
-spBankRec_Get
-spMobileUnitMessage
-encodeCarrierWeb
-XMLReport_OwnerDeductionReport
-spImageAudit
-XMLReport_ActiveUnitList
-spEFSPolicyTimeRestriction_Delete
-spCheckDuplicateShipment
-spUser_Save2
-spDepositHeld_Save
-spTPO_Invoice
-spBankRec_GetBankDetail
-spMobileUserMessage
-getCarrierWebData
-XMLReport_OwnerEarningReport
-spImageExceptionGet
-XMLReport_ActiveUserReport
-spEFSPolicyTimeRestriction_Get
-spUserCompany
-Transflo_ProcessLoadStatus
-spDepositsHeld
-spTPO_NameMaster
-spBankRec_GetGL
-spNameAddress_Delete
-GetCellPhone
-XMLReport_PaymentHistory
-spImageExceptionSave
-XMLReport_AgentActivity
-spEFSPolicyTimeRestriction_GetAll
-spUsers_Get
-Transflo_ProcessLoads
-spDFInterface
-spTPO_Order
-spBankRec_Post
-spNameAddress_Find
-getCompany
-spImageExceptionUnlock
-XMLReport_AgentAging
-spEFSPostingBalance
-spUsers_GetAll
-Transflo_ProcessInboundMessage
-spDirectDeposit_Build
-spTPO_RefNo
-spBankRec_PrevBal
-spNameAddress_Get
-getCompanyDivisions
-spImageTypes
-XMLReport_AgentDivision
-spEFSProduct
-spValidateCarrier
-Transflo_ProcessRegistration
-spDirectDeposit_Delete
-spTPO_Stop
-spBankRec_Report
-spNameAddress_QuickKey
-getDFLoads
-spImportLoadProcessuFollowit
-XMLReport_AgentHistory
-spEFSProductGroup
-spVendor_Delete
-Transflo_DeleteLoads
-spDirectDeposit_Get
-spTPODocData
-spBankRec_Save
-spNameAddress_Save
-getNewDFLoads
-spImportLoadUFollowit
-XMLReport_AgentProductivity
-spEFSprompt
-spVendor_Get
-Transflo_ProcessEvents
-spDirectDeposit_GetAll
-spTPODocDataTripChange
-spBankRec_TranClear
-spNameAddressComments_Get
-GetRoles
-spIncident_Delete
-XMLReport_AgingReport
-spEFSRefreshCard
-spVendor_Save
-spDirectDeposit_GetPayee
-spTPOImage_LoadDocs
-spBatch_Delete
-spNameAddressComments_Save
-getUser
-spIncident_Get
-spEFSRefreshPolicy
-spVendorHistory
-spDirectDeposit_GetPrenotes
-spTPOImage_Update
-spBatch_Get
-spNameRefNos_Get
-XMLReport_TrailersNotWorking
-installCarrierWeb
-ProEDI_Load
-spIncident_Save
-XMLReport_UnitsNotWorking
-spEFSSmartPayAchTransfer
-spGetLoadRoute
-spVendorRemit_Delete
-spDirectDeposit_Save
-spTPOMoveImages
-spBatch_Lock
-spNameRefNos_Save
-InvoiceArchive
-XMLReport_RevenueBreakdown
-ProEDI_Response
-spIncidentNote_Delete
-spEFSSmartPayDriver
-spVendorRemit_Get
-spDirections_Delete
-spTractorList
-spBatch_Printed
-spNotifyExceptionRequest
-InvoiceDetails
-XMLReport_RevenueByBillingState
-spIncidentNote_Get
-spEFSSmartPayScheduledTransfer
-spVendorRemit_Save
-spDirections_Get
-spTrafficLanes
-spBatch_Save
-spOffer_Delete
-InvoiceEbill
-XMLReport_RevenueByOriginState
-spIncidentNote_Save
-spEFSSmartPayScheduledTransferDefinition
-spVendorRemits
-spDirections_Save
-MRWR_spHoldExpiredUnits
-spTrailer_Delete
-spBatchRecurringSave
-spOffer_Save
-InvoiceHeader
-XMLReport_RevenueByTrailerType
-ProEDI_Status
-spIncidentNotes_Get
-Project44_Process
-spEFSSmartPayTransferAccount
-spVIN_Get
-spDriver_Delete
-spTrailer_Get
-spBillingBatchDetail_Delete
-spOffer_Save2
-InvoiceRun
-spGetEDI_File
-spInserttCompany
-spEFSSmartPayTransferDefinition
-spVINProcessing
-spMoileStatusUpdate
-spDriver_Get
-spTrailer_GetPool
-spBillingBatchGL
-RelayFuelPost
-spOOApplyToDeposit
-Login
-XMLReport_SettlementOverAverageReport
-spInserttDivision
-XMLReport_ARActivity
-spEFSSmartPayTransferHistory
-spVINValidation
-spDriver_Save
-spTrailer_Save
-spBillingBatchRegister
-spOOAR
-processCarrierWeb
-spInserttTeam
-spEFSTranReject
-spEDI_CreateOutbound210_ARCNIC
-spVoidPayableCheck
-spDriverCheckIn
-data_audit_create_triggers
-spTrailerComments_Get
-spBillingItemCheck
-spOOPayroll
-ReportCustomerSummary
-XMLReport_SplitLoadBilling
-spInsurance_Delete
-spEFSTranRejectSearch
-spWeb_AvailBrokerLoads
-spDriverComments_Get
-data_audit_build_trigger
-spTrailerComments_Save
-spBillTruckStopScanning
-spOwner_Delete
-ReportInvoiceDetail
-XMLReport_StateInOutReport
-spInsurance_Get
-spEFSTransaction
-spWeb_GetCarrierPassword
-spDriverComments_Save
-data_audit_delete_triggers
-spTrailerList
-spBrokerConfirmationPrint
-spOwner_Get
-ReportInvoiceRequest
-spInsurance_Save
-spEFSTransactionCarmsStmt
-spWeeklyRecap
-spDriverDOBList
-spTrailerMovement
-spBuildHighLowPay
-spOwner_Save
-runCarrierWeb
-XMLReport_TruckCount
-spInsuranceSummary
-spEFSTransactionExt
-spWeeklyReportcard
-spDriverNameAddresses_Get
-spTrailerMovementRemove
-spCallQueue_Add
-spOwnerCheckRegister
-sp_DBCCSHOWCONTIG
-XMLReport_TruckCountDispatcher
-spInsuranceSummary_Reprint
-XML_DISABLED_Report_EFSCashLoad
-spEFSTransactionInfo
-spWeeklyReportcard2
-api_create_load
-spDriverNameAddresses_Save
-spTrailerMovements
-spCallQueue_Check
-spOwnerComments_Get
-spABCApplyOpenCredit
-XMLReport_TruckCountGroup
-spITSInterface
-XML_DISABLED_Report_FleetFuelCost
-XMLReport_AvailableCash
-MRWR_XMLReport_OwnerCheckReport
-spEFSTransactionInfoExt
-spWelcomeScreen_Delete
-api_save_stop
-spDriverNote_Delete
-spTranscoreDataExport
-spCallQueue_Delete
-spOwnerComments_Save
-spABCCashReserve
-XMLReport_TruckCountSummary
-spJournalEntries
-XML_DISABLED_Report_FuelCost
-XMLReport_AvailableLoads
-MRWR_XMLReport_UnitSettlementSummary
-spEFSTransactionLineItem
-spWelcomeScreen_Get
-api_save_location
-spDriverNote_Save
-spTrialAgentPR
-spCallQueue_Get
-spOwnerDriverAddress
-spABCCashReserveDetail
-XMLReport_TruckTrailerUtilization
-spJournalEntry_Delete
-XML_DISABLED_Report_FuelPurchases
-XMLReport_AvailTrucks
-spEFSTransactionLineItemExt
-spWelcomeScreen_GetAll
-api_save_loadspecialhandling
-spDriverNotes
-spTrialCarrierPR
-spCallQueue_Request
-spOwnerEarnings
-spABCCashReservePost
-XMLReport_UnbilledLoadRegister
-spJournalEntry_GenerateRecurring
-XML_DISABLED_Report_GeogiaPacificEDI
-XMLReport_AvgDaystoPay
-XMLReport_ActiveCompanyDrivers
-spEFSTransLineTax
-spWelcomeScreen_Save
-api_save_loadremarks
-spDriverSync
-spTrialCarrierQP
-spCancelDispatch
-spOwnerNameAddresses_Get
-spABCCollectionsCheck
-XMLReport_UnbilledLoads
-spJournalEntry_Get
-XML_DISABLE_Report_GLBalanceSheet
-XMLReport_BalanceDue
-spEFSTransLocation
-XMLReport_EmailedInvoiceReport
-spXMLReport
-api_save_loadrefno
-spEDICancel
-spTrialDriverPR
-spCarrier_Delete
-spOwnerNameAddresses_Save
-spABCCollectionsInvoice
-spPostMiscInvoice
-spJournalEntry_NextItem
-XML_DISABLE_Report_GLIncomeStatement
-spEFSTransSummary
-spXMLReportDispatcherProductivity
-api_save_loadreceivables
-spEDIGetLoadKey
-spTrialOwnerPR
-spCarrier_Dispatch
-spPayableCheckRegister
-spABCCollectionsPost
-XMLReport_UnitAgentUsage
-TLSYS_spCreateMiscInvoice
-spJournalEntry_Post
-XML_DISABLE_REPORT_GLLoanRec
-XMLReport_BrokerActvity
-XMLReport_TrailerPool
-spEFSTransTaxes
-spEDI_ISAHeader
-spXMLReportList
-api_save_loadpayables
-spUnitDueReportAnnualInspection
-spEDIInboundProcessing
-spCarrier_Get
-spPayroll_Get
-spABCDailyReserveReport
-XMLReport_UnitCertification
-spJournalEntry_Save
-XML_DISABLE_REPORT_GLMonthEnd_01_UnpostedUnapproved
-XMLReport_CapacityReport
-spEFSUpdateLoadCashRequest
-spXMLReportSubmit
-api_save_loaddates
-spEDIOutput
-spTrialVoidCarrierPR
-spCarrier_History
-spPostBillingBatch
-spABCDailyTransmittalReport
-XMLReport_UnitJournal
-spLoadDateTimeRefs_Get
-XML_DISABLE_REPORT_GLMonthEnd_02_ZeroBalance
-XMLReport_CarrierAging
-spEFSUpdateMoneyCodeRequest
-StoreAttachment
-spEDI_CreateOutbound997
-api_save_load
-spEFS03PaymentScheduleAdj
-spTripPakInvoiceExport
-spCarrier_Save
-spPostDeposit
-spABCDailyTransmittalReportMidDay
-XMLReport_UnitMaintSummary
-spLoadDateTimeRefs_Save
-XML_DISABLE_REPORT_GLMonthEnd_03_UnclearedBank
-XMLReport_CarrierHistory
-spEFSVerifySmartPayTransfer
-spEDI_GSHeader
-SubmitInvoiceImageRequest
-XMLReport_RevenueByTeam
-api_list_values
-spEFS04PaymentScheduleAdj
-spTripPakOrderExport
-spCarrier_Settlements
-CWKI_Process_MyCarrierPackets
-spPostedLoadAdd
-spABCInvoiceList_Save
-XMLReport_UnitMiles
-spLoadDateUpdate
-spEDI_GetOutbound
-XML_DISABLE_REPORT_GLMonthEnd_04_BalancedAccounts
-spEFSWebLogin
-SubmitInvoiceRequest
-spEDI_NextISAControl
-api_get_load
-spEFSAllCashAvail
-spTVContacts
-spCarrierAddFC
-spPostedLoadDelete
-spABCPurchasesImport
-XMLReport_UnitProgramParticipation
-spLoadHeader_Add
-spEDI_CreateOutbound210
-XML_DISABLE_REPORT_GLMonthEnd_10_PostBankRecs
-XMLReport_CarrierPayableRegister
-spEmailAgentDD
-test2
-spEDI_NextGSControl
-api_execute_action
-spEFSAssignCard
-spUnbilledCarrierLoadEmails
-spCarrierComments_Get
-spPostedLoadUpdate
-spABCTransmittalPosting
-XMLReport_UnitRevenue
-spLoadHeader_AssignAgentRotation
-XML_DISABLE_REPORT_GLMonthEnd_11_RunJournals
-XMLReport_CarrierRanking
-spEmailCarrierDD
-spEDI_STHeader
-tmp2012APCorr
-spEDI_NextSTControl
-XMLReport_UnitsMissingRequirements
-spEFSCard
-spUnbilledLoadReport
-spCarrierComments_Save
-spAddPeriodYear
-spPostEFS
-spActiveCarrierListing
-XMLReport_UnitsActiveInState
-spLoadHeader_BillDate
-XML_DISABLE_REPORT_GLStatementOfCashFlow
-spEmailOwnerDD
-tmp2012JECorr
-XMLReport_RevenueByUnit
-api_open_trucks
-spEFSCard_Delete
-spUnit_CancelLogs
-spCarrierNameAddresses_Get
-spPostEFSInvoice
-spActiveDriverListing
-XMLReport_UnitSettlementSummary
-spLoadHeader_DelDate
-XML_DISABLE_REPORT_GLTransactionJournal
-XMLReport_Collections
-spExceptionStatusList
-TMSDispatcherCancellationReport
-XMLReport_RevenueByDispatcher
-spEFSCard_Get
-spUnit_CancelLogSave
-spCarrierNameAddresses_Save
-spPostEFSMoneyCode
-spActiveTruckCount
-XMLReport_UnitsHeldReport
-spLoadHeader_Delete
-XML_DISABLE_REPORT_GLTrialBalance
-spExpireAutoRating
-spEDI_STTrailer
-spReprintBillingBatch
-TMSFleetInfo
-spEFSCard_GetAll
-spUnit_ChargeHistory
-spCarrierPayroll
-spPostLoadBilling
-spActiveTruckCountDetail
-XMLReport_UnitsUnloadingInState
-spLoadHeader_Get
-XML_DISABLE_REPORT_GLVariance
-spFactoringCo_Delete
-spEDI_GSTrailer
-TMSGPSHistory
-spEFSCard_GetByCard
-spUnit_CheckOffer
-spCarrierRanking
-spPostLoadPayable
-spActiveUnits
-spLoadHeader_PickupDate
-XML_DISABLED_Report_HHGPracComparison
-XMLReport_CommodityList
-spFactoringCo_Get
-spEDI_ISATrailer
-TMSHourlyLoadCount
-spEFSCard_locationGroups
-spUnit_CreateCharge
-spChangePassword
-spPostLoadPayableCorrection
-spAcuityBankRec
-spLoadHeader_Save
-XML_DISABLED_Report_HireRightMVR
-XMLReport_CommodityReport
-spFactoringCo_GetAll
-spEDI_Segment
-TMSInboundSatelliteMessages
-spEFSCard_locationGroups_Delete
-spUnit_CreateDeposit
-spChangeUnitPayPct
-spPostLoadReceivable
-spAcuityClear
-spLoadLookup
-XML_DISABLED_Report_InsuranceSummary
-spFactoringCo_Save
-spSelectNextKey
-TMSOutboundSatelliteMessages
-spEFSCard_locationGroups_Get
-spUnit_CreateRepeating
-spCheckDirectDeposit
-spProcessInterCompanyChecks
-spAcuityUncleared
-spLoadNameAddresses_Get
-XML_DISABLED_Report_LoadCountActiveUnitSummary
-spFederalReserveACH_Save
-TMSOwnerSettlementInfo
-spEFSCard_locationGroups_GetAll
-spUnit_Delete
-spCheckFuelLoad
-spProjectErrorLog_Add
-spAddBillingItem
-spLoadNameAddresses_Save
-XML_DISABLED_Report_LoadPayableOfType
-XMLReport_CompanyDriverRevenue
-spFinalizeAgentPR
-TMSSendMobileMessage
-spEFSCard_locations
-spUnit_DeleteDeposit
-spCheckLoadPosting
-spProjectErrorLog_Get
-spAddEDIResp
-spLoadPayable_Delete
-XML_DISABLED_Report_LoadPayPct
-XMLReport_CompanyTruckDriverHistory
-spFinalizeCarrierPR
-spEDINotification
-TMSSyncSecurity
-spEFSCard_locations_Delete
-spUnit_DeleteRepeating
-spCheckRate
-spProjectLog_Close
-spAddFuelPurchase
-XMLReport_ActiveCarrierList
-spLoadPayable_Get
-XML_DISABLED_Report_LoadRevPayJournal
-XMLReport_CompanyTruckLoadHold
-spFinalizeCarrierQP
-TMSUnitLoadHistory
-spEFSCard_locations_Get
-spUnit_Deposit_Delete
-spCOA_Chargeable
-spProjectLog_Get
-spAddHHGMiles
-spLoadPayable_LineItem
-XML_DISABLED_Report_LogisticsRecByMonth
-spFinalizeDriverPR
-TMSUnitProductivity
-spEFSCard_locations_GetAll
-spUnit_Deposit_Get
-spCOA_Delete
-spProjectLog_Open
-spADDOOTransaction
-spLoadPayable_Post
-XML_DISABLE_Report_GLChartOfAccounts
-spFinalizeOwnerPR
-TMSUnitProductivityDetail
-spEFSCardDescription
-spUnit_Deposit_Save
-spCOA_Deposits
-spProjectLog_OpenTickets
-spAddPayableCheck
-XMLReport_ZTemplate
-spLoadPayable_Recalc
-XML_DISABLED_Report_MaintenanceAccrualLedger
-spFinalizeWeek
-XMLReport_DriverMiles
-TMSUnitProductivityRecap
-spEFSCardDescription_Delete
-spUnit_DepositHistory
-spCOA_Get
-spProjectLog_Update
-spAddPayableCheckDetail
-spLoadPayable_Save
-XML_DISABLED_Report_MilitaryFreight
-XMLReport_ContractorDispatcherProductivity
-spFixAddressCase
-TMSUnitSummary
-spEFSCardDescription_Get
-spUnit_Deposits
-spCOA_GetAll
-spProjectNote_Add
-spAddPracMiles
-spLoadPayable_UpdateHoldPmt
-XML_DISABLED_Report_MittalLoadStatus
-XMLReport_CreditLimitReport
-spFuel_Delete
-TMSUserOwners
-spEFSCardDescription_GetAll
-spUnit_Dispatch
-spCOA_Save
-spProjectNotes_Get
-spAdduFollowit
-spLoadPayables_Get
-XML_DISABLE_REPORT_MVRRequest
-XMLReport_CSSReport
-spFuel_Get
-TMSUserSettlementInfo
-spEFSCardHeader
-spTPODocDataPath
-spUnit_FuelSavers
-spCOATypes
-spRAIRDriverList
-spAddUnitsAvailList
-spLoadReceivable_Delete
-XML_DISABLED_Report_NonFreightCost
-XMLReport_CustomerAlerts
-spFuel_GetFirst
-TMSUserUnits
-spEFSCardHeader_Delete
-spUnit_Get
-spCollectionCancel
-spRateMatrixCheckZone
-spAddUser
-spLoadReceivable_Get
-XML_DISABLED_Report_NonStandardLoadPayables
-XMLReport_CustomerAnalysis
-spFuel_GetLast
-updateCompany
-spEFSCardHeader_Get
-spUnit_GetChargeback
-spCollectionComplete
-spRateMatrixFixZips
-spAddUserMessage
-spLoadReceivable_LineItem
-XML_DISABLE_REPORT_InsuranceReport
-XMLReport_CustomerARJournal
-spFuel_GetNext
-updateCustomer
-spEFSCardHeader_GetAll
-spUnit_GetCompany
-spCollectionLoad_Add
-spRateMatrixZonesCheckZone
-spAgent_Delete
-spLoadReceivable_Save
-XML_DISABLE_REPORT_3PLAgingReport
-XMLReport_CustomerCarrierMiles
-spFuel_GetPrev
-updateDivision
-spEFSCardInfo
-spUnit_GetDepositHeld
-spCollectionNote_Add
-getEquipmentMaintenanceLog
-spReapplyPmt
-spAgent_Get
-spLoadReceivables_Get
-XML_DISABLE_REPORT_ABCTransmittal
-XMLReport_CustomerCreditChanges
-spFuel_GetUnprocessed
-updateSalesLead
-spEFSCardInfo_Delete
-spUnit_GetICare
-spCollectionNotes_Get
-deleteEquipmentMaintenanceLog
-spReassignCarrierLoad
-spAgent_History
-spLoadRefNos_Get
-XML_DISABLED_Report_PositionReports
-XMLReport_CustomerDiscounts
-spFuel_Save
-updateSalesLeadLocation
-spEFSCardInfo_Get
-spUnit_GetName
-spCollectionWork
-updateEquipmentMaintenanceLog
-spRebillLoad
-MRWR_XMLReport_UnitRevenue
-spAgent_Save
-spLoadRefNos_Save
-XML_DISABLED_Report_PrimeReport
-XMLReport_CustomerLaneReport
-spFuelStop_Get
-updateTeam
-spEFSCardInfo_GetAll
-spUnit_GetRepeating
-spCOMDATAFuelPurchase
-listEquipmentMaintenanceLog
-spRebuildAvailTable
-spAgent_Settlements
-spLoadRemarks_Get
-XML_DISABLED_Report_QuickPayReport
-XMLReport_CustomerLoadCharges
-spFuelStop_Save
-updateUser
-spEFSCardLimit
-spUnit_History
-spCOMDATAInvoice
-addEquipmentMaintenanceLog
-spRecap
-spAgentComments_Get
-spLoadRemarks_Save
-XML_DISABLE_REPORT_RAIRDriverList
-spFuelStops
-updateUserRole
-spEFSCardLimit_Delete
-spUnit_HoldDisp
-spCOMDATAInvoice04
-spRecap_PostGL
-XMLReport_BrokerActvityByShipDate
-spAgentComments_Save
-spLoadsBilledRegister
-XML_DISABLE_REPORT_RAIRTractorList
-XMLReport_CustomerLoadLanes
-spGet1099
-usp_GenerateError
-spEFSCardLimit_Get
-spUnit_ICare
-spCOMDATAInvoicePost
-spRecapGLEntries
-spAgentCustomerReport
-spLoadSpecialHandlings_Get
-XML_DISABLE_REPORT_RateMatrix
-XMLReport_CustomerRanking
-spGetAgentCheck
-usp_RethrowError
-spEFSCardLimit_GetAll
-CWKI_spGetRate
-spUnit_ICareFund
-spComment_Delete
-spRecordABCTransmittal
-spAgentNameAddresses_Get
-spLoadSpecialHandlings_Save
-XML_DISABLE_REPORT_AlcoaBrokerage
-XMLReport_CustomerRevenueComparison
-spGetAgentChecks
-uspGeneratePassword
-spEFSCardSummary
-spUnit_Invoice_Delete
-spComment_Get
-spRefNo_Delete
-spAgentNameAddresses_Save
-spLoadSplit_Delete
-XML_DISABLE_REPORT_ReeferFuelCost
-XMLReport_CustomerStatement
-spGetAgentPR
-uspLogError
-spEFSCardSummary_Delete
-spUnit_Invoice_Get
-spComment_Save
-spRefNo_Get
-spAgentPayroll
-spLoadSplit_Save
-XML_DISABLE_REPORT_AlcoaEDI
-XMLReport_DedicatedTrucks
-spGetAllPos
-uspPrintError
-spEFSCardSummary_Get
-spUnit_Invoice_Save
-spCompany_Get
-spRefNo_Save
-spAgentReport
-spLoadSplitLoc_Delete
-XML_DISABLE_REPORT_AlcoaLoadComments
-XMLReport_DetentionReport
-spGetARDepositApplication
-VerifyCredentials
-spEFSCardSummary_GetAll
-spUnit_Invoices
-spCompanyDivisions
-spReleaseLoadLock
-spAlcoaBOLFormat
-spLoadSplitLoc_Save
-XML_DISABLE_REPORT_APCheckDetail
-XMLReport_DispatchCancellations
-spGetARDepositDetails
-wsAuthorizeCarrier
-spEFSCardSummaryReq
-spUnit_LastDelivery
-spContact_Delete
-spReloadReport
-spAlcoaReload
-spLoadSplitLocs
-XML_DISABLE_REPORT_APJournal
-XMLReport_DispatchCounts
-spGetAvailLoads
-wsAuthorizeUser
-spEFSCardTimeRestriction
-spUnit_LoadHistory_Save
-spContact_Get
-spReloadZones_Get
-spAPApplication_Get
-spLoadSplitRef_Delete
-XML_DISABLE_REPORT_APRegister
-XMLReport_DispatchedLoadsByDriverSpec
-spGetAvailLoadsXML
-wsAvailableLoads
-spEFSCardTimeRestriction_Delete
-spUnit_LoadHistory_States_Save
-spContact_Save
-spRemark_Delete
-spAPApplication_Save
-spLoadSplitRef_Save
-XML_DISABLED_Report_SettlementCheckReg
-XMLReport_DispatchedRevenue
-spGetAvailTrucks
-wsAvailableLoadsUpdates
-spEFSCardTimeRestriction_Get
-spUnit_Miles_Get
-spContacts_Get
-spRemark_Get
-spAPApplications
-spLoadSplitRefs
-XML_DISABLE_REPORT_APRequirements
-spGetAvailUnits
-wsAvailableTrucks
-spEFSCardTimeRestriction_GetAll
-spUnit_Miles_Save
-spContacts_Save
-spRemark_Save
-spAPBatch_Delete
-spLoadSplits
-XML_DISABLED_Report_SettlementTransfers
-XMLReport_DriverCNCList
-spGetBillingBatch
-wsBrokerCarrier
-spEFSCardTransfer
-spUnit_Miles_Start
-spContractCopy
-spRemoveUserLocks
-spAPBatch_Get
-spLoadStatus
-XML_DISABLE_REPORT_ArkansasCarrierReport
-XMLReport_DriverList
-spGetBillingBatchDetail
-wsCarrier411
-spEFSCardTransfer_Delete
-spUnit_Payables
-spCopyPayableToReceivable
-spReport_APJournal
-spAPBatch_Post
-spLoadStops_Get
-XML_DISABLE_REPORT_ARPSCEquipmentList
-spGetCarrierCheck
-wsCarrierApprovalList
-spEFSCardTransfer_Get
-spUnit_ResetHistory
-spCountReport
-spReport_ARDrivers
-spAPBatch_Save
-spLoadStops_Save
-XML_DISABLE_REPORT_AutoRateCheck
-XMLReport_EFSCredit
-spGetCarrierChecks
-wsCarrierContact
-spEFSCardTransfer_GetAll
-spUnit_Save
-spCreateABCClientFeeEntries
-spReport_ARUnitBalances
-spAPCheck_DeleteBatch
-spLoadTrailerStatus
-XML_DISABLE_REPORT_TINMatchingReport
-XMLReport_EquipmentList
-spGetCarrierPR
-sp_GetErrorInfo
-wsCarrierContact_Agent
-spEFSCarrierInfo
-spUnit_SetEmpty
-spCreateBillingBatch
-spReport_ChartofAccounts
-spAPCheck_Get
-spLockBillingBatch
-XML_DISABLE_REPORT_AutoRateCounts
-XMLReport_EquipmentListInactive
-spGetCurrentPeriod
-Transflo_ProcessBreadcrumb
-wsCarrierContract
-spEFSCashAvail
-spUnit_SetPIN
-spCreateIncomeTaxProvision
-spReport_CombinedFinancialStmt
-spAPCheck_GetBatch
-spLookupLoadByLoc
-XML_DISABLE_REPORT_AutoRateValidation
-XMLReport_FactoringCoList
-spGetDBVersion
-FourKites_Process
-wsCarrierContract_Agent
-spEFSCashRecord
-spUnit_SetTeam
-spCreateRepeating
-spReport_DailyBalance
-spAPCheck_Post
-spMaptuit_Attraction_Sync
-XML_DISABLE_REPORT_AutoRateWorksheet
-XMLReport_FleetAddresses
-spGetDirectDeposits
-wsCarrierContract_Agent2
-spEFSCheckCard
-spUnit_TagPurchase
-spCreateRepeating2
-spReport_DepositsHeld
-spAPCheck_Save
-InvoiceOriginal
-spMileageBreakdown
-XML_DISABLE_REPORT_BankReconciliation
-spGetDispatchCounts
-wsCarrierContract2
-spEFSContract
-spTimeClockStatus
-spUnit_UpdateChargeback
-spCreateRepeating3
-spReport_DetailFinancialStmt
-spAPChecks
-spMMS_ADDMRN
-XML_DISABLED_Report_CarrierLaneMargin
-XMLReport_FreightCoordinator
-spGetDriverKey
-wsCarrierFileCheck
-spEFSCreditLimits
-spTimeClockUser
-spUnit_UpdateDepositHeld
-spCreditUpdate
-listEquipmentMaintenanceLogFor
-spReport_GeneralLedger
-spAPDistribution_Copy
-spMMS_AddMsg
-XML_DISABLE_REPORT_CashFlow
-XMLReport_FrtCoodLoadDistribution
-spGetDriverPR
-wsCarrierInsurance
-spEFSDeactivateCard
-spTimeClockInOut
-spUnit_UpdateRepeating
-spCustomer_Delete
-spReport_TransactionJournal
-spAPDistribution_Delete
-spMMS_AddMsgBody
-XML_DISABLE_REPORT_ComdataDiscount
-spGetEDI210
-wsCarrierInsurance_Agent
-CWKI_Driver_BirthdayAnniversary_List
-spEFSFleetMemo
-spUnit_UpdateSideKit
-spCustomer_Get
-spReport_TrialBalance
-spAPDistribution_Get
-XMLReport_EFSFuelPosting
-spMMS_AddOffer
-XML_DISABLE_REPORT_ComdataOneTimeCash
-spGetEDI214
-wsCarrierLoadInfo
-spEFSGeoPriceLocation
-spUnitCall_Log
-spCustomer_LookupMC
-spReprintDeposit
-spAPDistribution_NextItem
-spMMS_AddOffer2
-XML_DISABLE_REPORT_VINDetails
-spGetEDI990
-wsCarrierLookup
-spEFSGetNewLocations
-spUnitCheckRegister
-spCustomer_OutstandingLoads
-spReRunLoadPayableSave
-spAPDistribution_Save
-spMMS_AddPosRpt
-XML_DISABLE_Report_WaveCallDetail
-spGetEDILoads
-wsCarrierLookup_Agent
-spEFSLastMileage
-spSaveTLSBilling
-spUnitComments_Get
-spCustomer_Save
-spGetAvailLoads_WithUnit
-spReSeqStops
-spAPDistributions
-spMMS_DeleteOffer
-XML_DISABLE_REPORT_CompanyDispatcherProductivity
-spGetHHGMiles
-wsCarrierLookupContract
-spEFSLastMileageSearch
-spGetTLSBilling
-spUnitComments_Save
-spCustomerCollectionNotes
-spGetAvailLoads_NoUnit
-spRevenueReport
-spAPInvoice_Approve
-spMMS_DirectionSel
-XML_DISABLE_Report_WaveCallVolume
-spGetHours
-wsCarrierW9
-spEFSLoadCashRequest
-spUnitDueMaintSummary
-spCustomerComments_Get
-spRoadUseTax
-spAPInvoice_ChangeCheckQueue
-spMMS_GetDetail
-XML_DISABLE_REPORT_CompanyDriverPayReport
-spGetLoadOffers
-wsCarrierW9_Agent
-spEFSLoadCashRequest_Get
-spUnitDueReportCDL
-spCustomerComments_Save
-XMLReport_UnbilledLoadsWithPaperwork
-spSearchtCompany
-spAPInvoice_CheckDuplicate
-spMMS_GetMRN
-XML_DISABLE_Report_WaveRecruitingCounts
-spGetLookUp
-wsChangeCarrierPassword
-spEFSLocation
-spUnitDueReportInspection
-spCustomerFactorLog
-spSearchtDivision
-spAPInvoice_Delete
-spMMS_GetMsg
-XML_DISABLE_Report_WaveWorkdayCallVolume
-spGetMobileUnits
-wsChangeUserPassword
-spEFSLocationGroup
-spUnitDueReportPhysical
-spCustomerLocation_Delete
-spUnitDueReportTagExpiration
-spSearchtTeam
-spAPInvoice_GenerateRecurring
-spMMS_GetMsgs
-XML_DISABLE_REPORT_WeeklyDepositBillingCost
-spGetNextKey
-wsCompany_Edit
-spEFSLocationSearch
-spUnitEquipment_Delete
-spCustomerLocation_Get
-spSelecttCompany
-spAPInvoice_Get
-spMMS_GetOffer
-XML_DISABLED_Report_WeeklyFuelPurchase
-spGetOwnerCheck
-wsCompany_Get
-spEFSManagedFuel
-spUnitEquipment_Get
-spCustomerLocation_OutstandingLoads
-spSelecttDivision
-spAPInvoice_GetApproval
-spMMS_GetOut
-XML_DISABLE_REPORT_CompanyTruckPayables
-spGetOwnerCK
-wsCompany_List
-spEFSManagedFuelDriver
-spUnitEquipment_Save
-spCustomerLocation_QuickKey
-spSelecttTeam
-spAPInvoice_GetApproveCount
-spMMS_GetSelection
-XML_DISABLE_Report_WesternStatesLoads
-spGetOwnerDD
-wsDataReturn
-spEFSMetaData
-spUnitPositionHistory
-spCustomerLocation_Save
-spSetDBVersion
-spAPInvoice_GetCheck
-spMMS_GetSelection2
-XML_DISABLE_REPORT_CompanyTruckRevExp
-spGetOwnerKey
-wsGetBillTo
-spEFSMobileSecurity
-spUnitRevenue
-spCustomerLocations_Get
-spSetLoadLock
-spAPInvoice_GetPayables
-spMMS_GetStatusReason
-XML_DISABLE_REPORT_CompanyTruckSettlements
-spGetOwnerPR
-wsGetBillToByID
-spEFSMoneyCode
-spUnitStateReport
-spCustomerNameAddresses_Get
-spSettlementGLEntries
-spAPInvoice_Save
-spMMS_LastMessages
-XML_DISABLED_Report_CustomerLoadCountDist
-spGetPayableCheckDetail
-wsGetCarrier
-spEFSMoneyCodeHistRec
-spUnitTrailers_Get
-spCustomerNameAddresses_Save
-spSMDR_Add
-spAPInvoice_Unlock
-spMMS_LastPositions
-XMLReport_CommissionReport
-spGetPayableCodes
-wsGetCommodity
-spEFSMoneyCodeHistRec_EFSMoneyCodeHistUse
-spUnlockBillingBatch
-spCustomerRevenueSummary
-spSMDRDetail
-spAPInvoices
-spMMS_Purge
-ABCInvoiceExport
-XMLReport_LaneReport
-XMLReport_HighLowPayLoads
-spGetPeriod
-wsGetContract
-spEFSMoneyCodeHistUse
-spUnpostedBatches
-spDailyCounts
-spSpecialHandling_Delete
-spApplyFuelCostToLoad
-MRWR_XMLReport_OwnerEarningReport
-spMMS_UpdateStatus
-ABSGenerateInvoiceImage
-XMLReport_DriverReport
-spGetPracMiles
-wsGetLocation
-spEFSMoneyCodeRequest
-spUpdate1099
-spDateTime_Delete
-spSpecialHandling_Get
-spARAgingReport
-spMMSTraffic_Add
-addCompany
-spGetPRImage
-wsGetLocationByID
-spEFSMoneyCodeRequest_Get
-spUpdateAgentBrokerPay
-spDateTime_Get
-spSpecialHandling_Save
-spARDeposit_Get
-spMobile_Get
-addCustomer
-spGetProximity
-wsGetReloadZone
-spEFSMoneyCodeSummary
-Geotab_ProcessLogRecords
-spUpdateAgentDispatchPay
-spDateTime_Save
-spStop_Delete
-spARDeposit_Save
-spMobile_Save
-addDivision
-XMLReport_LauncherReport
-XMLReport_FleetCoProductivity
-spGetRate
-wsGetTender
-spEFSMoneyCodeUse
-spUpdateAgentUnitPay
-spDeleteAutoRating
-spStop_Get
-spARDepositApplication_Delete
-spMobileArrivedConsignee
-addSalesLead
-XMLReport_LoadAccountingDetail
-spGetReceivableCodes
-wsGetTenderByID
-spEFSPolicy
-spUpdateAllStats
-spDeleteBillingBatch
-spStop_Save
-spARDepositApplication_Save
-spMobileArrivedShipper
-addSalesLeadLocation
-XMLReport_LoadCancellations
-spGetTeam
-wsLocationSave
-spEFSPolicy_Delete
-spUpdateAvailableLoads
-spDeleteBillingItem
-Transflo_UnknownCommand
-spStopDateTimeRefs_Get
-spARDepositApplications
-MRWR_spUnit_Dispatch
-spMobileAutoOffer
-addTeam
-spGetTradingPartner
-wsPostTruck
-spEFSPolicy_Get
-spUpdateAvailTrucks
-spDeletetCompany
-CWKI_spUnit_Dispatch
-spStopDateTimeRefs_Save
-spARDepositDetail_Delete
-MRWR_InvoiceDetails
-spMobileAvailable
-addUser
-XMLReport_LoadExceptions
-spGetTradingPartnerID
-wsProcess
-spEFSPolicy_GetAll
-spUpdateBillingBatchStatus
-spDeletetDivision
-spUnitDueReportAnnualTrailerInspection
-spStopNameAddresses_Get
-spARDepositDetail_Save
-MRWR_spCarrier_Dispatch
-spMobileCallQueue
-ccDeletetUser
-XMLReport_LoadJournal
-spGetTransactionCodes
-wsProcess_wsBrokerCarrier
-spEFSPolicy_locationGroups
-spUpdateCarrier411
-spDeletetTeam
-spEDI_GetInbound
-spStopNameAddresses_Save
-spARDepositDetails
-MRWR_spCarrierAddFC
-spMobileCheckCall
-ccDeletetWebServiceLogin
-spGetUnitCheckDetail
-wsProcess_wsCarrierContact
-spEFSPolicy_locationGroups_Delete
-spUpdateCounts
-spDeleteUserAccount
-CreateOutbound990
-spStopRefNos_Get
-spARGetBill
-MRWR_spPostBillingBatch
-spMobileDirectionReq
-ccGettCompanyList
-spGetUnitChecks
-wsProcess_wsCarrierContract
-spEFSPolicy_locationGroups_Get
-spUpdateCustomerCredit_1
-spDeleteUserMessage
-spStopRefNos_Save
-spARGetCust
-MRWR_spFinalizeOwnerPR
-spMobileEmail
-ccGettDepartmentList
-spGetUnitHistory
-wsProcess_wsCarrierInsurance
-spEFSPolicy_locationGroups_GetAll
-spEDI_CreateOutbound997_4010
-spUpdateCustomerCredit_2
-spDeposit_Delete
-spStopSpecialHandlings_Get
-spARGetRefNo
-spUnit_CheckCallAM
-MRWR_spTrialOwnerPR
-spMobileEmptyCall
-ccGettDivisionList
-XMLReport_LoadsBilledRegister
-spGetUnitRoute
-spEDI_CreateOutbound214_LOGIFLOW
-wsProcess_wsCarrierw9
-spEFSPolicy_locations
-spEDI_CreateOutbound990_4010
-spUpdateCustomerCredit_3
-spDeposit_DepositRegister
-spUnitDueReportTrailerInspection
-spStopSpecialHandlings_Save
-spARJournal_Aging
-spUnit_CheckCallPM
-MRWR_spLoadHeader_Save
-spMobileFormDefs
-ccGettWebServiceLoginList
-spGetUser
-wsQuickPost_Add
-spEFSPolicy_locations_Delete
-spEDI_CreateOutbound214_4010
-spUpdateCustomerCredit_4
-spDeposit_Differences
-MRWR_spLoadPayable_Save
-spTCInterface
-spARJournal_CustomerAging
-CWKI_spTrialOwnerPR
-spMobileGetOutbound
-ccInserttUser
-XMLReport_LOSReport
-spEDI_CreateOutbound990
-spGetUserMessageCount
-wsQuickPost_Edit
-spEFSPolicy_locations_Get
-spUpdateCustomerCredit_5
-spDeposit_Get
-spTeamDriverList
-spARJournal_GetLoad
-CWKI_spLoadHeader_Save
-spMobileGetPosition
-ccInserttWebServiceLogin
-XMLReport_MaintenanceAccrual
-spEDI_CreateOutbound214
-spGetUserMessages
-wsQuickPost_Get
-spEFSPolicy_locations_GetAll
-spEDI_CreateOutbound997_5030
-spUpdateHours
-spDeposit_GetCust
-spTeamReport
-spARJournal_UpdateLoad
-CWKI_InvoiceHeader
-spMobileInboundMessage
-ccSearchtUser
-spGetValidationDesc
-wsQuickPost_List
-spEFSPolicyDescription
-spEDI_CreateOutbound990_PSLEDI
-spUpdateLastCheckRec
-spDeposit_GetLoad
-spTeams_Get
-spARPastDueReport
-spMobileInstall
-ccSearchtWebServiceLogin
-XMLReport_MileageBreakdown
-spGetValidationTable
-wsRateMate
-spEFSPolicyDescription_Delete
-spUpdateLoadBalances
-spDeposit_GetRefNo
-spTeamSatelliteCount
-spARVariance
-spMobileLoadedCall
-ccSelecttUser
-spGFAInvoices
-wsRethrowError
-spEFSPolicyDescription_Get
-spEDI_CreateOutbound214_PSLEDI
-spUpdatePRImage
-spDeposit_GetStatus
-spTender_Delete
-spAutoBill
-spMobileLoadSelect
-ccSelecttWebServiceLogin
-XMLReport_MissingDateReport
-spGL_Add
-wsRetrieveCarrierPassword
-spEFSPolicyDescription_GetAll
-spUpdateProximity
-spDeposit_GLSummary
-spTender_Get
-spAutoOffers
-spMobileMessage_Get
-ccUpdatetUser
-XMLReport_MissingZips
-spGLAccountHistory_Batch
-wsServiceLogin
-spEFSPolicyHeader
-spUpdatetCompany
-spDeposit_Lookup
-spTender_QuickKey
-spAutoRate_Delete
-(1433 rows affected)
+Diagnostic Start
+----------------
+DSN: Driver={ODBC Driver 18 for SQL Server};Server=localhost;Database=tls_tenant;TrustServerCertificate=yes;
+User: Admin
+StoredProcedureClient initialized.
+Calling getTenants (global)...
+RC: 0
+Rows:
+Array
+(
+    [0] => Array
+        (
+            [tenant_id] => CWKI
+        )
+    [1] => Array
+        (
+            [tenant_id] => MRWR
+        )
+    [2] => Array
+        (
+            [tenant_id] => TEST
+        )
+)
+TenantRegistry::allowedTenants():
+Array
+(
+    [cwki] => 1
+    [mrwr] => 1
+    [test] => 1
+)
+Attempting GetMenuItems in CURRENT DB (tls_tenant)...
+Menu RC: 0
+Array
+(
+    [0] => Array
+        (
+            [MenuItemId] => 1
+            [MenuKey] => mnuMain01
+            [Caption] => File
+            [ParentMenuItemId] =>
+            [Sequence] => 1
+            [SortPath] => 000001
+            [IsAction] => 0
+        )
+    [1] => Array
+        (
+            [MenuItemId] => 2
+            [MenuKey] => mnuExit
+            [Caption] => Exit
+            [ParentMenuItemId] => 1
+            [Sequence] => 1
+            [SortPath] => 000001.000001
+            [IsAction] => 1
+        )
+    [2] => Array
+        (
+            [MenuItemId] => 3
+            [MenuKey] => mnuMain02
+            [Caption] => Accounting
+            [ParentMenuItemId] =>
+            [Sequence] => 2
+            [SortPath] => 000002
+            [IsAction] => 0
+        )
+    [3] => Array
+        (
+            [MenuItemId] => 4
+            [MenuKey] => mnuGL
+            [Caption] => G/L
+            [ParentMenuItemId] => 3
+            [Sequence] => 1
+            [SortPath] => 000002.000001
+            [IsAction] => 0
+        )
+    [4] => Array
+        (
+            [MenuItemId] => 5
+            [MenuKey] => mnuCOAMaint
+            [Caption] => Chart of Account Maintenance
+            [ParentMenuItemId] => 4
+            [Sequence] => 1
+            [SortPath] => 000002.000001.000001
+            [IsAction] => 1
+        )
+    [5] => Array
+        (
+            [MenuItemId] => 6
+            [MenuKey] => mnuGLAccoutHistory
+            [Caption] => Account History
+            [ParentMenuItemId] => 4
+            [Sequence] => 2
+            [SortPath] => 000002.000001.000002
+            [IsAction] => 1
+        )
+    [6] => Array
+        (
+            [MenuItemId] => 7
+            [MenuKey] => mnuTransactionSearch
+            [Caption] => Transation Search
+            [ParentMenuItemId] => 4
+            [Sequence] => 3
+            [SortPath] => 000002.000001.000003
+            [IsAction] => 1
+        )
+    [7] => Array
+        (
+            [MenuItemId] => 8
+            [MenuKey] => sep0201
+            [Caption] => -
+            [ParentMenuItemId] => 4
+            [Sequence] => 4
+            [SortPath] => 000002.000001.000004
+            [IsAction] => 0
+        )
+    [8] => Array
+        (
+            [MenuItemId] => 9
+            [MenuKey] => mnuJE
+            [Caption] => Journal Entry
+            [ParentMenuItemId] => 4
+            [Sequence] => 5
+            [SortPath] => 000002.000001.000005
+            [IsAction] => 1
+        )
+    [9] => Array
+        (
+            [MenuItemId] => 10
+            [MenuKey] => mnuBankRec
+            [Caption] => Bank Reconciliation
+            [ParentMenuItemId] => 4
+            [Sequence] => 6
+            [SortPath] => 000002.000001.000006
+            [IsAction] => 1
+        )
+    [10] => Array
+        (
+            [MenuItemId] => 11
+            [MenuKey] => sep0202
+            [Caption] => -
+            [ParentMenuItemId] => 4
+            [Sequence] => 7
+            [SortPath] => 000002.000001.000007
+            [IsAction] => 0
+        )
+    [11] => Array
+        (
+            [MenuItemId] => 12
+            [MenuKey] => mnuGLReports
+            [Caption] => Reports
+            [ParentMenuItemId] => 4
+            [Sequence] => 8
+            [SortPath] => 000002.000001.000008
+            [IsAction] => 0
+        )
+    [12] => Array
+        (
+            [MenuItemId] => 13
+            [MenuKey] => mnuChartofAccounts
+            [Caption] => Chart of Accounts
+            [ParentMenuItemId] => 12
+            [Sequence] => 1
+            [SortPath] => 000002.000001.000008.000001
+            [IsAction] => 1
+        )
+    [13] => Array
+        (
+            [MenuItemId] => 14
+            [MenuKey] => sep0203
+            [Caption] => -
+            [ParentMenuItemId] => 12
+            [Sequence] => 2
+            [SortPath] => 000002.000001.000008.000002
+            [IsAction] => 0
+        )
+    [14] => Array
+        (
+            [MenuItemId] => 15
+            [MenuKey] => mnuBalanceSheet
+            [Caption] => Balance Sheet
+            [ParentMenuItemId] => 12
+            [Sequence] => 3
+            [SortPath] => 000002.000001.000008.000003
+            [IsAction] => 1
+        )
+    [15] => Array
+        (
+            [MenuItemId] => 16
+            [MenuKey] => mnuIncomeStatement
+            [Caption] => Income Statement
+            [ParentMenuItemId] => 12
+            [Sequence] => 4
+            [SortPath] => 000002.000001.000008.000004
+            [IsAction] => 1
+        )
+    [16] => Array
+        (
+            [MenuItemId] => 17
+            [MenuKey] => mnuTrialBalance
+            [Caption] => Trial Balance
+            [ParentMenuItemId] => 12
+            [Sequence] => 5
+            [SortPath] => 000002.000001.000008.000005
+            [IsAction] => 1
+        )
+    [17] => Array
+        (
+            [MenuItemId] => 18
+            [MenuKey] => mnuDailyBalance
+            [Caption] => Daily Balance Summary
+            [ParentMenuItemId] => 12
+            [Sequence] => 6
+            [SortPath] => 000002.000001.000008.000006
+            [IsAction] => 1
+        )
+    [18] => Array
+        (
+            [MenuItemId] => 19
+            [MenuKey] => mnuFinStmt
+            [Caption] => All Financial Statements
+            [ParentMenuItemId] => 12
+            [Sequence] => 7
+            [SortPath] => 000002.000001.000008.000007
+            [IsAction] => 1
+        )
+    [19] => Array
+        (
+            [MenuItemId] => 20
+            [MenuKey] => sep0204
+            [Caption] => -
+            [ParentMenuItemId] => 12
+            [Sequence] => 8
+            [SortPath] => 000002.000001.000008.000008
+            [IsAction] => 0
+        )
+    [20] => Array
+        (
+            [MenuItemId] => 21
+            [MenuKey] => mnuGeneralLedger
+            [Caption] => General Ledger
+            [ParentMenuItemId] => 12
+            [Sequence] => 9
+            [SortPath] => 000002.000001.000008.000009
+            [IsAction] => 1
+        )
+    [21] => Array
+        (
+            [MenuItemId] => 22
+            [MenuKey] => mnuTransactionJournal
+            [Caption] => Transaction Journal
+            [ParentMenuItemId] => 12
+            [Sequence] => 10
+            [SortPath] => 000002.000001.000008.000010
+            [IsAction] => 1
+        )
+    [22] => Array
+        (
+            [MenuItemId] => 23
+            [MenuKey] => mnuOOAR
+            [Caption] => Owner Operator Accounts Receivable
+            [ParentMenuItemId] => 12
+            [Sequence] => 11
+            [SortPath] => 000002.000001.000008.000011
+            [IsAction] => 1
+        )
+    [23] => Array
+        (
+            [MenuItemId] => 24
+            [MenuKey] => mnuAPJournal
+            [Caption] => AP Journal
+            [ParentMenuItemId] => 12
+            [Sequence] => 12
+            [SortPath] => 000002.000001.000008.000012
+            [IsAction] => 1
+        )
+    [24] => Array
+        (
+            [MenuItemId] => 25
+            [MenuKey] => sep0205
+            [Caption] => -
+            [ParentMenuItemId] => 4
+            [Sequence] => 9
+            [SortPath] => 000002.000001.000009
+            [IsAction] => 0
+        )
+    [25] => Array
+        (
+            [MenuItemId] => 26
+            [MenuKey] => mnuGLExport
+            [Caption] => GL Export
+            [ParentMenuItemId] => 4
+            [Sequence] => 10
+            [SortPath] => 000002.000001.000010
+            [IsAction] => 1
+        )
+    [26] => Array
+        (
+            [MenuItemId] => 27
+            [MenuKey] => mnuAP
+            [Caption] => A/P
+            [ParentMenuItemId] => 3
+            [Sequence] => 2
+            [SortPath] => 000002.000002
+            [IsAction] => 0
+        )
+    [27] => Array
+        (
+            [MenuItemId] => 28
+            [MenuKey] => mnuVendorMaint
+            [Caption] => Vendor Maintenance
+            [ParentMenuItemId] => 27
+            [Sequence] => 1
+            [SortPath] => 000002.000002.000001
+            [IsAction] => 1
+        )
+    [28] => Array
+        (
+            [MenuItemId] => 29
+            [MenuKey] => mnuVendorHist
+            [Caption] => Vendor History
+            [ParentMenuItemId] => 27
+            [Sequence] => 2
+            [SortPath] => 000002.000002.000002
+            [IsAction] => 1
+        )
+    [29] => Array
+        (
+            [MenuItemId] => 30
+            [MenuKey] => mnuInvoiceSearch
+            [Caption] => Invoice Search
+            [ParentMenuItemId] => 27
+            [Sequence] => 3
+            [SortPath] => 000002.000002.000003
+            [IsAction] => 1
+        )
+    [30] => Array
+        (
+            [MenuItemId] => 31
+            [MenuKey] => sep0206
+            [Caption] => -
+            [ParentMenuItemId] => 27
+            [Sequence] => 4
+            [SortPath] => 000002.000002.000004
+            [IsAction] => 0
+        )
+    [31] => Array
+        (
+            [MenuItemId] => 32
+            [MenuKey] => mnuVoucher
+            [Caption] => Voucher Entry
+            [ParentMenuItemId] => 27
+            [Sequence] => 5
+            [SortPath] => 000002.000002.000005
+            [IsAction] => 1
+        )
+    [32] => Array
+        (
+            [MenuItemId] => 33
+            [MenuKey] => mnuAPInvoiceApproval
+            [Caption] => Invoice Approval
+            [ParentMenuItemId] => 27
+            [Sequence] => 6
+            [SortPath] => 000002.000002.000006
+            [IsAction] => 1
+        )
+    [33] => Array
+        (
+            [MenuItemId] => 34
+            [MenuKey] => sep0207
+            [Caption] => -
+            [ParentMenuItemId] => 27
+            [Sequence] => 7
+            [SortPath] => 000002.000002.000007
+            [IsAction] => 0
+        )
+    [34] => Array
+        (
+            [MenuItemId] => 35
+            [MenuKey] => mnuPayables
+            [Caption] => Process Checks
+            [ParentMenuItemId] => 27
+            [Sequence] => 8
+            [SortPath] => 000002.000002.000008
+            [IsAction] => 1
+        )
+    [35] => Array
+        (
+            [MenuItemId] => 36
+            [MenuKey] => sep0208
+            [Caption] => -
+            [ParentMenuItemId] => 27
+            [Sequence] => 9
+            [SortPath] => 000002.000002.000009
+            [IsAction] => 0
+        )
+    [36] => Array
+        (
+            [MenuItemId] => 37
+            [MenuKey] => mnuProcessICCheck
+            [Caption] => Process Inter-Company Checks
+            [ParentMenuItemId] => 27
+            [Sequence] => 10
+            [SortPath] => 000002.000002.000010
+            [IsAction] => 1
+        )
+    [37] => Array
+        (
+            [MenuItemId] => 38
+            [MenuKey] => mnuAR
+            [Caption] => A/R
+            [ParentMenuItemId] => 3
+            [Sequence] => 3
+            [SortPath] => 000002.000003
+            [IsAction] => 0
+        )
+    [38] => Array
+        (
+            [MenuItemId] => 39
+            [MenuKey] => mnuCollections
+            [Caption] => Collections Work
+            [ParentMenuItemId] => 38
+            [Sequence] => 1
+            [SortPath] => 000002.000003.000001
+            [IsAction] => 1
+        )
+    [39] => Array
+        (
+            [MenuItemId] => 40
+            [MenuKey] => mnuReapplyPmt
+            [Caption] => Reapply Payments
+            [ParentMenuItemId] => 38
+            [Sequence] => 2
+            [SortPath] => 000002.000003.000002
+            [IsAction] => 1
+        )
+    [40] => Array
+        (
+            [MenuItemId] => 41
+            [MenuKey] => mnuARDeposit
+            [Caption] => Deposit Entry
+            [ParentMenuItemId] => 38
+            [Sequence] => 3
+            [SortPath] => 000002.000003.000003
+            [IsAction] => 1
+        )
+    [41] => Array
+        (
+            [MenuItemId] => 42
+            [MenuKey] => mnuDepositLookup
+            [Caption] => Deposit Lookup
+            [ParentMenuItemId] => 38
+            [Sequence] => 4
+            [SortPath] => 000002.000003.000004
+            [IsAction] => 1
+        )
+    [42] => Array
+        (
+            [MenuItemId] => 43
+            [MenuKey] => mnuLoadLookup
+            [Caption] => Load Lookup
+            [ParentMenuItemId] => 38
+            [Sequence] => 5
+            [SortPath] => 000002.000003.000005
+            [IsAction] => 1
+        )
+    [43] => Array
+        (
+            [MenuItemId] => 44
+            [MenuKey] => sep0209
+            [Caption] => -
+            [ParentMenuItemId] => 38
+            [Sequence] => 6
+            [SortPath] => 000002.000003.000006
+            [IsAction] => 0
+        )
+    [44] => Array
+        (
+            [MenuItemId] => 45
+            [MenuKey] => mnuBillingEntry
+            [Caption] => Billing Entry
+            [ParentMenuItemId] => 38
+            [Sequence] => 7
+            [SortPath] => 000002.000003.000007
+            [IsAction] => 1
+        )
+    [45] => Array
+        (
+            [MenuItemId] => 46
+            [MenuKey] => mnuCustMaint
+            [Caption] => Customer Maintenance
+            [ParentMenuItemId] => 38
+            [Sequence] => 8
+            [SortPath] => 000002.000003.000008
+            [IsAction] => 1
+        )
+    [46] => Array
+        (
+            [MenuItemId] => 47
+            [MenuKey] => mnuloadreg
+            [Caption] => Loads Billed Register
+            [ParentMenuItemId] => 38
+            [Sequence] => 9
+            [SortPath] => 000002.000003.000009
+            [IsAction] => 1
+        )
+    [47] => Array
+        (
+            [MenuItemId] => 48
+            [MenuKey] => sep0210
+            [Caption] => -
+            [ParentMenuItemId] => 38
+            [Sequence] => 10
+            [SortPath] => 000002.000003.000010
+            [IsAction] => 0
+        )
+    [48] => Array
+        (
+            [MenuItemId] => 49
+            [MenuKey] => mnu_act_ar_reports
+            [Caption] => Reports
+            [ParentMenuItemId] => 38
+            [Sequence] => 11
+            [SortPath] => 000002.000003.000011
+            [IsAction] => 0
+        )
+    [49] => Array
+        (
+            [MenuItemId] => 50
+            [MenuKey] => mnuUnbilledLoads
+            [Caption] => Unbilled Loads
+            [ParentMenuItemId] => 49
+            [Sequence] => 1
+            [SortPath] => 000002.000003.000011.000001
+            [IsAction] => 1
+        )
+    [50] => Array
+        (
+            [MenuItemId] => 51
+            [MenuKey] => mnuUnbilledWithPaperwork
+            [Caption] => Unbilled Loads with Paperwork
+            [ParentMenuItemId] => 49
+            [Sequence] => 2
+            [SortPath] => 000002.000003.000011.000002
+            [IsAction] => 1
+        )
+    [51] => Array
+        (
+            [MenuItemId] => 52
+            [MenuKey] => sep0211
+            [Caption] => -
+            [ParentMenuItemId] => 38
+            [Sequence] => 12
+            [SortPath] => 000002.000003.000012
+            [IsAction] => 0
+        )
+    [52] => Array
+        (
+            [MenuItemId] => 53
+            [MenuKey] => mnuPrintBatch
+            [Caption] => Print Batch of Invoices
+            [ParentMenuItemId] => 38
+            [Sequence] => 13
+            [SortPath] => 000002.000003.000013
+            [IsAction] => 1
+        )
+    [53] => Array
+        (
+            [MenuItemId] => 54
+            [MenuKey] => mnuPr
+            [Caption] => P/R
+            [ParentMenuItemId] => 3
+            [Sequence] => 4
+            [SortPath] => 000002.000004
+            [IsAction] => 0
+        )
+    [54] => Array
+        (
+            [MenuItemId] => 55
+            [MenuKey] => mnuDriverPRMaint
+            [Caption] => Driver Payroll Maintenance
+            [ParentMenuItemId] => 54
+            [Sequence] => 1
+            [SortPath] => 000002.000004.000001
+            [IsAction] => 1
+        )
+    [55] => Array
+        (
+            [MenuItemId] => 56
+            [MenuKey] => mnuTrialDriverPR
+            [Caption] => Run Trial Driver PR
+            [ParentMenuItemId] => 54
+            [Sequence] => 2
+            [SortPath] => 000002.000004.000002
+            [IsAction] => 1
+        )
+    [56] => Array
+        (
+            [MenuItemId] => 57
+            [MenuKey] => mnuPreviewDriverPR
+            [Caption] => Preview Driver PR
+            [ParentMenuItemId] => 54
+            [Sequence] => 3
+            [SortPath] => 000002.000004.000003
+            [IsAction] => 1
+        )
+    [57] => Array
+        (
+            [MenuItemId] => 58
+            [MenuKey] => mnuFinalizeDriverPR
+            [Caption] => Finalize Driver PR
+            [ParentMenuItemId] => 54
+            [Sequence] => 4
+            [SortPath] => 000002.000004.000004
+            [IsAction] => 1
+        )
+    [58] => Array
+        (
+            [MenuItemId] => 59
+            [MenuKey] => secAccountingSecurity
+            [Caption] => ***** Accounting Security *****
+            [ParentMenuItemId] => 3
+            [Sequence] => 5
+            [SortPath] => 000002.000005
+            [IsAction] => 1
+        )
+    [59] => Array
+        (
+            [MenuItemId] => 60
+            [MenuKey] => secAllChecks
+            [Caption] => Security - View All Payable Checks
+            [ParentMenuItemId] => 3
+            [Sequence] => 6
+            [SortPath] => 000002.000006
+            [IsAction] => 1
+        )
+    [60] => Array
+        (
+            [MenuItemId] => 61
+            [MenuKey] => secPostAP
+            [Caption] => Security - AP - Allow Posting of AP
+            [ParentMenuItemId] => 3
+            [Sequence] => 7
+            [SortPath] => 000002.000007
+            [IsAction] => 1
+        )
+    [61] => Array
+        (
+            [MenuItemId] => 62
+            [MenuKey] => secSmallCreditLimitInc
+            [Caption] => Security - AR - Allow Small Credit Limit Increases
+            [ParentMenuItemId] => 3
+            [Sequence] => 8
+            [SortPath] => 000002.000008
+            [IsAction] => 1
+        )
+    [62] => Array
+        (
+            [MenuItemId] => 63
+            [MenuKey] => secViewCustomerFactor
+            [Caption] => Security - AR - View Customer Factor
+            [ParentMenuItemId] => 3
+            [Sequence] => 9
+            [SortPath] => 000002.000009
+            [IsAction] => 1
+        )
+    [63] => Array
+        (
+            [MenuItemId] => 64
+            [MenuKey] => secAllowCustomerFactor
+            [Caption] => Security - AR - Allow Customer Factor
+            [ParentMenuItemId] => 3
+            [Sequence] => 10
+            [SortPath] => 000002.000010
+            [IsAction] => 1
+        )
+    [64] => Array
+        (
+            [MenuItemId] => 65
+            [MenuKey] => secCompanyDriverPR
+            [Caption] => Security - Allow Company Driver PR Report
+            [ParentMenuItemId] => 3
+            [Sequence] => 11
+            [SortPath] => 000002.000011
+            [IsAction] => 1
+        )
+    [65] => Array
+        (
+            [MenuItemId] => 66
+            [MenuKey] => mnuMain03
+            [Caption] => Dispatch
+            [ParentMenuItemId] =>
+            [Sequence] => 3
+            [SortPath] => 000003
+            [IsAction] => 0
+        )
+    [66] => Array
+        (
+            [MenuItemId] => 67
+            [MenuKey] => mnuEDILoads
+            [Caption] => Available EDI Loads
+            [ParentMenuItemId] => 66
+            [Sequence] => 1
+            [SortPath] => 000003.000001
+            [IsAction] => 1
+        )
+    [67] => Array
+        (
+            [MenuItemId] => 68
+            [MenuKey] => sep0301
+            [Caption] => -
+            [ParentMenuItemId] => 66
+            [Sequence] => 2
+            [SortPath] => 000003.000002
+            [IsAction] => 0
+        )
+    [68] => Array
+        (
+            [MenuItemId] => 69
+            [MenuKey] => mnuLoadEntry
+            [Caption] => Load Entry
+            [ParentMenuItemId] => 66
+            [Sequence] => 3
+            [SortPath] => 000003.000003
+            [IsAction] => 1
+        )
+    [69] => Array
+        (
+            [MenuItemId] => 70
+            [MenuKey] => mnuAvailLoads
+            [Caption] => Loads Available for Dispatch
+            [ParentMenuItemId] => 66
+            [Sequence] => 4
+            [SortPath] => 000003.000004
+            [IsAction] => 1
+        )
+    [70] => Array
+        (
+            [MenuItemId] => 71
+            [MenuKey] => mnuLoadInq
+            [Caption] => Load Inquiry
+            [ParentMenuItemId] => 66
+            [Sequence] => 5
+            [SortPath] => 000003.000005
+            [IsAction] => 1
+        )
+    [71] => Array
+        (
+            [MenuItemId] => 72
+            [MenuKey] => mnuCreditCheck
+            [Caption] => Customer Credit Check
+            [ParentMenuItemId] => 66
+            [Sequence] => 6
+            [SortPath] => 000003.000006
+            [IsAction] => 1
+        )
+    [72] => Array
+        (
+            [MenuItemId] => 73
+            [MenuKey] => mnuExceptionStatusList
+            [Caption] => Exception Status List
+            [ParentMenuItemId] => 66
+            [Sequence] => 7
+            [SortPath] => 000003.000007
+            [IsAction] => 1
+        )
+    [73] => Array
+        (
+            [MenuItemId] => 74
+            [MenuKey] => sep0302
+            [Caption] => -
+            [ParentMenuItemId] => 66
+            [Sequence] => 8
+            [SortPath] => 000003.000008
+            [IsAction] => 0
+        )
+    [74] => Array
+        (
+            [MenuItemId] => 75
+            [MenuKey] => mnuLookupLoads
+            [Caption] => Lookup Loads by Location
+            [ParentMenuItemId] => 66
+            [Sequence] => 9
+            [SortPath] => 000003.000009
+            [IsAction] => 1
+        )
+    [75] => Array
+        (
+            [MenuItemId] => 76
+            [MenuKey] => mnuDailyCount
+            [Caption] => Daily Count
+            [ParentMenuItemId] => 66
+            [Sequence] => 10
+            [SortPath] => 000003.000010
+            [IsAction] => 1
+        )
+    [76] => Array
+        (
+            [MenuItemId] => 77
+            [MenuKey] => mnuUnitHistory
+            [Caption] => Unit History
+            [ParentMenuItemId] => 66
+            [Sequence] => 11
+            [SortPath] => 000003.000011
+            [IsAction] => 1
+        )
+    [77] => Array
+        (
+            [MenuItemId] => 78
+            [MenuKey] => mnuUnitLastDel
+            [Caption] => Unit Last Delivery
+            [ParentMenuItemId] => 66
+            [Sequence] => 12
+            [SortPath] => 000003.000012
+            [IsAction] => 1
+        )
+    [78] => Array
+        (
+            [MenuItemId] => 79
+            [MenuKey] => mnuAgentHistory
+            [Caption] => Agent History
+            [ParentMenuItemId] => 66
+            [Sequence] => 13
+            [SortPath] => 000003.000013
+            [IsAction] => 1
+        )
+    [79] => Array
+        (
+            [MenuItemId] => 80
+            [MenuKey] => mnuLocationMaint
+            [Caption] => Location Maintenance
+            [ParentMenuItemId] => 66
+            [Sequence] => 14
+            [SortPath] => 000003.000014
+            [IsAction] => 1
+        )
+    [80] => Array
+        (
+            [MenuItemId] => 81
+            [MenuKey] => mnuTrailerPool
+            [Caption] => Trailer Pool Maintenance
+            [ParentMenuItemId] => 66
+            [Sequence] => 15
+            [SortPath] => 000003.000015
+            [IsAction] => 1
+        )
+    [81] => Array
+        (
+            [MenuItemId] => 82
+            [MenuKey] => mnuLoadTrailerStatus
+            [Caption] => Load Trailer Status
+            [ParentMenuItemId] => 66
+            [Sequence] => 16
+            [SortPath] => 000003.000016
+            [IsAction] => 1
+        )
+    [82] => Array
+        (
+            [MenuItemId] => 83
+            [MenuKey] => sep0303
+            [Caption] => -
+            [ParentMenuItemId] => 66
+            [Sequence] => 17
+            [SortPath] => 000003.000017
+            [IsAction] => 0
+        )
+    [83] => Array
+        (
+            [MenuItemId] => 84
+            [MenuKey] => mnuEFSLoadCash
+            [Caption] => EFS Load Cash
+            [ParentMenuItemId] => 66
+            [Sequence] => 18
+            [SortPath] => 000003.000018
+            [IsAction] => 1
+        )
+    [84] => Array
+        (
+            [MenuItemId] => 85
+            [MenuKey] => secDispatchSecurity
+            [Caption] => ***** Dispatch Security *****
+            [ParentMenuItemId] => 66
+            [Sequence] => 19
+            [SortPath] => 000003.000019
+            [IsAction] => 1
+        )
+    [85] => Array
+        (
+            [MenuItemId] => 86
+            [MenuKey] => secAllowAgentFeeOverride
+            [Caption] => Security - Allow agent fee overrides
+            [ParentMenuItemId] => 66
+            [Sequence] => 20
+            [SortPath] => 000003.000020
+            [IsAction] => 1
+        )
+    [86] => Array
+        (
+            [MenuItemId] => 87
+            [MenuKey] => secAllowIntrastate
+            [Caption] => Security - Allow Intrastate Load Entry
+            [ParentMenuItemId] => 66
+            [Sequence] => 21
+            [SortPath] => 000003.000021
+            [IsAction] => 1
+        )
+    [87] => Array
+        (
+            [MenuItemId] => 88
+            [MenuKey] => secLocMaint
+            [Caption] => Security - Allow Location Maintenance Edit
+            [ParentMenuItemId] => 66
+            [Sequence] => 22
+            [SortPath] => 000003.000022
+            [IsAction] => 1
+        )
+    [88] => Array
+        (
+            [MenuItemId] => 89
+            [MenuKey] => secAllowUnitFee
+            [Caption] => Security - Allow Unit Fee
+            [ParentMenuItemId] => 66
+            [Sequence] => 23
+            [SortPath] => 000003.000023
+            [IsAction] => 1
+        )
+    [89] => Array
+        (
+            [MenuItemId] => 90
+            [MenuKey] => secExceptionApr
+            [Caption] => Security - Approve Agent Exceptions
+            [ParentMenuItemId] => 66
+            [Sequence] => 24
+            [SortPath] => 000003.000024
+            [IsAction] => 1
+        )
+    [90] => Array
+        (
+            [MenuItemId] => 91
+            [MenuKey] => secAllCreditLimitInc
+            [Caption] => Security - AR - Allow All Credit Limit Increases
+            [ParentMenuItemId] => 66
+            [Sequence] => 25
+            [SortPath] => 000003.000025
+            [IsAction] => 1
+        )
+    [91] => Array
+        (
+            [MenuItemId] => 92
+            [MenuKey] => secDenyMileChanges
+            [Caption] => Security - Deny Load Mileage Edit
+            [ParentMenuItemId] => 66
+            [Sequence] => 26
+            [SortPath] => 000003.000026
+            [IsAction] => 1
+        )
+    [92] => Array
+        (
+            [MenuItemId] => 93
+            [MenuKey] => secViewAgentFee
+            [Caption] => Security - View Agent Fees
+            [ParentMenuItemId] => 66
+            [Sequence] => 27
+            [SortPath] => 000003.000027
+            [IsAction] => 1
+        )
+    [93] => Array
+        (
+            [MenuItemId] => 94
+            [MenuKey] => secViewOwnUnitsOnly
+            [Caption] => Security - View Assigned Units Only
+            [ParentMenuItemId] => 66
+            [Sequence] => 28
+            [SortPath] => 000003.000028
+            [IsAction] => 1
+        )
+    [94] => Array
+        (
+            [MenuItemId] => 95
+            [MenuKey] => secViewCommissions
+            [Caption] => Security - View Commissions
+            [ParentMenuItemId] => 66
+            [Sequence] => 29
+            [SortPath] => 000003.000029
+            [IsAction] => 1
+        )
+    [95] => Array
+        (
+            [MenuItemId] => 96
+            [MenuKey] => secViewCostPlus
+            [Caption] => Security - View Cost Plus Fees
+            [ParentMenuItemId] => 66
+            [Sequence] => 30
+            [SortPath] => 000003.000030
+            [IsAction] => 1
+        )
+    [96] => Array
+        (
+            [MenuItemId] => 97
+            [MenuKey] => secViewOwnLoadsOnly
+            [Caption] => Security - View Own Loads Only
+            [ParentMenuItemId] => 66
+            [Sequence] => 31
+            [SortPath] => 000003.000031
+            [IsAction] => 1
+        )
+    [97] => Array
+        (
+            [MenuItemId] => 98
+            [MenuKey] => mnuMain04
+            [Caption] => Logistics
+            [ParentMenuItemId] =>
+            [Sequence] => 4
+            [SortPath] => 000004
+            [IsAction] => 0
+        )
+    [98] => Array
+        (
+            [MenuItemId] => 99
+            [MenuKey] => mnuAvailEDI
+            [Caption] => Available EDI Loads
+            [ParentMenuItemId] => 98
+            [Sequence] => 1
+            [SortPath] => 000004.000001
+            [IsAction] => 1
+        )
+    [99] => Array
+        (
+            [MenuItemId] => 100
+            [MenuKey] => sep0401
+            [Caption] => -
+            [ParentMenuItemId] => 98
+            [Sequence] => 2
+            [SortPath] => 000004.000002
+            [IsAction] => 0
+        )
+    [100] => Array
+        (
+            [MenuItemId] => 101
+            [MenuKey] => mnuLoadEntryLog
+            [Caption] => Load Entry
+            [ParentMenuItemId] => 98
+            [Sequence] => 3
+            [SortPath] => 000004.000003
+            [IsAction] => 1
+        )
+    [101] => Array
+        (
+            [MenuItemId] => 102
+            [MenuKey] => mnuAvailTrucks
+            [Caption] => Available Trucks/Loads
+            [ParentMenuItemId] => 98
+            [Sequence] => 4
+            [SortPath] => 000004.000004
+            [IsAction] => 1
+        )
+    [102] => Array
+        (
+            [MenuItemId] => 103
+            [MenuKey] => mnuLoadInqLog
+            [Caption] => Load Inquiry
+            [ParentMenuItemId] => 98
+            [Sequence] => 5
+            [SortPath] => 000004.000005
+            [IsAction] => 1
+        )
+    [103] => Array
+        (
+            [MenuItemId] => 104
+            [MenuKey] => mnuCreditCheckLog
+            [Caption] => Customer Credit Check
+            [ParentMenuItemId] => 98
+            [Sequence] => 6
+            [SortPath] => 000004.000006
+            [IsAction] => 1
+        )
+    [104] => Array
+        (
+            [MenuItemId] => 105
+            [MenuKey] => mnuLookupLoadsLog
+            [Caption] => Lookup Loads by Location
+            [ParentMenuItemId] => 98
+            [Sequence] => 7
+            [SortPath] => 000004.000007
+            [IsAction] => 1
+        )
+    [105] => Array
+        (
+            [MenuItemId] => 106
+            [MenuKey] => mnuBrokerTracking
+            [Caption] => BrokerTracking
+            [ParentMenuItemId] => 98
+            [Sequence] => 8
+            [SortPath] => 000004.000008
+            [IsAction] => 1
+        )
+    [106] => Array
+        (
+            [MenuItemId] => 107
+            [MenuKey] => sep0402
+            [Caption] => -
+            [ParentMenuItemId] => 98
+            [Sequence] => 9
+            [SortPath] => 000004.000009
+            [IsAction] => 0
+        )
+    [107] => Array
+        (
+            [MenuItemId] => 108
+            [MenuKey] => mnuCarrierMaint
+            [Caption] => Carrier Maintenance
+            [ParentMenuItemId] => 98
+            [Sequence] => 10
+            [SortPath] => 000004.000010
+            [IsAction] => 1
+        )
+    [108] => Array
+        (
+            [MenuItemId] => 109
+            [MenuKey] => mnuCarrierHistory
+            [Caption] => Carrier History
+            [ParentMenuItemId] => 98
+            [Sequence] => 11
+            [SortPath] => 000004.000011
+            [IsAction] => 1
+        )
+    [109] => Array
+        (
+            [MenuItemId] => 110
+            [MenuKey] => mnuCarrierCheck
+            [Caption] => Carrier Check Lookup
+            [ParentMenuItemId] => 98
+            [Sequence] => 12
+            [SortPath] => 000004.000012
+            [IsAction] => 1
+        )
+    [110] => Array
+        (
+            [MenuItemId] => 111
+            [MenuKey] => mnuPrintBrokerConf
+            [Caption] => Reprint Broker Confirmation
+            [ParentMenuItemId] => 98
+            [Sequence] => 13
+            [SortPath] => 000004.000013
+            [IsAction] => 1
+        )
+    [111] => Array
+        (
+            [MenuItemId] => 112
+            [MenuKey] => mnuLogisticsSettlements
+            [Caption] => Process Settlements
+            [ParentMenuItemId] => 98
+            [Sequence] => 14
+            [SortPath] => 000004.000014
+            [IsAction] => 0
+        )
+    [112] => Array
+        (
+            [MenuItemId] => 113
+            [MenuKey] => mnuLogTrial
+            [Caption] => Run Trial Settlements
+            [ParentMenuItemId] => 112
+            [Sequence] => 1
+            [SortPath] => 000004.000014.000001
+            [IsAction] => 1
+        )
+    [113] => Array
+        (
+            [MenuItemId] => 114
+            [MenuKey] => mnuLogPreview
+            [Caption] => Preview Settlements
+            [ParentMenuItemId] => 112
+            [Sequence] => 2
+            [SortPath] => 000004.000014.000002
+            [IsAction] => 1
+        )
+    [114] => Array
+        (
+            [MenuItemId] => 115
+            [MenuKey] => mnuLogFinal
+            [Caption] => Finalize Settlements
+            [ParentMenuItemId] => 112
+            [Sequence] => 3
+            [SortPath] => 000004.000014.000003
+            [IsAction] => 1
+        )
+    [115] => Array
+        (
+            [MenuItemId] => 116
+            [MenuKey] => mnuLogPrint
+            [Caption] => Print Settlements
+            [ParentMenuItemId] => 112
+            [Sequence] => 4
+            [SortPath] => 000004.000014.000004
+            [IsAction] => 1
+        )
+    [116] => Array
+        (
+            [MenuItemId] => 117
+            [MenuKey] => sep0403
+            [Caption] => -
+            [ParentMenuItemId] => 112
+            [Sequence] => 5
+            [SortPath] => 000004.000014.000005
+            [IsAction] => 0
+        )
+    [117] => Array
+        (
+            [MenuItemId] => 118
+            [MenuKey] => mnuReassignCarrierLoad
+            [Caption] => Re-Assign Carrier Load
+            [ParentMenuItemId] => 112
+            [Sequence] => 6
+            [SortPath] => 000004.000014.000006
+            [IsAction] => 1
+        )
+    [118] => Array
+        (
+            [MenuItemId] => 119
+            [MenuKey] => secLogisticsSecurity
+            [Caption] => ***** Logistics Security *****
+            [ParentMenuItemId] => 98
+            [Sequence] => 15
+            [SortPath] => 000004.000015
+            [IsAction] => 1
+        )
+    [119] => Array
+        (
+            [MenuItemId] => 120
+            [MenuKey] => secCarrierMaint
+            [Caption] => Security - Allow Carrier Edit
+            [ParentMenuItemId] => 98
+            [Sequence] => 16
+            [SortPath] => 000004.000016
+            [IsAction] => 1
+        )
+    [120] => Array
+        (
+            [MenuItemId] => 121
+            [MenuKey] => secAllowBroker
+            [Caption] => Security - Allow Brokerage
+            [ParentMenuItemId] => 98
+            [Sequence] => 17
+            [SortPath] => 000004.000017
+            [IsAction] => 1
+        )
+    [121] => Array
+        (
+            [MenuItemId] => 122
+            [MenuKey] => mnuMain05
+            [Caption] => Mobile
+            [ParentMenuItemId] =>
+            [Sequence] => 5
+            [SortPath] => 000005
+            [IsAction] => 0
+        )
+    [122] => Array
+        (
+            [MenuItemId] => 123
+            [MenuKey] => mnuMobileSendMessage
+            [Caption] => Send MobileMessage
+            [ParentMenuItemId] => 122
+            [Sequence] => 1
+            [SortPath] => 000005.000001
+            [IsAction] => 1
+        )
+    [123] => Array
+        (
+            [MenuItemId] => 124
+            [MenuKey] => sep0501
+            [Caption] => -
+            [ParentMenuItemId] => 122
+            [Sequence] => 2
+            [SortPath] => 000005.000002
+            [IsAction] => 0
+        )
+    [124] => Array
+        (
+            [MenuItemId] => 125
+            [MenuKey] => mnuMobileMessages
+            [Caption] => Message Status
+            [ParentMenuItemId] => 122
+            [Sequence] => 3
+            [SortPath] => 000005.000003
+            [IsAction] => 1
+        )
+    [125] => Array
+        (
+            [MenuItemId] => 126
+            [MenuKey] => mnuPosRptHist
+            [Caption] => Position Report History
+            [ParentMenuItemId] => 122
+            [Sequence] => 4
+            [SortPath] => 000005.000004
+            [IsAction] => 1
+        )
+    [126] => Array
+        (
+            [MenuItemId] => 127
+            [MenuKey] => mnuMessageSearch
+            [Caption] => Message Search
+            [ParentMenuItemId] => 122
+            [Sequence] => 5
+            [SortPath] => 000005.000005
+            [IsAction] => 1
+        )
+    [127] => Array
+        (
+            [MenuItemId] => 128
+            [MenuKey] => secMobileSecurity
+            [Caption] => ***** Mobile Security *****
+            [ParentMenuItemId] => 122
+            [Sequence] => 6
+            [SortPath] => 000005.000006
+            [IsAction] => 1
+        )
+    [128] => Array
+        (
+            [MenuItemId] => 129
+            [MenuKey] => secRecInboundMsg
+            [Caption] => Secruity - Receive Inbound Messages
+            [ParentMenuItemId] => 122
+            [Sequence] => 7
+            [SortPath] => 000005.000007
+            [IsAction] => 1
+        )
+    [129] => Array
+        (
+            [MenuItemId] => 130
+            [MenuKey] => mnuMain06
+            [Caption] => Imaging
+            [ParentMenuItemId] =>
+            [Sequence] => 6
+            [SortPath] => 000006
+            [IsAction] => 0
+        )
+    [130] => Array
+        (
+            [MenuItemId] => 131
+            [MenuKey] => mnuImageAudit
+            [Caption] => Image Audit
+            [ParentMenuItemId] => 130
+            [Sequence] => 1
+            [SortPath] => 000006.000001
+            [IsAction] => 1
+        )
+    [131] => Array
+        (
+            [MenuItemId] => 132
+            [MenuKey] => mnuImageExceptions
+            [Caption] => Image Exceptions
+            [ParentMenuItemId] => 130
+            [Sequence] => 2
+            [SortPath] => 000006.000002
+            [IsAction] => 1
+        )
+    [132] => Array
+        (
+            [MenuItemId] => 133
+            [MenuKey] => mnuMain07
+            [Caption] => Reports
+            [ParentMenuItemId] =>
+            [Sequence] => 7
+            [SortPath] => 000007
+            [IsAction] => 0
+        )
+    [133] => Array
+        (
+            [MenuItemId] => 134
+            [MenuKey] => mnuPrintJobs
+            [Caption] => Print Jobs
+            [ParentMenuItemId] => 133
+            [Sequence] => 1
+            [SortPath] => 000007.000001
+            [IsAction] => 1
+        )
+    [134] => Array
+        (
+            [MenuItemId] => 135
+            [MenuKey] => sep0701
+            [Caption] => -
+            [ParentMenuItemId] => 133
+            [Sequence] => 2
+            [SortPath] => 000007.000002
+            [IsAction] => 0
+        )
+    [135] => Array
+        (
+            [MenuItemId] => 136
+            [MenuKey] => mnuSubmitReport
+            [Caption] => Submit Report Job
+            [ParentMenuItemId] => 133
+            [Sequence] => 3
+            [SortPath] => 000007.000003
+            [IsAction] => 1
+        )
+    [136] => Array
+        (
+            [MenuItemId] => 137
+            [MenuKey] => mnuAgingReport
+            [Caption] => Aging Report
+            [ParentMenuItemId] => 133
+            [Sequence] => 4
+            [SortPath] => 000007.000004
+            [IsAction] => 1
+        )
+    [137] => Array
+        (
+            [MenuItemId] => 138
+            [MenuKey] => mnuCustRevSum
+            [Caption] => Customer Revenue Summary
+            [ParentMenuItemId] => 133
+            [Sequence] => 5
+            [SortPath] => 000007.000005
+            [IsAction] => 1
+        )
+    [138] => Array
+        (
+            [MenuItemId] => 139
+            [MenuKey] => mnuUnitRev
+            [Caption] => Unit Revenue Summary
+            [ParentMenuItemId] => 133
+            [Sequence] => 6
+            [SortPath] => 000007.000006
+            [IsAction] => 1
+        )
+    [139] => Array
+        (
+            [MenuItemId] => 140
+            [MenuKey] => mnuUnitStateReport
+            [Caption] => Unit State Mileage Summary
+            [ParentMenuItemId] => 133
+            [Sequence] => 7
+            [SortPath] => 000007.000007
+            [IsAction] => 1
+        )
+    [140] => Array
+        (
+            [MenuItemId] => 141
+            [MenuKey] => mnuTrailerList
+            [Caption] => Trailer Listing
+            [ParentMenuItemId] => 133
+            [Sequence] => 8
+            [SortPath] => 000007.000008
+            [IsAction] => 1
+        )
+    [141] => Array
+        (
+            [MenuItemId] => 142
+            [MenuKey] => sep0703
+            [Caption] => -
+            [ParentMenuItemId] => 133
+            [Sequence] => 9
+            [SortPath] => 000007.000009
+            [IsAction] => 0
+        )
+    [142] => Array
+        (
+            [MenuItemId] => 143
+            [MenuKey] => mnuRecap
+            [Caption] => Weekly Recap
+            [ParentMenuItemId] => 133
+            [Sequence] => 10
+            [SortPath] => 000007.000010
+            [IsAction] => 1
+        )
+    [143] => Array
+        (
+            [MenuItemId] => 144
+            [MenuKey] => mnuPrint1099
+            [Caption] => Print 1099
+            [ParentMenuItemId] => 133
+            [Sequence] => 11
+            [SortPath] => 000007.000011
+            [IsAction] => 1
+        )
+    [144] => Array
+        (
+            [MenuItemId] => 145
+            [MenuKey] => mnuSMDRReport
+            [Caption] => SMDR Report
+            [ParentMenuItemId] => 133
+            [Sequence] => 12
+            [SortPath] => 000007.000012
+            [IsAction] => 1
+        )
+    [145] => Array
+        (
+            [MenuItemId] => 146
+            [MenuKey] => mnuMain08
+            [Caption] => Safety
+            [ParentMenuItemId] =>
+            [Sequence] => 8
+            [SortPath] => 000008
+            [IsAction] => 0
+        )
+    [146] => Array
+        (
+            [MenuItemId] => 147
+            [MenuKey] => mnuAgentMaint
+            [Caption] => Agent Maintenance
+            [ParentMenuItemId] => 146
+            [Sequence] => 1
+            [SortPath] => 000008.000001
+            [IsAction] => 1
+        )
+    [147] => Array
+        (
+            [MenuItemId] => 148
+            [MenuKey] => mnuDriverMaint
+            [Caption] => Driver Maintenance
+            [ParentMenuItemId] => 146
+            [Sequence] => 2
+            [SortPath] => 000008.000002
+            [IsAction] => 1
+        )
+    [148] => Array
+        (
+            [MenuItemId] => 149
+            [MenuKey] => mnuOwnerMaint
+            [Caption] => Owner Maintenance
+            [ParentMenuItemId] => 146
+            [Sequence] => 3
+            [SortPath] => 000008.000003
+            [IsAction] => 1
+        )
+    [149] => Array
+        (
+            [MenuItemId] => 150
+            [MenuKey] => mnuUnitMaint
+            [Caption] => Unit Maintenance
+            [ParentMenuItemId] => 146
+            [Sequence] => 4
+            [SortPath] => 000008.000004
+            [IsAction] => 1
+        )
+    [150] => Array
+        (
+            [MenuItemId] => 151
+            [MenuKey] => mnuTractorTrailer
+            [Caption] => Tractor/Trailer Lookup
+            [ParentMenuItemId] => 146
+            [Sequence] => 5
+            [SortPath] => 000008.000005
+            [IsAction] => 1
+        )
+    [151] => Array
+        (
+            [MenuItemId] => 152
+            [MenuKey] => mnuDriverPictures
+            [Caption] => Load Driver Pictures
+            [ParentMenuItemId] => 146
+            [Sequence] => 6
+            [SortPath] => 000008.000006
+            [IsAction] => 1
+        )
+    [152] => Array
+        (
+            [MenuItemId] => 153
+            [MenuKey] => sep0801
+            [Caption] => -
+            [ParentMenuItemId] => 146
+            [Sequence] => 7
+            [SortPath] => 000008.000007
+            [IsAction] => 0
+        )
+    [153] => Array
+        (
+            [MenuItemId] => 154
+            [MenuKey] => mnuPayrollMaint
+            [Caption] => Payroll Maintenance
+            [ParentMenuItemId] => 146
+            [Sequence] => 8
+            [SortPath] => 000008.000008
+            [IsAction] => 1
+        )
+    [154] => Array
+        (
+            [MenuItemId] => 155
+            [MenuKey] => mnuUnitCheck
+            [Caption] => Unit Check Lookup
+            [ParentMenuItemId] => 146
+            [Sequence] => 9
+            [SortPath] => 000008.000009
+            [IsAction] => 1
+        )
+    [155] => Array
+        (
+            [MenuItemId] => 156
+            [MenuKey] => mnuAgentCheck
+            [Caption] => Agent Check Lookup
+            [ParentMenuItemId] => 146
+            [Sequence] => 10
+            [SortPath] => 000008.000010
+            [IsAction] => 1
+        )
+    [156] => Array
+        (
+            [MenuItemId] => 157
+            [MenuKey] => mnuFuel
+            [Caption] => Fuel Receipts
+            [ParentMenuItemId] => 146
+            [Sequence] => 11
+            [SortPath] => 000008.000011
+            [IsAction] => 1
+        )
+    [157] => Array
+        (
+            [MenuItemId] => 158
+            [MenuKey] => sep0802
+            [Caption] => -
+            [ParentMenuItemId] => 146
+            [Sequence] => 12
+            [SortPath] => 000008.000012
+            [IsAction] => 0
+        )
+    [158] => Array
+        (
+            [MenuItemId] => 159
+            [MenuKey] => mnuEFSMoneyCode
+            [Caption] => Issue EFS Money Code (Paper Check)
+            [ParentMenuItemId] => 146
+            [Sequence] => 13
+            [SortPath] => 000008.000013
+            [IsAction] => 1
+        )
+    [159] => Array
+        (
+            [MenuItemId] => 160
+            [MenuKey] => mnuEFSMaintenance
+            [Caption] => EFS Maintenance
+            [ParentMenuItemId] => 146
+            [Sequence] => 14
+            [SortPath] => 000008.000014
+            [IsAction] => 0
+        )
+    [160] => Array
+        (
+            [MenuItemId] => 161
+            [MenuKey] => mnuEFSPolicyMaintenance
+            [Caption] => EFS Policy Maintenance
+            [ParentMenuItemId] => 160
+            [Sequence] => 1
+            [SortPath] => 000008.000014.000001
+            [IsAction] => 1
+        )
+    [161] => Array
+        (
+            [MenuItemId] => 162
+            [MenuKey] => mnuEFSCardMaintenance
+            [Caption] => EFS Card Maintenance
+            [ParentMenuItemId] => 160
+            [Sequence] => 2
+            [SortPath] => 000008.000014.000002
+            [IsAction] => 1
+        )
+    [162] => Array
+        (
+            [MenuItemId] => 163
+            [MenuKey] => sep0803
+            [Caption] => -
+            [ParentMenuItemId] => 146
+            [Sequence] => 15
+            [SortPath] => 000008.000015
+            [IsAction] => 0
+        )
+    [163] => Array
+        (
+            [MenuItemId] => 164
+            [MenuKey] => mnuProcessSettlements
+            [Caption] => Process Owner Settlements
+            [ParentMenuItemId] => 146
+            [Sequence] => 16
+            [SortPath] => 000008.000016
+            [IsAction] => 0
+        )
+    [164] => Array
+        (
+            [MenuItemId] => 165
+            [MenuKey] => mnuCreateRepeating
+            [Caption] => Create Repeating Deductions
+            [ParentMenuItemId] => 164
+            [Sequence] => 1
+            [SortPath] => 000008.000016.000001
+            [IsAction] => 1
+        )
+    [165] => Array
+        (
+            [MenuItemId] => 166
+            [MenuKey] => mnuTrialOwnerPR
+            [Caption] => Run Trial Settlements
+            [ParentMenuItemId] => 164
+            [Sequence] => 2
+            [SortPath] => 000008.000016.000002
+            [IsAction] => 1
+        )
+    [166] => Array
+        (
+            [MenuItemId] => 167
+            [MenuKey] => mnuPreviewOwnerPR
+            [Caption] => Preview Settlements
+            [ParentMenuItemId] => 164
+            [Sequence] => 3
+            [SortPath] => 000008.000016.000003
+            [IsAction] => 1
+        )
+    [167] => Array
+        (
+            [MenuItemId] => 168
+            [MenuKey] => mnuFinalizeOwnerPR
+            [Caption] => Finalize Settlements
+            [ParentMenuItemId] => 164
+            [Sequence] => 4
+            [SortPath] => 000008.000016.000004
+            [IsAction] => 1
+        )
+    [168] => Array
+        (
+            [MenuItemId] => 169
+            [MenuKey] => mnuPrintOwnerPR
+            [Caption] => Print Checks
+            [ParentMenuItemId] => 164
+            [Sequence] => 5
+            [SortPath] => 000008.000016.000005
+            [IsAction] => 1
+        )
+    [169] => Array
+        (
+            [MenuItemId] => 170
+            [MenuKey] => mnuPrintOwnerDD
+            [Caption] => Print Direct Deposits
+            [ParentMenuItemId] => 164
+            [Sequence] => 6
+            [SortPath] => 000008.000016.000006
+            [IsAction] => 1
+        )
+    [170] => Array
+        (
+            [MenuItemId] => 171
+            [MenuKey] => sep0804
+            [Caption] => -
+            [ParentMenuItemId] => 164
+            [Sequence] => 7
+            [SortPath] => 000008.000016.000007
+            [IsAction] => 0
+        )
+    [171] => Array
+        (
+            [MenuItemId] => 172
+            [MenuKey] => mnuDirectDeposit
+            [Caption] => Build Direct Deposit File
+            [ParentMenuItemId] => 164
+            [Sequence] => 8
+            [SortPath] => 000008.000016.000008
+            [IsAction] => 1
+        )
+    [172] => Array
+        (
+            [MenuItemId] => 173
+            [MenuKey] => mnuCheckRegister
+            [Caption] => Print Check Register
+            [ParentMenuItemId] => 164
+            [Sequence] => 9
+            [SortPath] => 000008.000016.000009
+            [IsAction] => 1
+        )
+    [173] => Array
+        (
+            [MenuItemId] => 174
+            [MenuKey] => mnuHoldOver
+            [Caption] => Print Hold-Over Report
+            [ParentMenuItemId] => 164
+            [Sequence] => 10
+            [SortPath] => 000008.000016.000010
+            [IsAction] => 1
+        )
+    [174] => Array
+        (
+            [MenuItemId] => 175
+            [MenuKey] => mnuDepositsHeld
+            [Caption] => Print Deposits Held Report
+            [ParentMenuItemId] => 164
+            [Sequence] => 11
+            [SortPath] => 000008.000016.000011
+            [IsAction] => 1
+        )
+    [175] => Array
+        (
+            [MenuItemId] => 176
+            [MenuKey] => mnuSettlementPosting
+            [Caption] => Print Settlement Posting
+            [ParentMenuItemId] => 164
+            [Sequence] => 12
+            [SortPath] => 000008.000016.000012
+            [IsAction] => 1
+        )
+    [176] => Array
+        (
+            [MenuItemId] => 177
+            [MenuKey] => mnuProcAgentSettlements
+            [Caption] => Process Agent Settlements
+            [ParentMenuItemId] => 146
+            [Sequence] => 17
+            [SortPath] => 000008.000017
+            [IsAction] => 0
+        )
+    [177] => Array
+        (
+            [MenuItemId] => 178
+            [MenuKey] => mnuTrialAgentPR
+            [Caption] => Run Trial Settlements
+            [ParentMenuItemId] => 177
+            [Sequence] => 1
+            [SortPath] => 000008.000017.000001
+            [IsAction] => 1
+        )
+    [178] => Array
+        (
+            [MenuItemId] => 179
+            [MenuKey] => mnuPreviewAgentPR
+            [Caption] => Preview Settlements
+            [ParentMenuItemId] => 177
+            [Sequence] => 2
+            [SortPath] => 000008.000017.000002
+            [IsAction] => 1
+        )
+    [179] => Array
+        (
+            [MenuItemId] => 180
+            [MenuKey] => mnuFinalizeAgentPR
+            [Caption] => Finalize Settlements
+            [ParentMenuItemId] => 177
+            [Sequence] => 3
+            [SortPath] => 000008.000017.000003
+            [IsAction] => 1
+        )
+    [180] => Array
+        (
+            [MenuItemId] => 181
+            [MenuKey] => mnuPrintAgentPR
+            [Caption] => Print Settlements
+            [ParentMenuItemId] => 177
+            [Sequence] => 4
+            [SortPath] => 000008.000017.000004
+            [IsAction] => 1
+        )
+    [181] => Array
+        (
+            [MenuItemId] => 182
+            [MenuKey] => secSafetySecurity
+            [Caption] => ***** Safety Security *****
+            [ParentMenuItemId] => 146
+            [Sequence] => 18
+            [SortPath] => 000008.000018
+            [IsAction] => 1
+        )
+    [182] => Array
+        (
+            [MenuItemId] => 183
+            [MenuKey] => secSafetyNotification
+            [Caption] => Security - Send Safety Notification
+            [ParentMenuItemId] => 146
+            [Sequence] => 19
+            [SortPath] => 000008.000019
+            [IsAction] => 1
+        )
+    [183] => Array
+        (
+            [MenuItemId] => 184
+            [MenuKey] => secUnitEdit
+            [Caption] => Security - Allow Unit Save
+            [ParentMenuItemId] => 146
+            [Sequence] => 20
+            [SortPath] => 000008.000020
+            [IsAction] => 1
+        )
+    [184] => Array
+        (
+            [MenuItemId] => 185
+            [MenuKey] => secUnitDelete
+            [Caption] => Security - Allow Unit Delete
+            [ParentMenuItemId] => 146
+            [Sequence] => 21
+            [SortPath] => 000008.000021
+            [IsAction] => 1
+        )
+    [185] => Array
+        (
+            [MenuItemId] => 186
+            [MenuKey] => secUnitHold
+            [Caption] => Security - Allow Unit on Hold Changes
+            [ParentMenuItemId] => 146
+            [Sequence] => 22
+            [SortPath] => 000008.000022
+            [IsAction] => 1
+        )
+    [186] => Array
+        (
+            [MenuItemId] => 187
+            [MenuKey] => secUnitMaint
+            [Caption] => Security - Allow Unit/Driver/Owner/Pay Changes
+            [ParentMenuItemId] => 146
+            [Sequence] => 23
+            [SortPath] => 000008.000023
+            [IsAction] => 1
+        )
+    [187] => Array
+        (
+            [MenuItemId] => 188
+            [MenuKey] => secPayrollMaint
+            [Caption] => Security - Allow Payroll Maintenance Edit
+            [ParentMenuItemId] => 146
+            [Sequence] => 24
+            [SortPath] => 000008.000024
+            [IsAction] => 1
+        )
+    [188] => Array
+        (
+            [MenuItemId] => 189
+            [MenuKey] => secDDMaint
+            [Caption] => Security - Allow Direct Deposit Maintenance
+            [ParentMenuItemId] => 146
+            [Sequence] => 25
+            [SortPath] => 000008.000025
+            [IsAction] => 1
+        )
+    [189] => Array
+        (
+            [MenuItemId] => 190
+            [MenuKey] => mnuMain11
+            [Caption] => Payroll
+            [ParentMenuItemId] =>
+            [Sequence] => 9
+            [SortPath] => 000009
+            [IsAction] => 0
+        )
+    [190] => Array
+        (
+            [MenuItemId] => 191
+            [MenuKey] => mnuTimeClockInOut
+            [Caption] => Clock In/Out
+            [ParentMenuItemId] => 190
+            [Sequence] => 1
+            [SortPath] => 000009.000001
+            [IsAction] => 1
+        )
+    [191] => Array
+        (
+            [MenuItemId] => 192
+            [MenuKey] => mnuMain09
+            [Caption] => Systems
+            [ParentMenuItemId] =>
+            [Sequence] => 10
+            [SortPath] => 000010
+            [IsAction] => 0
+        )
+    [192] => Array
+        (
+            [MenuItemId] => 193
+            [MenuKey] => mnuProjectLog
+            [Caption] => Support Request
+            [ParentMenuItemId] => 192
+            [Sequence] => 1
+            [SortPath] => 000010.000001
+            [IsAction] => 1
+        )
+    [193] => Array
+        (
+            [MenuItemId] => 194
+            [MenuKey] => mnuTLSBilling
+            [Caption] => TL Systems Billing
+            [ParentMenuItemId] => 192
+            [Sequence] => 2
+            [SortPath] => 000010.000002
+            [IsAction] => 1
+        )
+    [194] => Array
+        (
+            [MenuItemId] => 195
+            [MenuKey] => mnuUserSecurity
+            [Caption] => User Security
+            [ParentMenuItemId] => 192
+            [Sequence] => 3
+            [SortPath] => 000010.000003
+            [IsAction] => 1
+        )
+    [195] => Array
+        (
+            [MenuItemId] => 196
+            [MenuKey] => mnuEDIUserProfile
+            [Caption] => EDI User Profile
+            [ParentMenuItemId] => 192
+            [Sequence] => 4
+            [SortPath] => 000010.000004
+            [IsAction] => 1
+        )
+    [196] => Array
+        (
+            [MenuItemId] => 197
+            [MenuKey] => devMain12
+            [Caption] => Development
+            [ParentMenuItemId] =>
+            [Sequence] => 11
+            [SortPath] => 000011
+            [IsAction] => 0
+        )
+    [197] => Array
+        (
+            [MenuItemId] => 198
+            [MenuKey] => devTrailerTypeColor
+            [Caption] => Trailer Type Colors
+            [ParentMenuItemId] => 197
+            [Sequence] => 1
+            [SortPath] => 000011.000001
+            [IsAction] => 1
+        )
+    [198] => Array
+        (
+            [MenuItemId] => 199
+            [MenuKey] => devExportMenu
+            [Caption] => Export Menu
+            [ParentMenuItemId] => 197
+            [Sequence] => 2
+            [SortPath] => 000011.000002
+            [IsAction] => 1
+        )
+    [199] => Array
+        (
+            [MenuItemId] => 200
+            [MenuKey] => mnuGetMsgs
+            [Caption] => Get Msgs
+            [ParentMenuItemId] =>
+            [Sequence] => 12
+            [SortPath] => 000012
+            [IsAction] => 1
+        )
+    [200] => Array
+        (
+            [MenuItemId] => 201
+            [MenuKey] => mnuMain10
+            [Caption] => Window
+            [ParentMenuItemId] =>
+            [Sequence] => 13
+            [SortPath] => 000013
+            [IsAction] => 0
+        )
+    [201] => Array
+        (
+            [MenuItemId] => 202
+            [MenuKey] => mnuWindowTileH
+            [Caption] => Tile Horizontally
+            [ParentMenuItemId] => 201
+            [Sequence] => 1
+            [SortPath] => 000013.000001
+            [IsAction] => 1
+        )
+    [202] => Array
+        (
+            [MenuItemId] => 203
+            [MenuKey] => mnuWindowTileV
+            [Caption] => Tile Vertically
+            [ParentMenuItemId] => 201
+            [Sequence] => 2
+            [SortPath] => 000013.000002
+            [IsAction] => 1
+        )
+    [203] => Array
+        (
+            [MenuItemId] => 204
+            [MenuKey] => mnuWindowCascade
+            [Caption] => Cascade
+            [ParentMenuItemId] => 201
+            [Sequence] => 3
+            [SortPath] => 000013.000003
+            [IsAction] => 1
+        )
+    [204] => Array
+        (
+            [MenuItemId] => 205
+            [MenuKey] => mnuWindowArrange
+            [Caption] => Arrange Icons
+            [ParentMenuItemId] => 201
+            [Sequence] => 4
+            [SortPath] => 000013.000004
+            [IsAction] => 1
+        )
+    [205] => Array
+        (
+            [MenuItemId] => 206
+            [MenuKey] => sep1001
+            [Caption] => -
+            [ParentMenuItemId] => 201
+            [Sequence] => 5
+            [SortPath] => 000013.000005
+            [IsAction] => 0
+        )
+    [206] => Array
+        (
+            [MenuItemId] => 207
+            [MenuKey] => mnuSavePos
+            [Caption] => Save Positions on Exit
+            [ParentMenuItemId] => 201
+            [Sequence] => 6
+            [SortPath] => 000013.000006
+            [IsAction] => 1
+        )
+    [207] => Array
+        (
+            [MenuItemId] => 208
+            [MenuKey] => sep1002
+            [Caption] => -
+            [ParentMenuItemId] => 201
+            [Sequence] => 7
+            [SortPath] => 000013.000007
+            [IsAction] => 0
+        )
+    [208] => Array
+        (
+            [MenuItemId] => 209
+            [MenuKey] => mnuAbount
+            [Caption] => About
+            [ParentMenuItemId] => 201
+            [Sequence] => 8
+            [SortPath] => 000013.000008
+            [IsAction] => 1
+        )
+)

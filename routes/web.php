@@ -24,7 +24,7 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
     $username = count($parts) > 1 ? implode('.', array_slice($parts, 1)) : $login;
 
     try {
-        $result = $gateway->call($login, 'spUser_Login', [$username, $password]);
+        $result = $gateway->callWithFallback($login, 'spUser_Login', [$username, $password]);
 
         if ($result['rc'] === 0) {
             session(['user_login' => $login]);
