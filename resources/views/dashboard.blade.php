@@ -124,8 +124,8 @@
             // Menu Rendering Logic
             async function loadMenu() {
                 try {
-                    // 1. Fetch full menu metadata (Global)
-                    const menuRes = await callSp('GetMenuItems', [], null);
+                    // 1. Fetch full menu metadata (Global) - only active items
+                    const menuRes = await callSp('GetMenuItems', [0], null);
                     // 2. Fetch user permissions (Tenant)
                     const permRes = await callSp('spUser_Menus', [username]);
 
@@ -184,10 +184,12 @@
                     if (!key) return;
 
                     const isAuthorized = allowedKeys.has(key);
+                    const isActive = item.Active === 1 || item.Active === true;
                     const isSecurity = key.startsWith('sec');
                     const isSeparator = key.startsWith('sep');
 
                     const tr = document.createElement('tr');
+                    if (!isActive) tr.style.opacity = '0.6';
                     if (isSecurity) tr.className = 'table-info';
                     if (isSeparator) tr.className = 'table-light text-muted small';
 
@@ -202,13 +204,22 @@
                                 <span class="fw-semibold">${item.Caption || '<em>No Caption</em>'}</span>
                                 ${isSecurity ? '<span class="badge bg-info text-dark x-small ms-1">Security</span>' : ''}
                                 ${isSeparator ? '<span class="badge bg-secondary x-small ms-1">Sep</span>' : ''}
+                                ${!isActive ? '<span class="badge bg-warning text-dark x-small ms-1">Inactive</span>' : ''}
                             </div>
                         </td>
                         <td><code class="x-small">${key}</code></td>
                         <td class="text-center">
-                            <div class="form-check form-switch d-inline-block">
-                                <input class="form-check-input menu-toggle-switch" type="checkbox"
-                                    data-key="${key}" ${isAuthorized ? 'checked' : ''}>
+                            <div class="d-flex justify-content-center gap-3">
+                                <div class="form-check form-switch" title="Authorized">
+                                    <input class="form-check-input menu-toggle-switch" type="checkbox"
+                                        data-key="${key}" ${isAuthorized ? 'checked' : ''}>
+                                    <label class="x-small text-muted d-block mt-1">Auth</label>
+                                </div>
+                                <div class="form-check form-switch" title="Active Status">
+                                    <input class="form-check-input active-toggle-switch" type="checkbox"
+                                        data-key="${key}" ${isActive ? 'checked' : ''}>
+                                    <label class="x-small text-muted d-block mt-1">Active</label>
+                                </div>
                             </div>
                         </td>
                     `;
@@ -283,6 +294,41 @@
                         } finally {
                             this.disabled = false;
                             // Auto-hide status after 3 seconds
+                            setTimeout(() => statusEl.classList.add('d-none'), 3000);
+                        }
+                    });
+                });
+
+                // Attach event listeners to Active switches
+                document.querySelectorAll('.active-toggle-switch').forEach(sw => {
+                    sw.addEventListener('change', async function() {
+                        const key = this.getAttribute('data-key');
+                        const isActive = this.checked ? 1 : 0;
+                        const statusEl = document.getElementById('menu-mgmt-status');
+
+                        this.disabled = true;
+
+                        try {
+                            const res = await callSp('UpdateMenuItem', [key, isActive], null);
+
+                            statusEl.classList.remove('d-none', 'alert-success', 'alert-danger');
+                            if (res.ok) {
+                                statusEl.classList.add('alert-success');
+                                statusEl.textContent = `Successfully updated Active status: ${key}`;
+                                // Refresh top menu
+                                loadMenu();
+                            } else {
+                                statusEl.classList.add('alert-danger');
+                                statusEl.textContent = `Failed to update Active status for ${key}. Error code: ${res.rc}`;
+                                this.checked = !this.checked; // Revert
+                            }
+                        } catch (err) {
+                            statusEl.classList.remove('d-none', 'alert-success');
+                            statusEl.classList.add('alert-danger');
+                            statusEl.textContent = `Server error while updating Active status for ${key}.`;
+                            this.checked = !this.checked; // Revert
+                        } finally {
+                            this.disabled = false;
                             setTimeout(() => statusEl.classList.add('d-none'), 3000);
                         }
                     });
@@ -439,8 +485,8 @@
                         if (pageKey === 'home') {
                             await initializeHomePage();
                         } else if (pageKey === 'mnuUserSecurity') {
-                            // We need access to menu data for management UI
-                            const menuRes = await callSp('GetMenuItems', [], null);
+                            // We need access to menu data for management UI - show ALL including inactive
+                            const menuRes = await callSp('GetMenuItems', [1], null);
                             const permRes = await callSp('spUser_Menus', [username]);
                             if (menuRes.ok && permRes.ok) {
                                 renderMenuManagement(menuRes.data, permRes.data);

@@ -6,7 +6,7 @@ use App\Database\StoredProcedureClient;
 use Mockery;
 use Tests\TestCase;
 
-class GetMenuItemsTest extends TestCase
+class UpdateMenuItemTest extends TestCase
 {
     protected function tearDown(): void
     {
@@ -14,45 +14,38 @@ class GetMenuItemsTest extends TestCase
         parent::tearDown();
     }
 
-    public function test_api_can_call_get_menu_items_globally(): void
+    public function test_api_can_call_update_menu_item_globally(): void
     {
         $mockClient = Mockery::mock(StoredProcedureClient::class);
         $mockClient->shouldReceive('execMasterWithReturnCode')
             ->once()
-            ->with('GetMenuItems', [0])
+            ->with('UpdateMenuItem', ['mnuTest', 1])
             ->andReturn([
                 'rc' => 0,
-                'rows' => [
-                    ['MenuID' => 1, 'Title' => 'Dashboard', 'Active' => 1],
-                    ['MenuID' => 2, 'Title' => 'Settings', 'Active' => 1],
-                ]
+                'rows' => []
             ]);
 
         $this->app->instance(StoredProcedureClient::class, $mockClient);
 
-        // Global calls don't require login
         $response = $this->postJson('/api/sp', [
-            'proc' => 'GetMenuItems',
-            'params' => [0]
+            'proc' => 'UpdateMenuItem',
+            'params' => ['mnuTest', 1]
         ]);
 
         $response->assertStatus(200)
                  ->assertJson([
                      'rc' => 0,
                      'ok' => true,
-                     'data' => [
-                         ['MenuID' => 1, 'Title' => 'Dashboard'],
-                         ['MenuID' => 2, 'Title' => 'Settings'],
-                     ],
+                     'data' => [],
                      'error' => null
                  ]);
     }
 
-    public function test_api_rejects_get_menu_items_without_params(): void
+    public function test_api_rejects_update_menu_item_with_invalid_params(): void
     {
         $response = $this->postJson('/api/sp', [
-            'proc' => 'GetMenuItems',
-            'params' => [] // Missing ShowInactive
+            'proc' => 'UpdateMenuItem',
+            'params' => [123, 'not-a-bit'] // Wrong types
         ]);
 
         $response->assertStatus(400)

@@ -41,7 +41,14 @@ return [
         ],
 
         'GetMenuItems' => [
-            'params' => [],
+            'params' => ['ShowInactive' => 'int'],
+        ],
+
+        'UpdateMenuItem' => [
+            'params' => [
+                'MenuKey' => 'string',
+                'Active'  => 'int',
+            ],
         ],
 
         // 'spValidationItem_Get' => ['params' => ['Item' => 'string']],
