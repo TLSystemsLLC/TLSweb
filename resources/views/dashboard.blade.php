@@ -140,7 +140,8 @@
             }
 
             function renderMenuManagement(allItems, userPerms) {
-                const container = document.getElementById('menu-mgmt-body');
+                const container = document.getElementById('menu-mgmt-container');
+                if (!container) return;
                 container.innerHTML = '';
 
                 const allowedKeys = new Set(userPerms.map(p => (p.MenuName || p.MenuKey || '').trim()));
@@ -162,7 +163,7 @@
                     });
                 });
 
-                // Identify roots (items whose parent is not in the set of all items)
+                // Identify roots
                 const allIds = new Set(allItems.map(item => item.MenuItemId));
                 const roots = allItems.filter(item => {
                     if (!item.ParentMenuItemId) return true;
@@ -175,7 +176,7 @@
 
                 const renderedIds = new Set();
 
-                function renderManagementRow(item, depth = 0) {
+                function renderManagementRow(item, depth, tableBody) {
                     if (renderedIds.has(item.MenuItemId)) return;
                     renderedIds.add(item.MenuItemId);
 
@@ -190,9 +191,9 @@
                     if (isSecurity) tr.className = 'table-info';
                     if (isSeparator) tr.className = 'table-light text-muted small';
 
-                    // Use indentation for hierarchy
                     const indentation = depth * 20;
-                    const chevron = itemsByParent[item.MenuItemId] ? '<i class="bi bi-chevron-down small me-1"></i>' : '<span class="me-3"></span>';
+                    const children = itemsByParent[item.MenuItemId] || [];
+                    const chevron = children.length > 0 ? '<i class="bi bi-chevron-down small me-1"></i>' : '<span class="me-3"></span>';
 
                     tr.innerHTML = `
                         <td>
@@ -211,14 +212,45 @@
                             </div>
                         </td>
                     `;
-                    container.appendChild(tr);
+                    tableBody.appendChild(tr);
 
-                    // Render children immediately after parent
-                    const children = itemsByParent[item.MenuItemId] || [];
-                    children.forEach(child => renderManagementRow(child, depth + 1));
+                    children.forEach(child => renderManagementRow(child, depth + 1, tableBody));
                 }
 
-                roots.forEach(root => renderManagementRow(root, 0));
+                // For each root, create a "box" (card)
+                roots.forEach(root => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-6 col-lg-4 mb-4';
+
+                    const card = document.createElement('div');
+                    card.className = 'card shadow-sm h-100';
+
+                    const cardHeader = document.createElement('div');
+                    cardHeader.className = 'card-header bg-white py-3';
+                    cardHeader.innerHTML = `<h4 class="card-title h6 mb-0 fw-bold text-primary text-uppercase">${root.Caption || root.MenuKey}</h4>`;
+
+                    const cardBody = document.createElement('div');
+                    cardBody.className = 'card-body p-0';
+
+                    const tableResponsive = document.createElement('div');
+                    tableResponsive.className = 'table-responsive';
+
+                    const table = document.createElement('table');
+                    table.className = 'table table-hover align-middle mb-0 small';
+
+                    const tbody = document.createElement('tbody');
+
+                    cardBody.appendChild(tableResponsive);
+                    tableResponsive.appendChild(table);
+                    table.appendChild(tbody);
+
+                    card.appendChild(cardHeader);
+                    card.appendChild(cardBody);
+                    col.appendChild(card);
+                    container.appendChild(col);
+
+                    renderManagementRow(root, 0, tbody);
+                });
 
                 // Attach event listeners to switches
                 document.querySelectorAll('.menu-toggle-switch').forEach(sw => {
