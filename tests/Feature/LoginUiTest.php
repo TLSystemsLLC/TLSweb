@@ -93,7 +93,8 @@ class LoginUiTest extends TestCase
                          ->get('/dashboard');
 
         $response->assertStatus(200);
-        $response->assertSee('Welcome to TLS');
+        // "Welcome to TLS" is now loaded dynamically, so we check for the container
+        $response->assertSee('id="content-area"', false);
     }
 
     public function test_logout_works(): void

@@ -24,6 +24,13 @@ return [
                 'MenuID' => 'int',
             ],
         ],
+        'spUser_Menu_Save' => [
+            'params' => [
+                'UserID'   => 'string',
+                'MenuName' => 'string',
+                'Allowed'  => 'int',
+            ],
+        ],
         // add more as you expose them
     ],
 

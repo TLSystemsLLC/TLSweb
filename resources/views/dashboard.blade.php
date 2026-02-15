@@ -33,6 +33,9 @@
             top: 50%;
             margin-top: -4px;
         }
+        .x-small {
+            font-size: 0.7rem;
+        }
         /* Mobile adjustments */
         @media (max-width: 991px) {
             .dropdown-submenu .dropdown-menu {
@@ -52,7 +55,7 @@
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
                 <div class="container-fluid">
-                    <a class="navbar-brand fw-bold" href="#">TLS Dashboard</a>
+                    <a class="navbar-brand fw-bold" href="#" id="brand-link">TLS Dashboard</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -76,29 +79,15 @@
             </nav>
 
             <main class="container py-4">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body p-4">
-                        <h2 class="card-title h4 fw-bold mb-3">Welcome to TLS</h2>
-                        <p class="card-text text-muted">You have successfully logged in.</p>
-                    </div>
-                </div>
-
-                <div id="company-info" class="card shadow-sm d-none mb-4">
-                    <div class="card-body p-4">
-                        <h3 class="card-title h5 fw-bold mb-3">Company Information</h3>
-                        <div id="company-data" class="vstack gap-2 text-muted">
-                            <!-- Data will be injected here -->
+                <div id="content-area">
+                    <!-- Dynamic content will be injected here -->
+                    <div class="text-center py-5" id="content-loading">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
                         </div>
+                        <p class="mt-2 text-muted">Loading page...</p>
                     </div>
-                </div>
-
-                <div id="user-info" class="card shadow-sm d-none">
-                    <div class="card-body p-4">
-                        <h3 class="card-title h5 fw-bold mb-3">User Information</h3>
-                        <div id="user-data" class="vstack gap-2 text-muted">
-                            <!-- Data will be injected here -->
-                        </div>
-                    </div>
+                    <div id="dynamic-content"></div>
                 </div>
             </main>
         </div>
@@ -150,6 +139,124 @@
                 }
             }
 
+            function renderMenuManagement(allItems, userPerms) {
+                const container = document.getElementById('menu-mgmt-body');
+                container.innerHTML = '';
+
+                const allowedKeys = new Set(userPerms.map(p => (p.MenuName || p.MenuKey || '').trim()));
+
+                // Map items by ParentMenuItemId for recursive building
+                const itemsByParent = {};
+                allItems.forEach(item => {
+                    const pid = item.ParentMenuItemId || 'root';
+                    if (!itemsByParent[pid]) itemsByParent[pid] = [];
+                    itemsByParent[pid].push(item);
+                });
+
+                // Sort children of each parent by SortPath
+                Object.keys(itemsByParent).forEach(pid => {
+                    itemsByParent[pid].sort((a, b) => {
+                        const pathA = (a.SortPath || '').toString();
+                        const pathB = (b.SortPath || '').toString();
+                        return pathA.localeCompare(pathB);
+                    });
+                });
+
+                // Identify roots (items whose parent is not in the set of all items)
+                const allIds = new Set(allItems.map(item => item.MenuItemId));
+                const roots = allItems.filter(item => {
+                    if (!item.ParentMenuItemId) return true;
+                    return !allIds.has(item.ParentMenuItemId);
+                }).sort((a, b) => {
+                    const pathA = (a.SortPath || '').toString();
+                    const pathB = (b.SortPath || '').toString();
+                    return pathA.localeCompare(pathB);
+                });
+
+                const renderedIds = new Set();
+
+                function renderManagementRow(item, depth = 0) {
+                    if (renderedIds.has(item.MenuItemId)) return;
+                    renderedIds.add(item.MenuItemId);
+
+                    const key = (item.MenuKey || '').trim();
+                    if (!key) return;
+
+                    const isAuthorized = allowedKeys.has(key);
+                    const isSecurity = key.startsWith('sec');
+                    const isSeparator = key.startsWith('sep');
+
+                    const tr = document.createElement('tr');
+                    if (isSecurity) tr.className = 'table-info';
+                    if (isSeparator) tr.className = 'table-light text-muted small';
+
+                    // Use indentation for hierarchy
+                    const indentation = depth * 20;
+                    const chevron = itemsByParent[item.MenuItemId] ? '<i class="bi bi-chevron-down small me-1"></i>' : '<span class="me-3"></span>';
+
+                    tr.innerHTML = `
+                        <td>
+                            <div style="padding-left: ${indentation}px">
+                                ${chevron}
+                                <span class="fw-semibold">${item.Caption || '<em>No Caption</em>'}</span>
+                                ${isSecurity ? '<span class="badge bg-info text-dark x-small ms-1">Security</span>' : ''}
+                                ${isSeparator ? '<span class="badge bg-secondary x-small ms-1">Sep</span>' : ''}
+                            </div>
+                        </td>
+                        <td><code class="x-small">${key}</code></td>
+                        <td class="text-center">
+                            <div class="form-check form-switch d-inline-block">
+                                <input class="form-check-input menu-toggle-switch" type="checkbox"
+                                    data-key="${key}" ${isAuthorized ? 'checked' : ''}>
+                            </div>
+                        </td>
+                    `;
+                    container.appendChild(tr);
+
+                    // Render children immediately after parent
+                    const children = itemsByParent[item.MenuItemId] || [];
+                    children.forEach(child => renderManagementRow(child, depth + 1));
+                }
+
+                roots.forEach(root => renderManagementRow(root, 0));
+
+                // Attach event listeners to switches
+                document.querySelectorAll('.menu-toggle-switch').forEach(sw => {
+                    sw.addEventListener('change', async function() {
+                        const key = this.getAttribute('data-key');
+                        const isAllowed = this.checked ? 1 : 0;
+                        const statusEl = document.getElementById('menu-mgmt-status');
+
+                        this.disabled = true;
+
+                        try {
+                            const res = await callSp('spUser_Menu_Save', [username, key, isAllowed]);
+
+                            statusEl.classList.remove('d-none', 'alert-success', 'alert-danger');
+                            if (res.ok) {
+                                statusEl.classList.add('alert-success');
+                                statusEl.textContent = `Successfully updated: ${key}`;
+                                // Refresh the top menu to reflect changes
+                                loadMenu();
+                            } else {
+                                statusEl.classList.add('alert-danger');
+                                statusEl.textContent = `Failed to update ${key}. Error code: ${res.rc}`;
+                                this.checked = !this.checked; // Revert
+                            }
+                        } catch (err) {
+                            statusEl.classList.remove('d-none', 'alert-success');
+                            statusEl.classList.add('alert-danger');
+                            statusEl.textContent = `Server error while updating ${key}.`;
+                            this.checked = !this.checked; // Revert
+                        } finally {
+                            this.disabled = false;
+                            // Auto-hide status after 3 seconds
+                            setTimeout(() => statusEl.classList.add('d-none'), 3000);
+                        }
+                    });
+                });
+            }
+
             function renderMenu(allItems, userPerms) {
                 const menuContainer = document.getElementById('main-menu');
                 menuContainer.innerHTML = '';
@@ -158,10 +265,17 @@
                 const allowedKeys = new Set(userPerms.map(p => (p.MenuName || p.MenuKey || '').trim()));
 
                 // Filter out security keys (sec*) and unauthorized keys
-                const visibleItems = allItems.filter(item => {
+                let visibleItems = allItems.filter(item => {
                     const key = (item.MenuKey || '').trim();
                     if (key.startsWith('sec')) return false; // Security only
                     return allowedKeys.has(key);
+                });
+
+                // Sort by SortPath to ensure proper ordering
+                visibleItems.sort((a, b) => {
+                    const pathA = (a.SortPath || '').toString();
+                    const pathB = (b.SortPath || '').toString();
+                    return pathA.localeCompare(pathB);
                 });
 
                 if (visibleItems.length === 0) {
@@ -170,6 +284,7 @@
                 }
 
                 // Map items by ParentMenuItemId for recursive building
+                // Items are already sorted by SortPath, so they will be added in order
                 const itemsByParent = {};
                 visibleItems.forEach(item => {
                     const pid = item.ParentMenuItemId || 'root';
@@ -177,15 +292,23 @@
                     itemsByParent[pid].push(item);
                 });
 
-                // Get true roots (no parent OR mnuMain at top level)
-                const roots = visibleItems.filter(item => !item.ParentMenuItemId || item.MenuKey.startsWith('mnuMain'));
+                // Get true roots (items that are NOT children of any other visible item)
+                const visibleIds = new Set(visibleItems.map(item => item.MenuItemId));
+                const roots = visibleItems.filter(item => {
+                    // If it has no parent, it's a root
+                    if (!item.ParentMenuItemId) return true;
+                    // If its parent is not in our visible set, it acts as a root
+                    return !visibleIds.has(item.ParentMenuItemId);
+                });
 
-                // Track which items have already been rendered as roots to avoid duplicates
-                const renderedRootIds = new Set();
+                // Track which items have already been rendered to avoid duplicates
+                const renderedIds = new Set();
+
+                console.log('Roots to render:', roots.map(r => r.Caption));
 
                 roots.forEach(item => {
-                    if (renderedRootIds.has(item.MenuItemId)) return;
-                    renderedRootIds.add(item.MenuItemId);
+                    if (renderedIds.has(item.MenuItemId)) return;
+                    // renderedIds.add(item.MenuItemId); // Wait to add until after children are checked
 
                     const children = itemsByParent[item.MenuItemId] || [];
                     const li = document.createElement('li');
@@ -193,24 +316,30 @@
                     if (children.length > 0) {
                         li.className = 'nav-item dropdown';
                         li.appendChild(createDropdownToggle(item, 'nav-link'));
-                        li.appendChild(buildDropdownMenu(item.MenuItemId, itemsByParent));
+                        li.appendChild(buildDropdownMenu(item.MenuItemId, itemsByParent, renderedIds));
                     } else {
                         li.className = 'nav-item';
                         li.appendChild(createNavLink(item, 'nav-link'));
                     }
                     menuContainer.appendChild(li);
+                    renderedIds.add(item.MenuItemId);
                 });
 
                 // Initialize multi-level dropdown logic
                 setupMultiLevelDropdowns();
             }
 
-            function buildDropdownMenu(parentId, itemsByParent) {
+            function buildDropdownMenu(parentId, itemsByParent, renderedIds) {
                 const ul = document.createElement('ul');
                 ul.className = 'dropdown-menu shadow-sm';
 
                 const children = itemsByParent[parentId] || [];
+                console.log(`Building sub-menu for ID ${parentId}, children:`, children.length);
+
                 children.forEach(child => {
+                    if (renderedIds.has(child.MenuItemId)) return;
+                    // renderedIds.add(child.MenuItemId); // Wait
+
                     const li = document.createElement('li');
                     const grandChildren = itemsByParent[child.MenuItemId] || [];
 
@@ -221,11 +350,12 @@
                     } else if (grandChildren.length > 0) {
                         li.className = 'dropdown-submenu';
                         li.appendChild(createDropdownToggle(child, 'dropdown-item'));
-                        li.appendChild(buildDropdownMenu(child.MenuItemId, itemsByParent));
+                        li.appendChild(buildDropdownMenu(child.MenuItemId, itemsByParent, renderedIds));
                     } else {
                         li.appendChild(createNavLink(child, 'dropdown-item'));
                     }
                     ul.appendChild(li);
+                    renderedIds.add(child.MenuItemId);
                 });
                 return ul;
             }
@@ -235,7 +365,144 @@
                 a.className = className;
                 a.href = '#';
                 a.textContent = item.Caption || item.MenuKey;
+
+                // Handle specific menu actions
+                const key = (item.MenuKey || '').trim();
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navigateToPage(key, item.Caption);
+                });
+
                 return a;
+            }
+
+            async function navigateToPage(key, caption) {
+                console.log('Navigating to:', key);
+
+                const loading = document.getElementById('content-loading');
+                const dynamicContent = document.getElementById('dynamic-content');
+
+                // Normalize key for home
+                let pageKey = key;
+                if (key === 'mnuMainDashboard' || key === 'mnuHome' || !key) {
+                    pageKey = 'home';
+                }
+
+                loading.classList.remove('d-none');
+                dynamicContent.innerHTML = '';
+
+                try {
+                    const response = await fetch(`/dashboard/page/${pageKey}`, {
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Accept': 'text/html'
+                        }
+                    });
+
+                    if (response.ok) {
+                        const html = await response.text();
+                        dynamicContent.innerHTML = html;
+
+                        // Re-initialize specific page logic
+                        if (pageKey === 'home') {
+                            await initializeHomePage();
+                        } else if (pageKey === 'mnuUserSecurity') {
+                            // We need access to menu data for management UI
+                            const menuRes = await callSp('GetMenuItems', [], null);
+                            const permRes = await callSp('spUser_Menus', [username]);
+                            if (menuRes.ok && permRes.ok) {
+                                renderMenuManagement(menuRes.data, permRes.data);
+                            }
+                        }
+                    } else {
+                        dynamicContent.innerHTML = `
+                            <div class="card shadow-sm mb-4">
+                                <div class="card-body p-4 text-center py-5">
+                                    <h3 class="card-title h5 fw-bold mb-3">${caption || key}</h3>
+                                    <p class="text-muted mb-0">The page for "${key}" is currently under development.</p>
+                                </div>
+                            </div>`;
+                    }
+                } catch (err) {
+                    console.error('Navigation error:', err);
+                    dynamicContent.innerHTML = '<div class="alert alert-danger">An error occurred while loading the page.</div>';
+                } finally {
+                    loading.classList.add('d-none');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+
+            async function initializeHomePage() {
+                // Fetch company information using spCompany_Get
+                callSp('spCompany_Get', [1])
+                .then(result => {
+                    if (result.ok && result.data.length > 0) {
+                        const company = result.data[0];
+                        const container = document.getElementById('company-data');
+                        const info = document.getElementById('company-info');
+                        if (container && info) {
+                            info.classList.remove('d-none');
+
+                            // Extract Company Name
+                            const name = company.CompanyName || company.Name || company.Description || 'Unknown Company';
+
+                            // Extract Address parts
+                            const addr1 = company.ShippingAddress || company.Address1 || company.Address || '';
+                            const addr2 = company.Address2 || '';
+                            const city = company.ShippingCity || company.City || '';
+                            const state = company.ShippingState || company.State || company.Province || '';
+                            const zip = company.ShippingZip || company.Zip || company.PostalCode || company.ZipCode || '';
+
+                            let addressHtml = '';
+                            if (addr1) addressHtml += `<div>${addr1}</div>`;
+                            if (addr2) addressHtml += `<div>${addr2}</div>`;
+
+                            let cityLine = '';
+                            if (city) cityLine += city;
+                            if (state) cityLine += (cityLine ? ', ' : '') + state;
+                            if (zip) cityLine += (cityLine ? ' ' : '') + zip;
+                            if (cityLine) addressHtml += `<div>${cityLine}</div>`;
+
+                            // Extract Phone
+                            const phone = company.MainPhone || company.Phone || company.PhoneNumber || company.Telephone || '';
+                            let phoneHtml = phone ? `<div class="mt-2 small text-muted"><i class="bi bi-telephone"></i> ${phone}</div>` : '';
+
+                            container.innerHTML = `
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold text-dark mb-1">${name}</div>
+                                        <div class="small text-muted">${addressHtml}</div>
+                                        ${phoneHtml}
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    }
+                });
+
+                // Fetch user information using spUser_GetByID
+                callSp('spUser_GetByID', [username])
+                .then(result => {
+                    if (result.ok && result.data.length > 0) {
+                        const user = result.data[0];
+                        const container = document.getElementById('user-data');
+                        const info = document.getElementById('user-info');
+                        if (container && info) {
+                            info.classList.remove('d-none');
+                            // Simple display: Name and Email
+                            const name = user.UserName || user.Name || user.UserID || 'Unknown User';
+                            const email = user.Email || 'No email provided';
+                            container.innerHTML = `
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold text-dark">${name}</div>
+                                        <div class="small text-muted">${email}</div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    }
+                });
             }
 
             function createDropdownToggle(item, className) {
@@ -302,35 +569,13 @@
                 });
             }
 
+            document.getElementById('brand-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateToPage('mnuHome');
+            });
+
             loadMenu();
-
-            // Fetch company information using spCompany_Get
-            callSp('spCompany_Get', [1])
-            .then(result => {
-                if (result.ok && result.data.length > 0) {
-                    const company = result.data[0];
-                    const container = document.getElementById('company-data');
-                    document.getElementById('company-info').classList.remove('d-none');
-
-                    container.innerHTML = Object.entries(company)
-                        .map(([key, value]) => `<div><strong>${key}:</strong> ${value}</div>`)
-                        .join('');
-                }
-            });
-
-            // Fetch user information using spUser_GetByID
-            callSp('spUser_GetByID', [username])
-            .then(result => {
-                if (result.ok && result.data.length > 0) {
-                    const user = result.data[0];
-                    const container = document.getElementById('user-data');
-                    document.getElementById('user-info').classList.remove('d-none');
-
-                    container.innerHTML = Object.entries(user)
-                        .map(([key, value]) => `<div><strong>${key}:</strong> ${value}</div>`)
-                        .join('');
-                }
-            });
+            navigateToPage('mnuHome');
         }
     </script>
 </body>

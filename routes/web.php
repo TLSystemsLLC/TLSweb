@@ -51,6 +51,20 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/dashboard/page/{key}', function ($key) {
+    if (!session()->has('user_login')) {
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+    $view = "dashboard.pages.{$key}";
+
+    if (!view()->exists($view)) {
+        return response()->json(['error' => 'Page not found'], 404);
+    }
+
+    return view($view);
+});
+
 Route::post('/logout', function () {
     session()->forget('user_login');
     return redirect()->route('login');
