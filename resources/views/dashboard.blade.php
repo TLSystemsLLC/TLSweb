@@ -493,6 +493,11 @@
                 dynamicContent.innerHTML = '';
 
                 try {
+                    // Close all open menus immediately when starting navigation
+                    document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+
                     const response = await fetch(`/dashboard/page/${pageKey}`, {
                         headers: {
                             'X-CSRF-TOKEN': csrfToken,
