@@ -47,6 +47,22 @@
                 border: none;
             }
         }
+        /* Masonry-like layout for Menu Management */
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 1.5rem;
+            display: block; /* Overwrite row's flex */
+        }
+        .masonry-grid > [class*="col-"] {
+            display: inline-block;
+            width: 100%; /* Take full column width */
+            float: none;
+        }
+        @media (max-width: 991px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
     </style>
 </head>
 <body class="bg-light min-vh-100">
@@ -184,7 +200,7 @@
                     if (!key) return;
 
                     const isAuthorized = allowedKeys.has(key);
-                    const isActive = item.Active === 1 || item.Active === true;
+                    const isActive = item.Active == 1 || item.Active === true || item.Active === "1";
                     const isSecurity = key.startsWith('sec');
                     const isSeparator = key.startsWith('sep');
 
@@ -229,12 +245,16 @@
                 }
 
                 // For each root, create a "box" (card)
+                const row = document.createElement('div');
+                row.className = 'row masonry-grid';
+                container.appendChild(row);
+
                 roots.forEach(root => {
                     const col = document.createElement('div');
-                    col.className = 'col-md-6 col-lg-4 mb-4';
+                    col.className = 'col-lg-6 mb-4';
 
                     const card = document.createElement('div');
-                    card.className = 'card shadow-sm h-100';
+                    card.className = 'card shadow-sm';
 
                     const cardHeader = document.createElement('div');
                     cardHeader.className = 'card-header bg-white py-3';
@@ -258,7 +278,7 @@
                     card.appendChild(cardHeader);
                     card.appendChild(cardBody);
                     col.appendChild(card);
-                    container.appendChild(col);
+                    row.appendChild(col);
 
                     renderManagementRow(root, 0, tbody);
                 });
