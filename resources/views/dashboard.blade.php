@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - TLS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         /* Multi-level dropdown CSS */
         .dropdown-submenu {
@@ -413,7 +416,7 @@
 
                     if (children.length > 0) {
                         li.className = 'nav-item dropdown';
-                        li.appendChild(createDropdownToggle(item, 'nav-link'));
+                        li.appendChild(createDropdownToggle(item, 'nav-link', true));
                         li.appendChild(buildDropdownMenu(item.MenuItemId, itemsByParent, renderedIds));
                     } else {
                         li.className = 'nav-item';
@@ -501,9 +504,23 @@
                         const html = await response.text();
                         dynamicContent.innerHTML = html;
 
+                        // Manually execute scripts in the injected HTML
+                        const scripts = dynamicContent.querySelectorAll('script');
+                        console.log(`Found ${scripts.length} scripts to execute`);
+                        scripts.forEach(oldScript => {
+                            const newScript = document.createElement('script');
+                            Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                            newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                            console.log('Executing script block...');
+                            oldScript.parentNode.replaceChild(newScript, oldScript);
+                        });
+
                         // Re-initialize specific page logic
                         if (pageKey === 'home') {
                             await initializeHomePage();
+                        } else if (pageKey === 'mnuFactoringCo') {
+                            // Initialized by its own IIFE in fragment, no extra call needed here
+                            // unless we want to pass data.
                         } else if (pageKey === 'mnuUserSecurity') {
                             // We need access to menu data for management UI - show ALL including inactive
                             const menuRes = await callSp('GetMenuItems', [1], null);
@@ -603,15 +620,14 @@
                 });
             }
 
-            function createDropdownToggle(item, className) {
+            function createDropdownToggle(item, className, isRoot = false) {
                 const a = document.createElement('a');
                 a.className = `${className} dropdown-toggle`;
                 a.href = '#';
-                // ONLY add data-bs-toggle for top-level nav-links
-                // Bootstrap 5 will break nested menus if we add it to dropdown-items
-                if (className.includes('nav-link')) {
-                    a.setAttribute('data-bs-toggle', 'dropdown');
-                }
+
+                // We REMOVE data-bs-toggle to prevent Bootstrap from intercepting clicks
+                // We will handle ALL menu levels manually for maximum stability.
+
                 a.setAttribute('aria-expanded', 'false');
                 a.textContent = item.Caption || item.MenuKey;
                 return a;
@@ -620,50 +636,44 @@
             function setupMultiLevelDropdowns() {
                 console.log('Initializing multi-level dropdowns...');
 
-                // Multi-level dropdown trigger
-                document.querySelectorAll('.dropdown-submenu .dropdown-toggle').forEach(element => {
+                // Custom multi-level dropdown trigger for ALL dropdown-toggles
+                document.querySelectorAll('.dropdown-toggle').forEach(element => {
                     element.addEventListener('click', function (e) {
-                        console.log('Submenu toggle clicked:', this.textContent);
+                        const isRoot = this.parentElement.classList.contains('nav-item');
+                        console.log('Toggle clicked:', this.textContent.trim(), 'isRoot:', isRoot);
+
                         e.preventDefault();
                         e.stopPropagation();
 
-                        const submenu = this.nextElementSibling;
-                        if (!submenu) {
-                            console.warn('No submenu found for:', this.textContent);
-                            return;
-                        }
+                        const menu = this.nextElementSibling;
+                        if (!menu) return;
 
-                        // Close other open submenus at the SAME level
-                        const parentMenu = this.closest('.dropdown-menu');
-                        if (parentMenu) {
-                            parentMenu.querySelectorAll('.dropdown-menu.show').forEach(openMenu => {
-                                if (openMenu !== submenu) {
-                                    openMenu.classList.remove('show');
-                                }
+                        const isVisible = menu.classList.contains('show');
+
+                        // 1. Close siblings at the same level
+                        const parentContainer = this.parentElement.parentElement; // the <ul> containing this <li>
+                        if (parentContainer) {
+                            parentContainer.querySelectorAll(':scope > li > .dropdown-menu.show').forEach(openMenu => {
+                                if (openMenu !== menu) openMenu.classList.remove('show');
                             });
                         }
 
-                        submenu.classList.toggle('show');
-                        console.log('Submenu toggled. Visible:', submenu.classList.contains('show'));
-                    });
-                });
-
-                // Ensure top-level dropdowns don't close when clicking a submenu toggle
-                document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                    menu.addEventListener('click', function(e) {
-                        if (e.target.classList.contains('dropdown-toggle')) {
-                            e.stopPropagation();
+                        // 2. Toggle this one
+                        if (isVisible) {
+                            menu.classList.remove('show');
+                        } else {
+                            menu.classList.add('show');
                         }
                     });
                 });
 
-                // Close all submenus when any top-level dropdown is closed by Bootstrap
-                document.querySelectorAll('.nav-item.dropdown').forEach(dropdown => {
-                    dropdown.addEventListener('hidden.bs.dropdown', function () {
-                        this.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                // Global click listener to close everything when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!e.target.closest('.dropdown')) {
+                        document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
                             menu.classList.remove('show');
                         });
-                    });
+                    }
                 });
             }
 

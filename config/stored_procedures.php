@@ -31,6 +31,28 @@ return [
                 'Allowed'  => 'int',
             ],
         ],
+        'spFactoringCo_GetAll' => [
+            'params' => [],
+        ],
+        'spFactoringCo_Get' => [
+            'params' => ['ID' => 'int'],
+        ],
+        'spFactoringCo_Delete' => [
+            'params' => ['ID' => 'int'],
+        ],
+        'spFactoringCo_Save' => [
+            'params' => [
+                'ID'      => 'int',
+                'Name'    => 'string',
+                'Address' => 'string',
+                'City'    => 'string',
+                'State'   => 'string',
+                'Zip'     => 'string',
+                'ABA'     => 'string',
+                'Account' => 'string',
+                'Email'   => 'string',
+            ],
+        ],
         // add more as you expose them
     ],
 
