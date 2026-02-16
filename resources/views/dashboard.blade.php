@@ -114,22 +114,22 @@
 
     <script>
         const login = "{{ session('user_login') }}";
-        const csrfToken = '{{ csrf_token() }}';
+        window.csrfToken = '{{ csrf_token() }}';
 
         if (login) {
             document.getElementById('user-display').textContent = `Logged in as: ${login}`;
 
             const [tenant, ...userParts] = login.split('.');
-            const username = userParts.join('.');
+            window.username = userParts.join('.');
 
-            // Helper for SP calls
-            async function callSp(proc, params = [], loginStr = login) {
+            // Helper for SP calls - Expose to window for dynamic fragments
+            window.callSp = async function(proc, params = [], loginStr = login) {
                 const response = await fetch('/api/sp', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken
+                        'X-CSRF-TOKEN': window.csrfToken
                     },
                     body: JSON.stringify({
                         login: loginStr,
@@ -138,15 +138,15 @@
                     })
                 });
                 return await response.json();
-            }
+            };
 
             // Menu Rendering Logic
             async function loadMenu() {
                 try {
                     // 1. Fetch full menu metadata (Global) - only active items
-                    const menuRes = await callSp('GetMenuItems', [0], null);
+                    const menuRes = await window.callSp('GetMenuItems', [0], null);
                     // 2. Fetch user permissions (Tenant)
-                    const permRes = await callSp('spUser_Menus', [username]);
+                    const permRes = await window.callSp('spUser_Menus', [window.username]);
 
                     if (menuRes.ok && permRes.ok) {
                         renderMenu(menuRes.data, permRes.data);
@@ -296,7 +296,7 @@
                         this.disabled = true;
 
                         try {
-                            const res = await callSp('spUser_Menu_Save', [username, key, isAllowed]);
+                            const res = await window.callSp('spUser_Menu_Save', [window.username, key, isAllowed]);
 
                             statusEl.classList.remove('d-none', 'alert-success', 'alert-danger');
                             if (res.ok) {
@@ -332,7 +332,7 @@
                         this.disabled = true;
 
                         try {
-                            const res = await callSp('UpdateMenuItem', [key, isActive], null);
+                            const res = await window.callSp('UpdateMenuItem', [key, isActive], null);
 
                             statusEl.classList.remove('d-none', 'alert-success', 'alert-danger');
                             if (res.ok) {
@@ -523,8 +523,8 @@
                             // unless we want to pass data.
                         } else if (pageKey === 'mnuUserSecurity') {
                             // We need access to menu data for management UI - show ALL including inactive
-                            const menuRes = await callSp('GetMenuItems', [1], null);
-                            const permRes = await callSp('spUser_Menus', [username]);
+                            const menuRes = await window.callSp('GetMenuItems', [1], null);
+                            const permRes = await window.callSp('spUser_Menus', [window.username]);
                             if (menuRes.ok && permRes.ok) {
                                 renderMenuManagement(menuRes.data, permRes.data);
                             }
@@ -549,7 +549,7 @@
 
             async function initializeHomePage() {
                 // Fetch company information using spCompany_Get
-                callSp('spCompany_Get', [1])
+                window.callSp('spCompany_Get', [1])
                 .then(result => {
                     if (result.ok && result.data.length > 0) {
                         const company = result.data[0];
@@ -596,7 +596,7 @@
                 });
 
                 // Fetch user information using spUser_GetByID
-                callSp('spUser_GetByID', [username])
+                window.callSp('spUser_GetByID', [window.username])
                 .then(result => {
                     if (result.ok && result.data.length > 0) {
                         const user = result.data[0];

@@ -130,7 +130,7 @@
     }
 
     async function loadCompanies() {
-        const res = await callSp('spFactoringCo_GetAll', []);
+        const res = await window.callSp('spFactoringCo_GetAll', []);
         if (res.ok) {
             allCompanies = res.data;
             renderTable(allCompanies);
@@ -183,7 +183,7 @@
         document.getElementById('factoringModalLabel').textContent = id === 0 ? 'Add Factoring Company' : 'Edit Factoring Company';
 
         if (id !== 0) {
-            const res = await callSp('spFactoringCo_Get', [id]);
+            const res = await window.callSp('spFactoringCo_Get', [id]);
             if (res.ok && res.data.length > 0) {
                 const c = res.data[0];
                 document.getElementById('f-name').value = c.Name || '';
@@ -213,7 +213,7 @@
             document.getElementById('f-email').value
         ];
 
-        const res = await callSp('spFactoringCo_Save', params);
+        const res = await window.callSp('spFactoringCo_Save', params);
         if (res.ok) {
             modal.hide();
             loadCompanies();
@@ -224,7 +224,7 @@
 
     async function deleteCompany(id, name) {
         if (confirm(`Are you sure you want to delete "${name}"?`)) {
-            const res = await callSp('spFactoringCo_Delete', [id]);
+            const res = await window.callSp('spFactoringCo_Delete', [id]);
             if (res.ok) {
                 loadCompanies();
             } else {
