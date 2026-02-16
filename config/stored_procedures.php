@@ -31,8 +31,11 @@ return [
                 'Allowed'  => 'int',
             ],
         ],
-        'spFactoringCo_GetAll' => [
-            'params' => [],
+        'spFactoringCo_Search' => [
+            'params' => [
+                'Search'  => 'string',
+                'MaxRows' => 'int',
+            ],
         ],
         'spFactoringCo_Get' => [
             'params' => ['ID' => 'int'],

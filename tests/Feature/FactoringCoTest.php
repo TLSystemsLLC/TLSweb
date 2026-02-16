@@ -25,12 +25,12 @@ class FactoringCoTest extends TestCase
         parent::tearDown();
     }
 
-    public function test_api_can_get_all_factoring_cos(): void
+    public function test_api_can_search_factoring_cos(): void
     {
         $mockClient = Mockery::mock(StoredProcedureClient::class);
         $mockClient->shouldReceive('execWithReturnCode')
             ->once()
-            ->with('test', 'spFactoringCo_GetAll', [])
+            ->with('test', 'spFactoringCo_Search', ['', 100])
             ->andReturn([
                 'rc' => 0,
                 'rows' => [
@@ -43,8 +43,8 @@ class FactoringCoTest extends TestCase
 
         $response = $this->postJson('/api/sp', [
             'login' => 'test.user',
-            'proc' => 'spFactoringCo_GetAll',
-            'params' => []
+            'proc' => 'spFactoringCo_Search',
+            'params' => ['', 100]
         ]);
 
         $response->assertStatus(200)

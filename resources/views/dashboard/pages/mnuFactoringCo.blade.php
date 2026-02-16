@@ -103,6 +103,8 @@
     let modal;
     let form;
 
+    let debounceTimer;
+
     async function init() {
         console.log('mnuFactoringCo initializing...');
 
@@ -113,14 +115,27 @@
 
         modal = new bootstrap.Modal(document.getElementById('factoringModal'));
         form = document.getElementById('factoringForm');
-        await loadCompanies();
+
+        // Initial state: empty table, do NOT load until user searches
+        renderTable([]);
 
         document.getElementById('btn-add-factoring').addEventListener('click', () => {
             showModal();
         });
 
         document.getElementById('factoring-search').addEventListener('input', (e) => {
-            filterTable(e.target.value);
+            const val = e.target.value.trim();
+            // Use server-side search with debounce, only if length >= 2
+            clearTimeout(debounceTimer);
+            if (val.length >= 2) {
+                debounceTimer = setTimeout(() => {
+                    loadCompanies(val, 100);
+                }, 300);
+            } else {
+                // Clear table if search is too short
+                allCompanies = [];
+                renderTable([]);
+            }
         });
 
         form.addEventListener('submit', async (e) => {
@@ -129,8 +144,8 @@
         });
     }
 
-    async function loadCompanies() {
-        const res = await window.callSp('spFactoringCo_GetAll', []);
+    async function loadCompanies(search = '', maxRows = 100) {
+        const res = await window.callSp('spFactoringCo_Search', [search, maxRows]);
         if (res.ok) {
             allCompanies = res.data;
             renderTable(allCompanies);
@@ -141,6 +156,13 @@
 
     function renderTable(data) {
         const tbody = document.getElementById('factoring-list-body');
+        const searchVal = document.getElementById('factoring-search').value.trim();
+
+        if (searchVal.length < 2) {
+            tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-muted">Please enter at least 2 characters to search.</td></tr>';
+            return;
+        }
+
         if (!data || data.length === 0) {
             tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-muted">No records found.</td></tr>';
             return;
@@ -216,7 +238,9 @@
         const res = await window.callSp('spFactoringCo_Save', params);
         if (res.ok) {
             modal.hide();
-            loadCompanies();
+            // Refresh with current search
+            const searchVal = document.getElementById('factoring-search').value;
+            loadCompanies(searchVal, 100);
         } else {
             alert(`Failed to save: Error code ${res.rc}`);
         }
@@ -226,7 +250,9 @@
         if (confirm(`Are you sure you want to delete "${name}"?`)) {
             const res = await window.callSp('spFactoringCo_Delete', [id]);
             if (res.ok) {
-                loadCompanies();
+                // Refresh with current search
+                const searchVal = document.getElementById('factoring-search').value;
+                loadCompanies(searchVal, 100);
             } else {
                 alert(`Failed to delete: Error code ${res.rc}`);
             }
