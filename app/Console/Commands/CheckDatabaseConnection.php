@@ -34,13 +34,18 @@ class CheckDatabaseConnection extends Command
         $this->line("User: <info>$user</info>");
 
         $this->info("\nChecking PHP Extensions...");
-        $extensions = ['pdo', 'pdo_odbc', 'odbc'];
+        $extensions = ['pdo', 'pdo_odbc', 'pdo_sqlsrv', 'sqlsrv', 'odbc'];
         foreach ($extensions as $ext) {
             if (extension_loaded($ext)) {
                 $this->line(" - <info>$ext</info>: Loaded");
             } else {
                 $this->line(" - <error>$ext</error>: NOT LOADED");
             }
+        }
+
+        if (extension_loaded('pdo_sqlsrv') && !extension_loaded('pdo_odbc')) {
+            $this->warn("\n[NOTE] You have 'pdo_sqlsrv' loaded, but this application is configured to use 'pdo_odbc'.");
+            $this->warn("While both connect to SQL Server, they are different PHP extensions.");
         }
 
         $this->info("\nChecking for Available ODBC Drivers...");
@@ -108,9 +113,14 @@ class CheckDatabaseConnection extends Command
         $this->info("\nTesting PDO ODBC Connection...");
         if (!extension_loaded('pdo_odbc')) {
             $this->error("ABORTING TEST: 'pdo_odbc' extension is not loaded in PHP.");
-            $this->warn("\nSUGGESTION: You must enable the PDO ODBC extension in your php.ini file.");
-            $this->warn("Look for 'extension=pdo_odbc' (Windows) or 'extension=pdo_odbc.so' (Linux) and remove the semicolon.");
-            $this->warn("Current php.ini: " . php_ini_loaded_file());
+            $this->warn("\nSUGGESTION: You have the 'sqlsrv' extensions enabled, but NOT 'pdo_odbc'.");
+            $this->warn("The code currently uses: new PDO(\"odbc:\$dsn\", ...)");
+            $this->warn("To fix this, you MUST enable 'extension=pdo_odbc' in your php.ini.");
+            $this->warn("\nIf you are using a standard PHP installation on Windows, find this line:");
+            $this->line("    ;extension=pdo_odbc");
+            $this->warn("And change it to (remove the semicolon):");
+            $this->line("    extension=pdo_odbc");
+            $this->warn("\nCurrent php.ini: " . php_ini_loaded_file());
             return;
         }
 
