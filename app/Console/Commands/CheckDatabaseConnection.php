@@ -33,6 +33,16 @@ class CheckDatabaseConnection extends Command
         $this->line("DSN: <info>$dsn</info>");
         $this->line("User: <info>$user</info>");
 
+        $this->info("\nChecking PHP Extensions...");
+        $extensions = ['pdo', 'pdo_odbc', 'odbc'];
+        foreach ($extensions as $ext) {
+            if (extension_loaded($ext)) {
+                $this->line(" - <info>$ext</info>: Loaded");
+            } else {
+                $this->line(" - <error>$ext</error>: NOT LOADED");
+            }
+        }
+
         $this->info("\nChecking for Available ODBC Drivers...");
 
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
@@ -96,6 +106,14 @@ class CheckDatabaseConnection extends Command
         }
 
         $this->info("\nTesting PDO ODBC Connection...");
+        if (!extension_loaded('pdo_odbc')) {
+            $this->error("ABORTING TEST: 'pdo_odbc' extension is not loaded in PHP.");
+            $this->warn("\nSUGGESTION: You must enable the PDO ODBC extension in your php.ini file.");
+            $this->warn("Look for 'extension=pdo_odbc' (Windows) or 'extension=pdo_odbc.so' (Linux) and remove the semicolon.");
+            $this->warn("Current php.ini: " . php_ini_loaded_file());
+            return;
+        }
+
         try {
             $pass = env('TLS_SQL_PASS');
             new \PDO("odbc:$dsn", $user, $pass, [
