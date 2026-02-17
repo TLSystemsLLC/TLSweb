@@ -56,6 +56,14 @@ return [
                 'Email'   => 'string',
             ],
         ],
+        'spContactRequest_Save' => [
+            'params' => [
+                'Name'    => 'string',
+                'Email'   => 'string',
+                'Phone'   => 'string',
+                'Message' => 'string',
+            ],
+        ],
         // add more as you expose them
     ],
 

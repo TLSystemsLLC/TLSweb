@@ -209,8 +209,14 @@
                             <div class="mbr-header mbr-header--center mbr-header--std-padding">
                                 <h2 class="mbr-header__text">CONTACT FORM</h2>
                             </div>
-                            <div data-form-alert="true"></div>
-                            <form name="contactForm" method="post" action="contact.php">
+                            <div id="contact-success" class="alert alert-success d-none">Thank you! Your message has been sent.</div>
+                            <div id="contact-error" class="alert alert-danger d-none">Unable to send message. Please try again later.</div>
+
+                            <form id="contact-form">
+                                @csrf
+                                <div class="d-none">
+                                    <input type="text" name="website" id="website">
+                                </div>
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" required="" placeholder="Name*">
                                 </div>
@@ -224,7 +230,7 @@
                                     <textarea class="form-control" name="message" rows="4" placeholder="Message"></textarea>
                                 </div>
                                 <div class="mbr-buttons mbr-buttons--right">
-                                    <button type="submit" class="mbr-buttons__btn btn btn-lg btn-danger">CONTACT US</button>
+                                    <button type="submit" id="contact-submit" class="mbr-buttons__btn btn btn-lg btn-danger">CONTACT US</button>
                                 </div>
                             </form>
                         </div>
@@ -250,5 +256,49 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const btn = document.getElementById('contact-submit');
+            const success = document.getElementById('contact-success');
+            const error = document.getElementById('contact-error');
+
+            btn.disabled = true;
+            btn.textContent = 'SENDING...';
+            success.classList.add('d-none');
+            error.classList.add('d-none');
+
+            try {
+                const response = await fetch('/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                    },
+                    body: JSON.stringify(Object.fromEntries(new FormData(form)))
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.ok) {
+                    success.textContent = result.message;
+                    success.classList.remove('d-none');
+                    form.reset();
+                } else {
+                    error.textContent = result.error || 'Something went wrong.';
+                    error.classList.remove('d-none');
+                }
+            } catch (err) {
+                error.textContent = 'A system error occurred.';
+                error.classList.remove('d-none');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'CONTACT US';
+            }
+        });
+    </script>
 </body>
 </html>

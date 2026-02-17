@@ -9,6 +9,57 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::post('/contact', function (Request $request, StoredProcedureGateway $gateway) {
+    // 1. Honeypot check
+    if ($request->filled('website')) {
+        return response()->json(['rc' => 0, 'ok' => true]);
+    }
+
+    // 2. Validate shape (UX only, per AI_RULES.md)
+    $data = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'phone' => 'nullable|string|max:50',
+        'message' => 'required|string',
+    ]);
+
+    try {
+        // 3. Call Stored Procedure via Gateway
+        // Using 'tls_tenant' as the hardcoded login for this global form
+        $result = $gateway->call('tls_tenant.system', 'spContactRequest_Save', [
+            $data['name'],
+            $data['email'],
+            $data['phone'] ?? '',
+            $data['message']
+        ]);
+
+        if ($result['rc'] === 0) {
+            return response()->json([
+                'rc' => 0,
+                'ok' => true,
+                'message' => 'Thank you! Your message has been sent.'
+            ]);
+        }
+
+        return response()->json([
+            'rc' => $result['rc'],
+            'ok' => false,
+            'error' => 'Business rule violation.'
+        ], 422);
+
+    } catch (\Throwable $e) {
+        logger()->error('Contact form submission failed', [
+            'error' => $e->getMessage()
+        ]);
+
+        return response()->json([
+            'rc' => 99,
+            'ok' => false,
+            'error' => 'Unable to send message at this time.'
+        ], 500);
+    }
+})->middleware('throttle:5,1');
+
 Route::get('/login', function () {
     \App\Support\TenantRegistry::allowedTenants();
     return view('auth.login');
