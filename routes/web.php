@@ -25,8 +25,8 @@ Route::post('/contact', function (Request $request, StoredProcedureGateway $gate
 
     try {
         // 3. Call Stored Procedure via Gateway
-        // Using 'tls_tenant' as the hardcoded login for this global form
-        $result = $gateway->call('tls_tenant.system', 'spContactRequest_Save', [
+        // This is a global procedure.
+        $result = $gateway->call(null, 'spContactRequest_Save', [
             $data['name'],
             $data['email'],
             $data['phone'] ?? '',

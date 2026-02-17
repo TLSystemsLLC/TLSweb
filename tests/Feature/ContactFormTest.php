@@ -11,7 +11,7 @@ class ContactFormTest extends TestCase
     {
         $this->mock(StoredProcedureGateway::class, function ($mock) {
             $mock->shouldReceive('call')
-                ->with('tls_tenant.system', 'spContactRequest_Save', [
+                ->with(null, 'spContactRequest_Save', [
                     'John Doe',
                     'john@example.com',
                     '555-0100',

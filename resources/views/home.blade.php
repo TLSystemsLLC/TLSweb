@@ -38,6 +38,9 @@
         section[id] {
             scroll-margin-top: 98px;
         }
+        .d-none {
+            display: none !important;
+        }
     </style>
 </head>
 <body>

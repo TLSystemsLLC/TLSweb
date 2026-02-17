@@ -56,15 +56,7 @@ return [
                 'Email'   => 'string',
             ],
         ],
-        'spContactRequest_Save' => [
-            'params' => [
-                'Name'    => 'string',
-                'Email'   => 'string',
-                'Phone'   => 'string',
-                'Message' => 'string',
-            ],
-        ],
-        // add more as you expose them
+        // 'spFactoringCo_Save' => [ ... ],
     ],
 
     // global / shared procedures (master DB)
@@ -81,6 +73,15 @@ return [
             'params' => [
                 'MenuKey' => 'string',
                 'Active'  => 'int',
+            ],
+        ],
+
+        'spContactRequest_Save' => [
+            'params' => [
+                'Name'    => 'string',
+                'Email'   => 'string',
+                'Phone'   => 'string',
+                'Message' => 'string',
             ],
         ],
 
