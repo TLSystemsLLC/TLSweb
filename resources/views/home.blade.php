@@ -35,6 +35,9 @@
             filter: brightness(1.2) contrast(1.1);
             opacity: 0.9;
         }
+        section[id] {
+            scroll-margin-top: 98px;
+        }
     </style>
 </head>
 <body>
