@@ -126,11 +126,24 @@ class CheckDatabaseConnection extends Command
 
         try {
             $pass = env('TLS_SQL_PASS');
-            new \PDO("odbc:$dsn", $user, $pass, [
+            $pdo = new \PDO("odbc:$dsn", $user, $pass, [
                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
                 \PDO::ATTR_TIMEOUT => 5,
             ]);
             $this->info("SUCCESS: Connected to database!");
+
+            $this->info("\nChecking Tenant Registry...");
+            try {
+                $tenants = \App\Support\TenantRegistry::allowedTenants();
+                if (empty($tenants)) {
+                    $this->error("No allowed tenants found in registry.");
+                } else {
+                    $this->line("Allowed Tenants: " . implode(', ', array_keys($tenants)));
+                }
+            } catch (\Exception $e) {
+                $this->error("Error calling TenantRegistry: " . $e->getMessage());
+            }
+
         } catch (\PDOException $e) {
             $this->error("FAILED: " . $e->getMessage());
 
