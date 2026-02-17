@@ -134,6 +134,18 @@ class CheckDatabaseConnection extends Command
 
             $this->info("\nChecking Tenant Registry...");
             try {
+                /** @var \App\Database\StoredProcedureGateway $gateway */
+                $gateway = app(\App\Database\StoredProcedureGateway::class);
+                $this->line("Calling 'getTenants'...");
+                $result = $gateway->call(null, 'getTenants', []);
+
+                $this->line("Result RC: " . ($result['rc'] ?? 'NULL'));
+                $this->line("Row Count: " . count($result['rows'] ?? []));
+
+                if (!empty($result['rows'])) {
+                    $this->line("Sample Row: " . json_encode($result['rows'][0]));
+                }
+
                 $tenants = \App\Support\TenantRegistry::allowedTenants();
                 if (empty($tenants)) {
                     $this->error("No allowed tenants found in registry.");
