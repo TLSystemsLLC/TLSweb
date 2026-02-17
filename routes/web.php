@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
 Route::get('/', function () {
-    \App\Support\TenantRegistry::allowedTenants();
-    return view('auth.login');
+    return view('home');
 });
 
 Route::get('/login', function () {

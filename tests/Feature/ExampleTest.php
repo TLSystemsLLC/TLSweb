@@ -15,6 +15,6 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('TLS Login');
+        $response->assertSee('TL Systems, LLC');
     }
 }
