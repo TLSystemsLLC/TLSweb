@@ -36,9 +36,34 @@ class CheckDatabaseConnection extends Command
         $this->info("\nChecking for Available ODBC Drivers...");
 
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            $this->warn("Windows detected. Listing drivers via registry...");
-            // Simple check for Windows
-            $this->line("Please check ODBC Data Source Administrator (64-bit) for installed drivers.");
+            $this->warn("Windows detected. Attempting to list drivers from Registry...");
+
+            try {
+                // Command to list ODBC drivers from registry
+                $cmd = 'reg query "HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBCINST.INI\ODBC Drivers"';
+                exec($cmd, $output, $returnVar);
+
+                if ($returnVar === 0) {
+                    $found = false;
+                    foreach ($output as $line) {
+                        // Lines look like: "    ODBC Driver 18 for SQL Server    REG_SZ    Installed"
+                        if (preg_match('/^\s+(.*?)\s+REG_SZ\s+Installed/i', $line, $matches)) {
+                            $driverName = trim($matches[1]);
+                            $this->line(" - <comment>$driverName</comment>");
+                            $found = true;
+                        }
+                    }
+                    if (!$found) {
+                        $this->warn("No drivers found in registry key.");
+                    }
+                } else {
+                    $this->error("Failed to query registry.");
+                }
+            } catch (\Exception $e) {
+                $this->error("Error reading registry: " . $e->getMessage());
+            }
+
+            $this->line("\nIf the list above is empty, please check ODBC Data Source Administrator (64-bit) manually.");
         } else {
             // Linux / macOS (UnixODBC)
             $this->info("Searching for odbcinst.ini...");
