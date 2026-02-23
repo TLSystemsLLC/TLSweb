@@ -77,6 +77,9 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
     $loginHash = $login !== '' ? substr(hash('sha256', $login), 0, 12) : null;
     $procHash  = substr(hash('sha256', 'spUser_Login'), 0, 12);
 
+    // Inspect ALL headers to see what is arriving from the firewall
+    logger()->notice('WEB login headers raw', $request->headers->all());
+
     // Inspect common proxy IP headers to diagnose firewall forwarding
     $ipHeaders = [
         'ip' => $request->ip(),
