@@ -86,6 +86,14 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
             'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
             'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
         ]);
+
+        // LOGGING-ONLY WORKAROUND: If login success is reported but no user rows returned, log it as a potential auth failure.
+        // We do NOT change the response (rc=0) to respect the "SQL is the core" architecture.
+        if ($proc === 'spUser_Login' && empty($result['rows'] ?? [])) {
+            logger()->warning('Potential login failure: rc=0 but no user rows returned', [
+                'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
+            ]);
+        }
     }
 
     return response()->json([
