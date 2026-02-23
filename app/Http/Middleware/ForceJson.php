@@ -9,6 +9,13 @@ class ForceJson
 {
     public function handle(Request $request, Closure $next)
     {
+        // IMMEDIATE LOG: Before any processing
+        logger()->error('MIDDLEWARE ENTRY: ForceJson', [
+            'url' => $request->fullUrl(),
+            'method' => $request->method(),
+            'ip' => $request->ip()
+        ]);
+
         // Force JSON content negotiation for API endpoints
         $request->headers->set('Accept', 'application/json');
 
