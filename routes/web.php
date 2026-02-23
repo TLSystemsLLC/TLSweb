@@ -104,6 +104,16 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
             'rc' => $rc,
         ]);
         return response()->json(['rc' => $rc, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
+
+    } catch (\App\Database\Exceptions\InvalidCredentialsException $e) {
+        // This handles cases where the tenant is invalid or credentials format is bad
+        logger()->warning('WEB login failure (invalid credentials)', [
+            'proc_hash' => $procHash,
+            'login_hash' => $loginHash,
+            'message' => $e->getMessage()
+        ]);
+        return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
+
     } catch (ServiceUnavailableHttpException $e) {
         throw $e;
     } catch (\Throwable $e) {
