@@ -35,9 +35,9 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
 
     } catch (InvalidCredentialsException $e) {
         // Log sanitized login failure (for monitoring password spraying etc.)
-        logger()->emergency('CRITICAL LOG TEST: Invalid credentials attempt', [
-            'login'   => $login,
-            'message' => $e->getMessage(),
+        logger()->warning('Invalid credentials attempt', [
+            'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
+            'message'    => $e->getMessage(),
         ]);
 
         // Looks like failed login; do not leak why
@@ -103,10 +103,14 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
         ]);
 
         // LOGGING-ONLY WORKAROUND: If login success is reported but no user rows returned, log it as a potential auth failure.
-        // We do NOT change the response (rc=0) to respect the "SQL is the core" architecture.
-        if ($proc === 'spUser_Login' && empty($result['rows'] ?? [])) {
-            logger()->warning('Potential login failure: rc=0 but no user rows returned', [
+        // We use a specific message to differentiate from generic success.
+        $isLogin = ($proc === 'spUser_Login');
+        $hasRows = !empty($result['rows'] ?? []);
+
+        if ($isLogin && !$hasRows) {
+            logger()->warning('LOGIN FAILURE: Correct credentials format but no user record found', [
                 'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
+                'rc' => $rc
             ]);
         }
     }

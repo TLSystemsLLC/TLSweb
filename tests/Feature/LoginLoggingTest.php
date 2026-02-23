@@ -52,7 +52,7 @@ class LoginLoggingTest extends TestCase
 
         Log::shouldReceive('notice')->with('SP result received', Mockery::subset(['rc' => 0]))->once();
         Log::shouldReceive('info')->with('SP success', Mockery::any())->once();
-        Log::shouldReceive('warning')->with('Potential login failure: rc=0 but no user rows returned', Mockery::any())->once();
+        Log::shouldReceive('warning')->with('LOGIN FAILURE: Correct credentials format but no user record found', Mockery::any())->once();
 
         $response = $this->postJson('/api/sp', [
             'login' => 'test.user',
