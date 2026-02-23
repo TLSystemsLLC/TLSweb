@@ -21,15 +21,6 @@ return Application::configure(basePath: dirname(__DIR__))
     })
 
     ->withExceptions(function (Exceptions $exceptions) {
-        // Log all exceptions to catch what is stopping the request
-        $exceptions->report(function (\Throwable $e) {
-            logger()->error('BOOTSTRAP EXCEPTION: ' . $e->getMessage(), [
-                'exception' => get_class($e),
-                'file' => $e->getFile(),
-                'line' => $e->getLine()
-            ]);
-        });
-
         $exceptions->render(function (NotFoundHttpException $e, $request) {
             // Normalize 404s (including missing routes) to the same generic response
             return response()->json([
