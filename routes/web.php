@@ -73,21 +73,45 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
     $parts = explode('.', $login);
     $username = count($parts) > 1 ? implode('.', array_slice($parts, 1)) : $login;
 
+    // Sanitized correlation values (no PII)
+    $loginHash = $login !== '' ? substr(hash('sha256', $login), 0, 12) : null;
+    $procHash  = substr(hash('sha256', 'spUser_Login'), 0, 12);
+
+    // Record the attempt (sanitized)
+    logger()->notice('WEB login attempt', [
+        'proc_hash' => $procHash,
+        'login_hash' => $loginHash,
+    ]);
+
     try {
         $result = $gateway->callWithFallback($login, 'spUser_Login', [$username, $password]);
+        $rc = (int) ($result['rc'] ?? 99);
 
-        if ($result['rc'] === 0) {
+        if ($rc === 0) {
+            // Success logging (sanitized)
+            logger()->info('WEB login success', [
+                'proc_hash' => $procHash,
+                'login_hash' => $loginHash,
+            ]);
             session(['user_login' => $login]);
             return response()->json(['rc' => 0, 'ok' => true]);
         }
 
-        return response()->json(['rc' => $result['rc'], 'ok' => false, 'error' => 'Invalid credentials.'], 401);
+        // Failure logging (sanitized)
+        logger()->warning('WEB login failure', [
+            'proc_hash' => $procHash,
+            'login_hash' => $loginHash,
+            'rc' => $rc,
+        ]);
+        return response()->json(['rc' => $rc, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
     } catch (ServiceUnavailableHttpException $e) {
         throw $e;
     } catch (\Throwable $e) {
-        // Log the actual error for debugging, but keep response generic
-        logger()->error('Login failure', [
-            'login' => $login,
+        // Log the actual error for debugging (sanitized), keep response generic
+        logger()->error('WEB login exception', [
+            'proc_hash' => $procHash,
+            'login_hash' => $loginHash,
+            'exception' => get_class($e),
             'error' => $e->getMessage()
         ]);
         return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
