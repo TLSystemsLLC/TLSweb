@@ -66,6 +66,12 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     // Stored procedure rc is a “business result”, not an exception.
     $rc = (int) ($result['rc'] ?? 99);
 
+    // TEMPORARY PROD DEBUG: Force an error log for EVERY single request to verify logger is reachable
+    logger()->error('DEBUG: Request processed', [
+        'rc' => $rc,
+        'proc' => $proc !== '' ? substr(hash('sha256', $proc), 0, 8) : 'none'
+    ]);
+
     if ($rc !== 0) {
         // Log business failure (e.g., login failed inside SP)
         logger()->warning('SP business failure', [
