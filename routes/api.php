@@ -15,14 +15,22 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     $cid = bin2hex(random_bytes(8)); // 16-char ID
 
     try {
+        // ALWAYS log exactly what came in (for debugging log issues)
+        logger()->notice('Incoming SP request', [
+            'login' => $login,
+            'proc'  => $proc,
+            // never log raw params for security
+            'params_count' => count($params)
+        ]);
+
         // Gateway handles: allowlist, scope, tenant parsing, param count, type enforcement
         $result = $gateway->callWithFallback($login !== '' ? $login : null, $proc, $params);
 
     } catch (InvalidCredentialsException $e) {
         // Log sanitized login failure (for monitoring password spraying etc.)
-        logger()->warning('Invalid credentials attempt', [
-            'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
-            'message'    => $e->getMessage(),
+        logger()->emergency('CRITICAL LOG TEST: Invalid credentials attempt', [
+            'login'   => $login,
+            'message' => $e->getMessage(),
         ]);
 
         // Looks like failed login; do not leak why
