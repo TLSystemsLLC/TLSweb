@@ -7,9 +7,22 @@ use App\Database\Exceptions\InvalidRequestException;
 use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
 Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, StoredProcedureGateway $gateway) {
+    // 0. IMMEDIATE LOG: Confirm entry into the closure
+    logger()->error('CRITICAL: Route closure started', [
+        'url' => $request->fullUrl(),
+        'method' => $request->method(),
+        'ip' => $request->ip()
+    ]);
+
     $login  = (string) $request->input('login', '');
     $proc   = (string) $request->input('proc', '');
     $params = (array)  $request->input('params', []);
+
+    // 1. LOG INPUTS: Verify what Laravel sees
+    logger()->error('CRITICAL: Request data', [
+        'proc' => $proc,
+        'login_sanitized' => $login !== '' ? substr($login, 0, 5) . '...' : 'empty'
+    ]);
 
     // Correlation ID (returned only on true server errors)
     $cid = bin2hex(random_bytes(8)); // 16-char ID
