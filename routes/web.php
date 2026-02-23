@@ -81,6 +81,7 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
     logger()->notice('WEB login attempt', [
         'proc_hash' => $procHash,
         'login_hash' => $loginHash,
+        'ip' => $request->ip(),
     ]);
 
     try {
@@ -92,6 +93,7 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
             logger()->info('WEB login success', [
                 'proc_hash' => $procHash,
                 'login_hash' => $loginHash,
+                'ip' => $request->ip(),
             ]);
             session(['user_login' => $login]);
             return response()->json(['rc' => 0, 'ok' => true]);
@@ -102,6 +104,7 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
             'proc_hash' => $procHash,
             'login_hash' => $loginHash,
             'rc' => $rc,
+            'ip' => $request->ip(),
         ]);
         return response()->json(['rc' => $rc, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
 
@@ -110,6 +113,7 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
         logger()->warning('WEB login failure (invalid credentials)', [
             'proc_hash' => $procHash,
             'login_hash' => $loginHash,
+            'ip' => $request->ip(),
             'message' => $e->getMessage()
         ]);
         return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
@@ -121,6 +125,7 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
         logger()->error('WEB login exception', [
             'proc_hash' => $procHash,
             'login_hash' => $loginHash,
+            'ip' => $request->ip(),
             'exception' => get_class($e),
             'error' => $e->getMessage()
         ]);
