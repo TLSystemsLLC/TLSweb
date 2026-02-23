@@ -19,10 +19,20 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
         $result = $gateway->callWithFallback($login !== '' ? $login : null, $proc, $params);
 
     } catch (InvalidCredentialsException) {
+        // Log sanitized login failure (for monitoring password spraying etc.)
+        logger()->warning('Invalid credentials attempt', [
+            'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
+        ]);
+
         // Looks like failed login; do not leak why
         return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
 
     } catch (InvalidRequestException) {
+        // Log invalid request (sanitized)
+        logger()->notice('Invalid SP request', [
+            'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
+        ]);
+
         // Invalid proc/params/scope/etc. (no details leaked)
         return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid request.'], 400);
 
@@ -53,6 +63,21 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
 
     // Stored procedure rc is a “business result”, not an exception.
     $rc = (int) ($result['rc'] ?? 99);
+
+    if ($rc !== 0) {
+        // Log business failure (e.g., login failed inside SP)
+        logger()->info('SP business failure', [
+            'rc' => $rc,
+            'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
+            'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
+        ]);
+    } else {
+        // Log success (for monitoring resource usage/valid logins)
+        logger()->info('SP success', [
+            'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
+            'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
+        ]);
+    }
 
     return response()->json([
         'rc'    => $rc,
