@@ -64,6 +64,12 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     // Stored procedure rc is a “business result”, not an exception.
     $rc = (int) ($result['rc'] ?? 99);
 
+    // DEBUG: Always log the RC we received
+    logger()->debug('SP result received', [
+        'rc' => $rc,
+        'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
+    ]);
+
     if ($rc !== 0) {
         // Log business failure (e.g., login failed inside SP)
         // Elevated to WARNING to ensure visibility even when LOG_LEVEL is set to warning or higher.
