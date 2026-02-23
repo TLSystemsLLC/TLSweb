@@ -77,24 +77,6 @@ Route::post('/login', function (Request $request, StoredProcedureGateway $gatewa
     $loginHash = $login !== '' ? substr(hash('sha256', $login), 0, 12) : null;
     $procHash  = substr(hash('sha256', 'spUser_Login'), 0, 12);
 
-    // Inspect ALL headers to see what is arriving from the firewall
-    logger()->notice('WEB login headers raw', $request->headers->all());
-
-    // Inspect common proxy IP headers to diagnose firewall forwarding
-    $ipHeaders = [
-        'ip' => $request->ip(),
-        'X-Forwarded-For'   => $request->header('X-Forwarded-For'),
-        'X-Real-IP'         => $request->header('X-Real-IP'),
-        'True-Client-IP'    => $request->header('True-Client-IP'),
-        'CF-Connecting-IP'  => $request->header('CF-Connecting-IP'),
-        'X-Client-IP'       => $request->header('X-Client-IP'),
-        'Forwarded'         => $request->header('Forwarded'),
-        'X-Forwarded-Proto' => $request->header('X-Forwarded-Proto'),
-        'X-Forwarded-Host'  => $request->header('X-Forwarded-Host'),
-        'X-Forwarded-Port'  => $request->header('X-Forwarded-Port'),
-    ];
-    logger()->notice('WEB login headers', $ipHeaders);
-
     // Record the attempt (sanitized)
     logger()->notice('WEB login attempt', [
         'proc_hash' => $procHash,
