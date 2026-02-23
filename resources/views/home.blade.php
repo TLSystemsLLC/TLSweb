@@ -27,6 +27,17 @@
     <script src="assets/social-likes/social-likes.js"></script>
     <script src="assets/multip/js/script.js"></script>
     <script src="assets/multip-gallery/script.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.mbr-hamburger').on('click', function() {
+                $(this).toggleClass('mbr-hamburger--open');
+                $(this).parents('.mbr-navbar').toggleClass('mbr-navbar--open').removeClass('mbr-navbar--short');
+            });
+            $('.mbr-navbar a:not(.mbr-hamburger)').on('click', function() {
+                $('.mbr-hamburger--open').click();
+            });
+        });
+    </script>
     <style>
         #home-nav .mbr-navbar__section {
             background-color: rgba(0, 0, 0, 0.4) !important;
