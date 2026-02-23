@@ -27,16 +27,16 @@ Route::post('/sp', function (Request $request, StoredProcedureGateway $gateway) 
         // Gateway handles: allowlist, scope, tenant parsing, param count, type enforcement
         $result = $gateway->callWithFallback($login !== '' ? $login : null, $proc, $params);
 
-    } catch (InvalidCredentialsException $e) {
-        // THIS IS THE BLOCK FOR FAILED LOGINS
+    } catch (\App\Database\Exceptions\InvalidCredentialsException $e) {
+        // Force log using the fully qualified class name just in case of namespace issues
         logger()->error('AUTH FAILURE DETECTED', [
-            'login_hash' => substr(hash('sha256', $login), 0, 12),
+            'login' => $login,
             'message' => $e->getMessage()
         ]);
 
         return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
 
-    } catch (InvalidRequestException $e) {
+    } catch (\App\Database\Exceptions\InvalidRequestException $e) {
         logger()->error('INVALID REQUEST DETECTED', [
             'proc' => $proc,
             'message' => $e->getMessage()
@@ -44,23 +44,20 @@ Route::post('/sp', function (Request $request, StoredProcedureGateway $gateway) 
 
         return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid request.'], 400);
 
-        // Invalid proc/params/scope/etc. (no details leaked)
-        return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid request.'], 400);
-
-    } catch (ServiceUnavailableHttpException $e) {
+    } catch (\Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException $e) {
         // Re-throw to let the global handler in bootstrap/app.php catch it
         throw $e;
 
     } catch (\Throwable $e) {
-        // Log real error for you; do not leak tenant/proc/sql details to caller
-        logger()->error('SP execution failed', [
+        // CRITICAL: Log EVERYTHING that isn't a known success
+        logger()->error('GENERAL EXCEPTION IN SP ROUTE', [
             'cid'       => $cid,
             'exception' => get_class($e),
-            'error'     => $e->getMessage(),
-            // Hash the login string (not tenant) to correlate repeated attacks without disclosure
-            'login_hash' => $login !== ''
-                ? substr(hash('sha256', $login), 0, 12)
-                : null,
+            'message'   => $e->getMessage(),
+            'file'      => $e->getFile(),
+            'line'      => $e->getLine(),
+            'proc'      => $proc,
+            'login'     => $login
         ]);
 
         // True server-side failure: return 500 with CID
