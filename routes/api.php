@@ -66,7 +66,8 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
 
     if ($rc !== 0) {
         // Log business failure (e.g., login failed inside SP)
-        logger()->info('SP business failure', [
+        // Elevated to WARNING to ensure visibility even when LOG_LEVEL is set to warning or higher.
+        logger()->warning('SP business failure', [
             'rc' => $rc,
             'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
             'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
