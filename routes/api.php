@@ -18,19 +18,21 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
         // Gateway handles: allowlist, scope, tenant parsing, param count, type enforcement
         $result = $gateway->callWithFallback($login !== '' ? $login : null, $proc, $params);
 
-    } catch (InvalidCredentialsException) {
+    } catch (InvalidCredentialsException $e) {
         // Log sanitized login failure (for monitoring password spraying etc.)
         logger()->warning('Invalid credentials attempt', [
             'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
+            'message'    => $e->getMessage(),
         ]);
 
         // Looks like failed login; do not leak why
         return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
 
-    } catch (InvalidRequestException) {
+    } catch (InvalidRequestException $e) {
         // Log invalid request (sanitized)
         logger()->notice('Invalid SP request', [
             'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
+            'message'   => $e->getMessage(),
         ]);
 
         // Invalid proc/params/scope/etc. (no details leaked)
@@ -64,8 +66,8 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     // Stored procedure rc is a “business result”, not an exception.
     $rc = (int) ($result['rc'] ?? 99);
 
-    // DEBUG: Always log the RC we received
-    logger()->debug('SP result received', [
+    // Always log the RC we received at NOTICE to ensure visibility in production
+    logger()->notice('SP result received', [
         'rc' => $rc,
         'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
     ]);
