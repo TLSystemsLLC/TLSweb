@@ -66,10 +66,15 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     // Stored procedure rc is a “business result”, not an exception.
     $rc = (int) ($result['rc'] ?? 99);
 
-    // TEMPORARY PROD DEBUG: Force an error log for EVERY single request to verify logger is reachable
-    logger()->error('DEBUG: Request processed', [
+    // TEMPORARY PROD DEBUG: Log the RC and FIRST DATA ROW to see why failure looks like success
+    $firstRow = $result['rows'][0] ?? null;
+    logger()->error('DEBUG: SP execution result', [
         'rc' => $rc,
-        'proc' => $proc !== '' ? substr(hash('sha256', $proc), 0, 8) : 'none'
+        'proc' => $proc,
+        'has_rows' => !empty($result['rows']),
+        'first_row_keys' => $firstRow ? array_keys($firstRow) : [],
+        // Sanitize: only log values for specific non-PII keys if they exist (like 'Success' or 'Error')
+        'status_hint' => $firstRow['Success'] ?? $firstRow['Error'] ?? $firstRow['Message'] ?? 'none'
     ]);
 
     if ($rc !== 0) {
