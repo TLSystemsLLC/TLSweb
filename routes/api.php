@@ -15,21 +15,6 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     $cid = bin2hex(random_bytes(8)); // 16-char ID
 
     try {
-        // ALWAYS log exactly what came in (for debugging log issues)
-        logger()->notice('Incoming SP request', [
-            'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
-            'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
-            // never log raw params for security
-            'params_count' => count($params)
-        ]);
-
-        // Explicitly log login attempts to ensure visibility regardless of SP behavior
-        if ($proc === 'spUser_Login') {
-            logger()->notice('Login attempt received', [
-                'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
-            ]);
-        }
-
         // Gateway handles: allowlist, scope, tenant parsing, param count, type enforcement
         $result = $gateway->callWithFallback($login !== '' ? $login : null, $proc, $params);
 
@@ -81,16 +66,8 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     // Stored procedure rc is a “business result”, not an exception.
     $rc = (int) ($result['rc'] ?? 99);
 
-    // Always log the RC we received at NOTICE to ensure visibility in production
-    logger()->notice('SP result received', [
-        'rc' => $rc,
-        'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
-        'data_row_count' => count($result['rows'] ?? []),
-    ]);
-
     if ($rc !== 0) {
         // Log business failure (e.g., login failed inside SP)
-        // Elevated to WARNING to ensure visibility even when LOG_LEVEL is set to warning or higher.
         logger()->warning('SP business failure', [
             'rc' => $rc,
             'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
@@ -102,18 +79,6 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
             'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
             'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
         ]);
-
-        // LOGGING-ONLY WORKAROUND: If login success is reported but no user rows returned, log it as a potential auth failure.
-        // We use a specific message to differentiate from generic success.
-        $isLogin = ($proc === 'spUser_Login');
-        $hasRows = !empty($result['rows'] ?? []);
-
-        if ($isLogin && !$hasRows) {
-            logger()->warning('LOGIN FAILURE: Correct credentials format but no user record found', [
-                'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
-                'rc' => $rc
-            ]);
-        }
     }
 
     return response()->json([

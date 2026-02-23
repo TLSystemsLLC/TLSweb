@@ -123,8 +123,7 @@ class StoredProcedureClient
             }
 
             // Is this our Return Code rowset?
-            // Check for 'rc' key in any row of the rowset
-            if (isset($rowset[0]['rc']) && count($rowset) === 1 && count($rowset[0]) === 1) {
+            if (count($rowset) === 1 && array_key_exists('rc', $rowset[0])) {
                 $rc = (int)$rowset[0]['rc'];
             } else {
                 // If it's not the RC, it's actual data rows
