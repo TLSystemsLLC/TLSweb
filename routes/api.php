@@ -17,11 +17,18 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     try {
         // ALWAYS log exactly what came in (for debugging log issues)
         logger()->notice('Incoming SP request', [
-            'login' => $login,
-            'proc'  => $proc,
+            'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
+            'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
             // never log raw params for security
             'params_count' => count($params)
         ]);
+
+        // Explicitly log login attempts to ensure visibility regardless of SP behavior
+        if ($proc === 'spUser_Login') {
+            logger()->notice('Login attempt received', [
+                'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
+            ]);
+        }
 
         // Gateway handles: allowlist, scope, tenant parsing, param count, type enforcement
         $result = $gateway->callWithFallback($login !== '' ? $login : null, $proc, $params);
