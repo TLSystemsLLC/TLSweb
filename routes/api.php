@@ -28,21 +28,21 @@ Route::post('/sp', function (Request $request, StoredProcedureGateway $gateway) 
         $result = $gateway->callWithFallback($login !== '' ? $login : null, $proc, $params);
 
     } catch (InvalidCredentialsException $e) {
-        // Log sanitized login failure (for monitoring password spraying etc.)
-        logger()->warning('Invalid credentials attempt', [
-            'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
-            'message'    => $e->getMessage(),
+        // THIS IS THE BLOCK FOR FAILED LOGINS
+        logger()->error('AUTH FAILURE DETECTED', [
+            'login_hash' => substr(hash('sha256', $login), 0, 12),
+            'message' => $e->getMessage()
         ]);
 
-        // Looks like failed login; do not leak why
         return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
 
     } catch (InvalidRequestException $e) {
-        // Log invalid request (sanitized)
-        logger()->notice('Invalid SP request', [
-            'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
-            'message'   => $e->getMessage(),
+        logger()->error('INVALID REQUEST DETECTED', [
+            'proc' => $proc,
+            'message' => $e->getMessage()
         ]);
+
+        return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid request.'], 400);
 
         // Invalid proc/params/scope/etc. (no details leaked)
         return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid request.'], 400);
@@ -88,7 +88,7 @@ Route::post('/sp', function (Request $request, StoredProcedureGateway $gateway) 
 
     if ($rc !== 0) {
         // Log business failure (e.g., login failed inside SP)
-        logger()->warning('SP business failure', [
+        logger()->error('SP BUSINESS FAILURE', [
             'rc' => $rc,
             'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
             'login_hash' => $login !== '' ? substr(hash('sha256', $login), 0, 12) : null,
