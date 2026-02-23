@@ -6,13 +6,9 @@ use App\Database\Exceptions\InvalidCredentialsException;
 use App\Database\Exceptions\InvalidRequestException;
 use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
-Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, StoredProcedureGateway $gateway) {
-    // 0. IMMEDIATE LOG: Confirm entry into the closure
-    logger()->error('CRITICAL: Route closure started', [
-        'url' => $request->fullUrl(),
-        'method' => $request->method(),
-        'ip' => $request->ip()
-    ]);
+Route::post('/sp', function (Request $request, StoredProcedureGateway $gateway) {
+    // IMMEDIATE LOG: Before anything else
+    logger()->error('CRITICAL: Route entry point reached');
 
     $login  = (string) $request->input('login', '');
     $proc   = (string) $request->input('proc', '');
