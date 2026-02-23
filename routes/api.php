@@ -85,6 +85,7 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     logger()->notice('SP result received', [
         'rc' => $rc,
         'proc_hash' => $proc !== '' ? substr(hash('sha256', $proc), 0, 12) : null,
+        'data_row_count' => count($result['rows'] ?? []),
     ]);
 
     if ($rc !== 0) {
