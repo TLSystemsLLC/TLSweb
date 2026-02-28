@@ -158,10 +158,13 @@
                 }
             }
 
-            function renderMenuManagement(allItems, userPerms, mode = 'security') {
+            function renderMenuManagement(allItems, userPerms, mode = 'security', targetUser = null) {
                 const container = document.getElementById('menu-mgmt-container');
                 if (!container) return;
                 container.innerHTML = '';
+
+                // Use targetUser if provided, fallback to current session user
+                const activeUser = targetUser || window.username;
 
                 const allowedKeys = new Set(userPerms.map(p => (p.MenuName || p.MenuKey || '').trim()));
 
@@ -306,7 +309,7 @@
                         this.disabled = true;
 
                         try {
-                            const res = await window.callSp('spUser_Menu_Save', [window.username, key, isAllowed]);
+                            const res = await window.callSp('spUser_Menu_Save', [activeUser, key, isAllowed]);
 
                             statusEl.classList.remove('d-none', 'alert-success', 'alert-danger');
                             if (res.ok) {
@@ -537,12 +540,61 @@
                             // Initialized by its own IIFE in fragment, no extra call needed here
                             // unless we want to pass data.
                         } else if (pageKey === 'mnuUserSecurity') {
-                            // We need access to menu data for management UI - show ALL including inactive
-                            const menuRes = await window.callSp('GetMenuItems', [1], null);
-                            const permRes = await window.callSp('spUser_Menus', [window.username]);
-                            if (menuRes.ok && permRes.ok) {
-                                renderMenuManagement(menuRes.data, permRes.data, 'security');
+                            const userSelect = document.getElementById('user-select');
+                            const loadingText = document.getElementById('loading-text');
+
+                            // Load users for the dropdown
+                            window.callSp('spUsers_GetAll', [])
+                                .then(userRes => {
+                                    if (userRes.ok) {
+                                        userSelect.innerHTML = '<option value="">-- Select User --</option>';
+                                        userRes.data.forEach(u => {
+                                            const opt = document.createElement('option');
+                                            // Assume the SP returns UserID and possibly UserName or Name
+                                            const userId = u.UserID || u.userid || u.Login;
+                                            const userName = u.UserName || u.UserName || u.Name || userId;
+                                            opt.value = userId;
+                                            opt.textContent = userName;
+                                            if (userId === window.username) opt.selected = true;
+                                            userSelect.appendChild(opt);
+                                        });
+                                        userSelect.disabled = false;
+
+                                        // If a user is already selected (e.g. current user), load their permissions
+                                        if (userSelect.value) {
+                                            loadUserPermissions(userSelect.value);
+                                        }
+                                    } else {
+                                        userSelect.innerHTML = '<option value="">Error loading users</option>';
+                                    }
+                                });
+
+                            async function loadUserPermissions(userId) {
+                                if (!userId) {
+                                    document.getElementById('menu-mgmt-container').innerHTML = `
+                                        <div class="col-12 text-center py-5 text-muted">
+                                            Select a user to manage permissions...
+                                        </div>`;
+                                    return;
+                                }
+
+                                const container = document.getElementById('menu-mgmt-container');
+                                container.innerHTML = `
+                                    <div class="col-12 text-center py-5 text-muted">
+                                        <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                                        Loading permissions for ${userId}...
+                                    </div>`;
+
+                                const menuRes = await window.callSp('GetMenuItems', [1], null);
+                                const permRes = await window.callSp('spUser_Menus', [userId]);
+                                if (menuRes.ok && permRes.ok) {
+                                    renderMenuManagement(menuRes.data, permRes.data, 'security', userId);
+                                }
                             }
+
+                            userSelect.addEventListener('change', (e) => {
+                                loadUserPermissions(e.target.value);
+                            });
                         } else if (pageKey === 'mnuMenuMaintenance') {
                             // Global menu maintenance - show ALL including inactive
                             const menuRes = await window.callSp('GetMenuItems', [1], null);
