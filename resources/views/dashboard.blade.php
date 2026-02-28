@@ -158,7 +158,7 @@
                 }
             }
 
-            function renderMenuManagement(allItems, userPerms) {
+            function renderMenuManagement(allItems, userPerms, mode = 'security') {
                 const container = document.getElementById('menu-mgmt-container');
                 if (!container) return;
                 container.innerHTML = '';
@@ -216,6 +216,25 @@
                     const children = itemsByParent[item.MenuItemId] || [];
                     const chevron = children.length > 0 ? '<i class="bi bi-chevron-down small me-1"></i>' : '<span class="me-3"></span>';
 
+                    let controlsHtml = '';
+                    if (mode === 'security') {
+                        controlsHtml = `
+                            <div class="form-check form-switch" title="Authorized">
+                                <input class="form-check-input menu-toggle-switch" type="checkbox"
+                                    data-key="${key}" ${isAuthorized ? 'checked' : ''}>
+                                <label class="x-small text-muted d-block mt-1">Auth</label>
+                            </div>
+                        `;
+                    } else if (mode === 'maintenance') {
+                        controlsHtml = `
+                            <div class="form-check form-switch" title="Active Status">
+                                <input class="form-check-input active-toggle-switch" type="checkbox"
+                                    data-key="${key}" ${isActive ? 'checked' : ''}>
+                                <label class="x-small text-muted d-block mt-1">Active</label>
+                            </div>
+                        `;
+                    }
+
                     tr.innerHTML = `
                         <td>
                             <div style="padding-left: ${indentation}px">
@@ -229,16 +248,7 @@
                         <td><code class="x-small">${key}</code></td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-3">
-                                <div class="form-check form-switch" title="Authorized">
-                                    <input class="form-check-input menu-toggle-switch" type="checkbox"
-                                        data-key="${key}" ${isAuthorized ? 'checked' : ''}>
-                                    <label class="x-small text-muted d-block mt-1">Auth</label>
-                                </div>
-                                <div class="form-check form-switch" title="Active Status">
-                                    <input class="form-check-input active-toggle-switch" type="checkbox"
-                                        data-key="${key}" ${isActive ? 'checked' : ''}>
-                                    <label class="x-small text-muted d-block mt-1">Active</label>
-                                </div>
+                                ${controlsHtml}
                             </div>
                         </td>
                     `;
@@ -365,10 +375,10 @@
                 // userPerms is array of { MenuName: '...' }
                 const allowedKeys = new Set(userPerms.map(p => (p.MenuName || p.MenuKey || '').trim()));
 
-                // Filter out security keys (sec*) and unauthorized keys
+                // Filter out unauthorized keys
                 let visibleItems = allItems.filter(item => {
                     const key = (item.MenuKey || '').trim();
-                    if (key.startsWith('sec')) return false; // Security only
+                    if (key.startsWith('sec')) return false; // sec* options are not menu items
                     return allowedKeys.has(key);
                 });
 
@@ -531,7 +541,14 @@
                             const menuRes = await window.callSp('GetMenuItems', [1], null);
                             const permRes = await window.callSp('spUser_Menus', [window.username]);
                             if (menuRes.ok && permRes.ok) {
-                                renderMenuManagement(menuRes.data, permRes.data);
+                                renderMenuManagement(menuRes.data, permRes.data, 'security');
+                            }
+                        } else if (pageKey === 'mnuMenuMaintenance') {
+                            // Global menu maintenance - show ALL including inactive
+                            const menuRes = await window.callSp('GetMenuItems', [1], null);
+                            // Perms not strictly needed for maintenance but helpful for rendering context if needed
+                            if (menuRes.ok) {
+                                renderMenuManagement(menuRes.data, [], 'maintenance');
                             }
                         }
                     } else {
