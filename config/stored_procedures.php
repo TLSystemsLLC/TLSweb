@@ -18,6 +18,12 @@ return [
         'spUsers_GetAll' => [
             'params' => [],
         ],
+        'spUser_Search' => [
+            'params' => [
+                'Search'  => 'string',
+                'MaxRows' => 'int',
+            ],
+        ],
         'spUser_Menus' => [
             'params' => ['UserID' => 'string'],
         ],
@@ -59,7 +65,31 @@ return [
                 'Email'   => 'string',
             ],
         ],
-        // 'spFactoringCo_Save' => [ ... ],
+        'spUser_Save2' => [
+            'params' => [
+                'Key'               => 'int',
+                'UserID'            => 'string',
+                'TeamKey'           => 'int',
+                'UserName'          => 'string',
+                'FirstName'         => 'string',
+                'LastName'          => 'string',
+                'PasswordChanged'   => 'string',
+                'Extension'         => 'int',
+                'SatelliteInstalls' => 'int',
+                'Password'          => 'string',
+                'Email'             => 'string',
+                'LastLogin'         => 'string',
+                'HireDate'          => 'string',
+                'RapidLogUser'      => 'int',
+                'Active'            => 'int',
+                'UserType'          => 'int',
+                'CompanyID'         => 'int',
+                'DivisionID'        => 'int',
+                'DepartmentID'      => 'int',
+                'Phone'             => 'string',
+                'Fax'               => 'string',
+            ],
+        ],
     ],
 
     // global / shared procedures (master DB)

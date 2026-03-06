@@ -42,23 +42,34 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
 
     } catch (\Throwable $e) {
         // Log real error for you; do not leak tenant/proc/sql details to caller
+        $errorMsg = $e->getMessage();
+        $isMissingProc = str_contains($errorMsg, '2812') || str_contains($errorMsg, 'Could not find stored procedure');
+
         logger()->error('SP execution failed', [
             'cid'       => $cid,
             'exception' => get_class($e),
-            'error'     => $e->getMessage(),
+            'error'     => $errorMsg,
             // Hash the login string (not tenant) to correlate repeated attacks without disclosure
             'login_hash' => $login !== ''
                 ? substr(hash('sha256', $login), 0, 12)
                 : null,
+            'missing_proc' => $isMissingProc ? $proc : null,
         ]);
 
         // True server-side failure: return 500 with CID
-        return response()->json([
+        // If it's a missing procedure, we return rc 99 but add a hint if in local environment
+        $data = [
             'rc'    => 99,
             'ok'    => false,
             'error' => 'Server error.',
             'cid'   => $cid,
-        ], 500);
+        ];
+
+        if ($isMissingProc && app()->environment('local')) {
+            $data['error'] = "Stored procedure [{$proc}] not found in database.";
+        }
+
+        return response()->json($data, 500);
     }
 
     // Stored procedure rc is a “business result”, not an exception.
