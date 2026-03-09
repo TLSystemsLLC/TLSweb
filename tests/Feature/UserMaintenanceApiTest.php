@@ -74,18 +74,26 @@ class UserMaintenanceApiTest extends TestCase
         @unlink($cacheFile);
     }
 
-    public function test_api_allows_spUser_Search(): void
+    public function test_api_allows_webUserSearch(): void
     {
         $mockClient = Mockery::mock(StoredProcedureClient::class);
 
-        $params = ['test', 100];
+        $params = ['test', 1, 100];
 
         $mockClient->shouldReceive('execWithReturnCode')
             ->once()
-            ->with('mrwr', 'spUser_Search', $params)
+            ->with('mrwr', 'webUserSearch', $params)
             ->andReturn([
                 'rc' => 0,
-                'rows' => [['UserID' => 'testuser', 'UserName' => 'Test User']]
+                'rows' => [[
+                    'UserID' => 'testuser',
+                    'UserName' => 'Test User',
+                    'TotalRows' => 1,
+                    'CurrentPage' => 1,
+                    'PageSize' => 100,
+                    'TotalPages' => 1,
+                    'HasNextPage' => 0
+                ]]
             ]);
 
         $this->app->instance(StoredProcedureClient::class, $mockClient);
@@ -97,7 +105,7 @@ class UserMaintenanceApiTest extends TestCase
 
         $response = $this->postJson('/api/sp', [
             'login' => 'mrwr.tlyle',
-            'proc' => 'spUser_Search',
+            'proc' => 'webUserSearch',
             'params' => $params
         ]);
 
@@ -105,7 +113,15 @@ class UserMaintenanceApiTest extends TestCase
                  ->assertJson([
                      'rc' => 0,
                      'ok' => true,
-                     'data' => [['UserID' => 'testuser', 'UserName' => 'Test User']],
+                     'data' => [[
+                         'UserID' => 'testuser',
+                         'UserName' => 'Test User',
+                         'TotalRows' => 1,
+                         'CurrentPage' => 1,
+                         'PageSize' => 100,
+                         'TotalPages' => 1,
+                         'HasNextPage' => 0
+                     ]],
                      'error' => null
                  ]);
 

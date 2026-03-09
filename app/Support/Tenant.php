@@ -13,7 +13,7 @@ final class Tenant
 
         // Expect "tenant.user" (only split on first dot)
         $parts = explode('.', $login, 2);
-        $code = strtolower(trim($parts[0] ?? ''));
+        $code = trim($parts[0] ?? '');
 
         if ($code === '') {
             throw new \InvalidArgumentException('Invalid credentials.');

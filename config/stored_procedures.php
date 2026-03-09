@@ -12,17 +12,18 @@ return [
                 'Password' => 'string',
             ],
         ],
+        'webUserSearch' => [
+            'params' => [
+                'Search'   => 'string',
+                'Page'     => 'int',
+                'PageSize' => 'int',
+            ],
+        ],
         'spUser_GetByID' => [
             'params' => ['UserID' => 'string'],
         ],
         'spUsers_GetAll' => [
             'params' => [],
-        ],
-        'spUser_Search' => [
-            'params' => [
-                'Search'  => 'string',
-                'MaxRows' => 'int',
-            ],
         ],
         'spUser_Menus' => [
             'params' => ['UserID' => 'string'],

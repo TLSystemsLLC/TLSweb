@@ -33,15 +33,23 @@ class StoredProcedureGateway
             $scope  = 'global';
             $schema = $allowGlobal[$proc];
         } else {
+            logger()->warning('Invalid SP requested (not allowlisted)', ['proc' => $proc]);
             throw new InvalidRequestException('Invalid request.');
         }
 
         // Validate schema + params (count + types)
         $expected = $schema['params'] ?? [];
         if (!is_array($expected)) {
+            logger()->error('Invalid SP schema config', ['proc' => $proc]);
             throw new InvalidRequestException('Invalid request.');
         }
         if (count($params) !== count($expected)) {
+            logger()->warning('SP param count mismatch', [
+                'proc' => $proc,
+                'expected' => count($expected),
+                'actual' => count($params),
+                'params' => $params
+            ]);
             throw new InvalidRequestException('Invalid request.');
         }
 
@@ -60,6 +68,12 @@ class StoredProcedureGateway
                     } elseif (is_float($val) && (int)$val == $val) {
                         $typed[] = (int) $val;
                     } else {
+                        logger()->warning('SP param type mismatch (int expected)', [
+                            'proc' => $proc,
+                            'name' => $name,
+                            'value' => $val,
+                            'type' => gettype($val)
+                        ]);
                         throw new InvalidRequestException('Invalid request.');
                     }
                     break;
@@ -69,6 +83,7 @@ class StoredProcedureGateway
                     break;
 
                 default:
+                    logger()->error('Unknown type in schema', ['type' => $type]);
                     throw new InvalidRequestException('Invalid request.');
             }
 

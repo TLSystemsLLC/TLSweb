@@ -53,9 +53,10 @@ final class TenantRegistry
         // Expect rows with a "tenant_id" column
         $map = [];
         foreach (($result['rows'] ?? []) as $row) {
-            $name = strtolower(trim((string) ($row['tenant_id'] ?? '')));
+            $name = trim((string) ($row['tenant_id'] ?? ''));
             if ($name !== '') {
                 $map[$name] = true;
+                $map[strtolower($name)] = true; // allow case-insensitive lookup but preserve original via keys
             }
         }
 
@@ -73,7 +74,8 @@ final class TenantRegistry
 
     public static function isAllowed(string $tenant): bool
     {
-        $tenant = strtolower(trim($tenant));
-        return isset(self::allowedTenants()[$tenant]);
+        $tenant = trim($tenant);
+        $allowed = self::allowedTenants();
+        return isset($allowed[$tenant]) || isset($allowed[strtolower($tenant)]);
     }
 }

@@ -10,10 +10,15 @@
             </button>
         </div>
 
-        <div class="mb-3">
-            <div class="input-group input-group-sm">
+        <div class="mb-3 d-flex gap-2 align-items-center">
+            <div class="input-group input-group-sm flex-grow-1">
                 <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
-                <input type="text" id="user-search" class="form-control border-start-0" placeholder="Search by name, ID, or email...">
+                <input type="text" id="user-search" class="form-control border-start-0" placeholder="Search by name, ID, or email (use * for all)...">
+            </div>
+            <div id="pagination-controls" class="d-none d-flex gap-2 align-items-center">
+                <button class="btn btn-outline-secondary btn-sm" id="btn-prev-page" title="Previous Page"><i class="bi bi-chevron-left"></i></button>
+                <span id="page-info" class="small text-muted text-nowrap">Page 1 of 1</span>
+                <button class="btn btn-outline-secondary btn-sm" id="btn-next-page" title="Next Page"><i class="bi bi-chevron-right"></i></button>
             </div>
         </div>
 
@@ -144,6 +149,10 @@
     let allUsers = [];
     let modal;
     let form;
+    let currentPage = 1;
+    let totalPages = 1;
+    let currentSearch = '';
+    const pageSize = 100;
 
     async function init() {
         if (typeof bootstrap === 'undefined') {
@@ -160,10 +169,27 @@
 
         document.getElementById('user-search').addEventListener('input', (e) => {
             const val = e.target.value.trim();
-            if (val.length >= 2) {
-                loadUsers(val);
+            if (val.length >= 2 || val === '*') {
+                currentSearch = val;
+                currentPage = 1;
+                loadUsers(val, currentPage);
             } else {
                 renderTable([]);
+                document.getElementById('pagination-controls').classList.add('d-none');
+            }
+        });
+
+        document.getElementById('btn-prev-page').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                loadUsers(currentSearch, currentPage);
+            }
+        });
+
+        document.getElementById('btn-next-page').addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                loadUsers(currentSearch, currentPage);
             }
         });
 
@@ -173,14 +199,45 @@
         });
     }
 
-    async function loadUsers(search = '', maxRows = 100) {
-        const res = await window.callSp('spUser_Search', [search, maxRows]);
-        if (res.ok) {
-            allUsers = res.data;
-            renderTable(allUsers);
-        } else {
-            document.getElementById('user-list-body').innerHTML = `<tr><td colspan="5" class="text-center text-danger py-4">Failed to load users (rc: ${res.rc})</td></tr>`;
+    async function loadUsers(search = '', page = 1) {
+        try {
+            const res = await window.callSp('webUserSearch', [search, parseInt(page) || 1, parseInt(pageSize) || 100]);
+            if (res.ok) {
+                allUsers = res.data;
+                if (allUsers.length > 0) {
+                    const first = allUsers[0];
+                    currentPage = first.CurrentPage || page;
+                    totalPages = first.TotalPages || 1;
+                    updatePagination(currentPage, totalPages);
+                } else {
+                    document.getElementById('pagination-controls').classList.add('d-none');
+                }
+                renderTable(allUsers);
+            } else {
+                document.getElementById('user-list-body').innerHTML = `<tr><td colspan="5" class="text-center text-danger py-4">Failed to load users (rc: ${res.rc})</td></tr>`;
+                document.getElementById('pagination-controls').classList.add('d-none');
+            }
+        } catch (err) {
+            console.error('Error loading users:', err);
+            document.getElementById('user-list-body').innerHTML = `<tr><td colspan="5" class="text-center text-danger py-4">An unexpected error occurred.</td></tr>`;
         }
+    }
+
+    function updatePagination(current, total) {
+        const controls = document.getElementById('pagination-controls');
+        const info = document.getElementById('page-info');
+        const btnPrev = document.getElementById('btn-prev-page');
+        const btnNext = document.getElementById('btn-next-page');
+
+        if (total <= 1 && current <= 1) {
+            controls.classList.add('d-none');
+            return;
+        }
+
+        controls.classList.remove('d-none');
+        info.textContent = `Page ${current} of ${total}`;
+        btnPrev.disabled = (current <= 1);
+        btnNext.disabled = (current >= total);
     }
 
     function isTruthy(val) {
@@ -198,7 +255,7 @@
         const tbody = document.getElementById('user-list-body');
         const searchVal = document.getElementById('user-search').value.trim();
 
-        if (searchVal.length < 2) {
+        if (searchVal.length < 2 && searchVal !== '*') {
             tbody.innerHTML = '<tr><td colspan="5" class="text-center py-4 text-muted">Please enter at least 2 characters to search.</td></tr>';
             return;
         }
@@ -320,8 +377,8 @@
                 console.log('User saved successfully');
                 modal.hide();
                 const searchVal = document.getElementById('user-search').value.trim();
-                if (searchVal.length >= 2) {
-                    await loadUsers(searchVal);
+                if (searchVal.length >= 2 || searchVal === '*') {
+                    await loadUsers(searchVal, currentPage);
                 } else {
                     renderTable([]);
                 }

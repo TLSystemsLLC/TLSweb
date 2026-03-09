@@ -1,14 +1,13 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use App\Support\TenantRegistry;
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+require __DIR__ . '/vendor/autoload.php';
+$app = require_once __DIR__ . '/bootstrap/app.php';
+$app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
-Artisan::command('db:deploy-sp', function () {
-    $sql = "
+// Procedure definition
+$sql = "
 CREATE OR ALTER PROCEDURE [dbo].[webUserSearch]
 (
     @Search     nvarchar(200) = NULL,
@@ -96,34 +95,33 @@ BEGIN
 END
 ";
 
-    $tenants = array_keys(\App\Support\TenantRegistry::allowedTenants());
-    $this->info("Found " . count($tenants) . " tenants.");
+$tenants = array_keys(TenantRegistry::allowedTenants());
+echo "Found " . count($tenants) . " tenants: " . implode(', ', $tenants) . PHP_EOL;
 
-    $dsn  = env('TLS_ODBC_DSN');
-    $user = env('TLS_SQL_USER');
-    $pass = env('TLS_SQL_PASS');
+$dsn  = env('TLS_ODBC_DSN');
+$user = env('TLS_SQL_USER');
+$pass = env('TLS_SQL_PASS');
 
+try {
+    $pdo = new PDO("odbc:$dsn", $user, $pass, [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ]);
+} catch (PDOException $e) {
+    die("ODBC connect failed: " . $e->getMessage() . PHP_EOL);
+}
+
+foreach ($tenants as $tenant) {
+    echo "Deploying to tenant: $tenant... ";
     try {
-        $pdo = new PDO("odbc:$dsn", $user, $pass, [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
-        ]);
+        // Use the tenant DB
+        $pdo->exec("USE [$tenant]");
+        $pdo->exec($sql);
+        echo "OK" . PHP_EOL;
     } catch (PDOException $e) {
-        $this->error("ODBC connect failed: " . $e->getMessage());
-        return;
+        echo "FAILED: " . $e->getMessage() . PHP_EOL;
     }
+}
 
-    foreach ($tenants as $tenant) {
-        $this->info("Deploying to tenant: $tenant...");
-        try {
-            $pdo->exec("USE [$tenant]");
-            $pdo->exec($sql);
-            $this->info("OK");
-        } catch (PDOException $e) {
-            $this->error("FAILED: " . $e->getMessage());
-        }
-    }
-
-    $this->info("Done.");
-})->purpose('Deploy stored procedures to all tenant databases');
+echo "Done." . PHP_EOL;

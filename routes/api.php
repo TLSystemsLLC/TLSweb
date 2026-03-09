@@ -49,6 +49,7 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
             'cid'       => $cid,
             'exception' => get_class($e),
             'error'     => $errorMsg,
+            'stack'     => $e->getTraceAsString(),
             // Hash the login string (not tenant) to correlate repeated attacks without disclosure
             'login_hash' => $login !== ''
                 ? substr(hash('sha256', $login), 0, 12)

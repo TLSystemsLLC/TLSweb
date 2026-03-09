@@ -53,7 +53,7 @@ class StoredProcedureClient
      */
     public function execWithReturnCode(string $tenantDb, string $procedure, array $params = []): array
     {
-        $tenantDb = strtolower(trim($tenantDb));
+        $tenantDb = trim($tenantDb);
         $procedure = trim($procedure);
 
         // These are defense-in-depth; gateway should already have validated.
