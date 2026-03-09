@@ -55,7 +55,7 @@ class UserMenuTest extends TestCase
             ->once()
             ->with('mrwr', 'spUser_Menu', ['tlyle', 999])
             ->andReturn([
-                'rc' => 99,
+                'rc' => 100,
                 'rows' => []
             ]);
 
@@ -74,10 +74,10 @@ class UserMenuTest extends TestCase
         // ARCHITECTURE.md: Business failure (non-zero rc) returns 422
         $response->assertStatus(422)
                  ->assertJson([
-                     'rc' => 99,
+                     'rc' => 100,
                      'ok' => false,
                      'data' => [],
-                     'error' => ['code' => 99]
+                     'error' => ['code' => 100]
                  ]);
 
         @unlink($cacheFile);

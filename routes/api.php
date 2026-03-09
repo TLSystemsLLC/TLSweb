@@ -25,7 +25,7 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
         ]);
 
         // Looks like failed login; do not leak why
-        return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
+        return response()->json(['rc' => 100, 'ok' => false, 'error' => 'Invalid credentials.'], 401);
 
     } catch (InvalidRequestException $e) {
         // Log invalid request (sanitized)
@@ -34,7 +34,7 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
         ]);
 
         // Invalid proc/params/scope/etc. (no details leaked)
-        return response()->json(['rc' => 99, 'ok' => false, 'error' => 'Invalid request.'], 400);
+        return response()->json(['rc' => 100, 'ok' => false, 'error' => 'Invalid request.'], 400);
 
     } catch (ServiceUnavailableHttpException $e) {
         // Re-throw to let the global handler in bootstrap/app.php catch it
@@ -58,9 +58,9 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
         ]);
 
         // True server-side failure: return 500 with CID
-        // If it's a missing procedure, we return rc 99 but add a hint if in local environment
+        // If it's a missing procedure, we return rc 100 but add a hint if in local environment
         $data = [
-            'rc'    => 99,
+            'rc'    => 100,
             'ok'    => false,
             'error' => 'Server error.',
             'cid'   => $cid,
@@ -74,7 +74,7 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
     }
 
     // Stored procedure rc is a “business result”, not an exception.
-    $rc = (int) ($result['rc'] ?? 99);
+    $rc = (int) ($result['rc'] ?? 100);
 
     if ($rc !== 0) {
         // Log business failure (e.g., login failed inside SP)
@@ -101,7 +101,7 @@ Route::middleware(['throttle:30,1'])->post('/sp', function (Request $request, St
 
 Route::fallback(function () {
     return response()->json([
-        'rc'    => 99,
+        'rc'    => 100,
         'ok'    => false,
         'error' => 'Invalid request.',
     ], 400);

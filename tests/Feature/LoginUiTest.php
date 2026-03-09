@@ -58,7 +58,7 @@ class LoginUiTest extends TestCase
             ->once()
             ->with('mrwr', 'spUser_Login', ['tlyle', 'wrong'])
             ->andReturn([
-                'rc' => 99,
+                'rc' => 100,
                 'rows' => []
             ]);
 

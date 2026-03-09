@@ -71,7 +71,7 @@ class LoginTest extends TestCase
             ->once()
             ->with('mrwr', 'spUser_Login', ['tlyle', 'wrong'])
             ->andReturn([
-                'rc' => 99,
+                'rc' => 100,
                 'rows' => []
             ]);
 
@@ -83,9 +83,9 @@ class LoginTest extends TestCase
 
         $response->assertStatus(422)
                  ->assertJson([
-                     'rc' => 99,
+                     'rc' => 100,
                      'ok' => false,
-                     'error' => ['code' => 99]
+                     'error' => ['code' => 100]
                  ]);
     }
 }

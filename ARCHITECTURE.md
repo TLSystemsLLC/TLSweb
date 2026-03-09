@@ -150,10 +150,10 @@ Success:
 Business failure:
 
 {
-  "rc": 99,
+  "rc": 100,
   "ok": false,
   "data": [],
-  "error": { "code": 99 }
+  "error": { "code": 100 }
 }
 
 ---

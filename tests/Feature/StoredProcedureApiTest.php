@@ -25,7 +25,7 @@ class StoredProcedureApiTest extends TestCase
 
         $response->assertStatus(401)
                  ->assertJson([
-                     'rc' => 99,
+                     'rc' => 100,
                      'ok' => false,
                      'error' => 'Invalid credentials.'
                  ]);
@@ -41,7 +41,7 @@ class StoredProcedureApiTest extends TestCase
 
         $response->assertStatus(400)
                  ->assertJson([
-                     'rc' => 99,
+                     'rc' => 100,
                      'ok' => false,
                      'error' => 'Invalid request.'
                  ]);
@@ -58,7 +58,7 @@ class StoredProcedureApiTest extends TestCase
 
         $response->assertStatus(400)
                  ->assertJson([
-                     'rc' => 99,
+                     'rc' => 100,
                      'ok' => false,
                      'error' => 'Invalid request.'
                  ]);
@@ -75,7 +75,7 @@ class StoredProcedureApiTest extends TestCase
 
         $response->assertStatus(400)
                  ->assertJson([
-                     'rc' => 99,
+                     'rc' => 100,
                      'ok' => false,
                      'error' => 'Invalid request.'
                  ]);
@@ -85,9 +85,21 @@ class StoredProcedureApiTest extends TestCase
     {
         // We need to mock the gateway or client to avoid real DB connection
         $mockClient = Mockery::mock(StoredProcedureClient::class);
+        \App\Support\TenantRegistry::clearTestCache();
+        $cacheFile = storage_path('framework/cache/tenants.php');
+        @unlink($cacheFile);
+
+        $mockClient->shouldReceive('execMasterWithReturnCode')
+            ->atLeast()->once()
+            ->with('getTenants', [])
+            ->andReturn([
+                'rc' => 0,
+                'rows' => [['tenant_id' => 'MRWR']]
+            ]);
+
         $mockClient->shouldReceive('execWithReturnCode')
             ->once()
-            ->with('mrwr', 'spCompany_Get', [1])
+            ->with('MRWR', 'spCompany_Get', [1])
             ->andReturn([
                 'rc' => 50001,
                 'rows' => []
@@ -95,16 +107,8 @@ class StoredProcedureApiTest extends TestCase
 
         $this->app->instance(StoredProcedureClient::class, $mockClient);
 
-        // Mock TenantRegistry to allow 'mrwr'
-        // Since TenantRegistry uses static methods and file cache, it's harder to mock directly without mocking the filesystem or using a library that can mock static methods.
-        // But Tenant::fromLogin calls TenantRegistry::isAllowed.
-        // Let's try to seed the cache file.
-        $cacheFile = storage_path('framework/cache/tenants.php');
-        @mkdir(dirname($cacheFile), 0775, true);
-        file_put_contents($cacheFile, "<?php\nreturn ['mrwr' => true];\n");
-
         $response = $this->postJson('/api/sp', [
-            'login' => 'mrwr.tlyle',
+            'login' => 'MRWR.tlyle',
             'proc' => 'spCompany_Get',
             'params' => [1]
         ]);
@@ -122,9 +126,21 @@ class StoredProcedureApiTest extends TestCase
     public function test_api_handles_success(): void
     {
         $mockClient = Mockery::mock(StoredProcedureClient::class);
+        \App\Support\TenantRegistry::clearTestCache();
+        $cacheFile = storage_path('framework/cache/tenants.php');
+        @unlink($cacheFile);
+
+        $mockClient->shouldReceive('execMasterWithReturnCode')
+            ->atLeast()->once()
+            ->with('getTenants', [])
+            ->andReturn([
+                'rc' => 0,
+                'rows' => [['tenant_id' => 'MRWR']]
+            ]);
+
         $mockClient->shouldReceive('execWithReturnCode')
             ->once()
-            ->with('mrwr', 'spCompany_Get', [1])
+            ->with('MRWR', 'spCompany_Get', [1])
             ->andReturn([
                 'rc' => 0,
                 'rows' => [['CompanyName' => 'Test Corp']]
@@ -132,12 +148,8 @@ class StoredProcedureApiTest extends TestCase
 
         $this->app->instance(StoredProcedureClient::class, $mockClient);
 
-        $cacheFile = storage_path('framework/cache/tenants.php');
-        @mkdir(dirname($cacheFile), 0775, true);
-        file_put_contents($cacheFile, "<?php\nreturn ['mrwr' => true];\n");
-
         $response = $this->postJson('/api/sp', [
-            'login' => 'mrwr.tlyle',
+            'login' => 'MRWR.tlyle',
             'proc' => 'spCompany_Get',
             'params' => [1]
         ]);

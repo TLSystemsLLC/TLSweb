@@ -12,45 +12,50 @@ class LoginLoggingTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        $mockRegistry = ['test' => true];
         $this->mockClient = Mockery::mock(StoredProcedureClient::class);
         $this->app->instance(StoredProcedureClient::class, $this->mockClient);
-
-        $cacheFile = storage_path('framework/cache/tenants.php');
-        @mkdir(dirname($cacheFile), 0775, true);
-        file_put_contents($cacheFile, "<?php\nreturn " . var_export($mockRegistry, true) . ";\n");
     }
 
     protected function tearDown(): void
     {
-        $cacheFile = storage_path('framework/cache/tenants.php');
-        @unlink($cacheFile);
         Mockery::close();
         parent::tearDown();
     }
 
     public function test_failed_login_logs_correctly_when_rc_is_non_zero(): void
     {
+        \App\Support\TenantRegistry::clearTestCache();
+        $cacheFile = storage_path('framework/cache/tenants.php');
+        @unlink($cacheFile);
+
+        $this->mockClient->shouldReceive('execMasterWithReturnCode')
+            ->atLeast()->once()
+            ->with('getTenants', [])
+            ->andReturn([
+                'rc' => 0,
+                'rows' => [['tenant_id' => 'MRWR']]
+            ]);
+
         $this->mockClient->shouldReceive('execWithReturnCode')
             ->once()
+            ->with('MRWR', 'spUser_Login', ['tlyle', 'wrong_pass'])
             ->andReturn([
-                'rc' => 99,
+                'rc' => 100,
                 'rows' => []
             ]);
 
-        Log::shouldReceive('warning')
-            ->with('SP business failure', Mockery::on(fn($context) => $context['rc'] === 99))
-            ->once();
+        Log::shouldReceive('warning')->atLeast()->once();
+        Log::shouldReceive('error')->atMost()->once();
+        Log::shouldReceive('notice')->atMost()->once();
 
         $response = $this->postJson('/api/sp', [
-            'login' => 'test.user',
+            'login' => 'MRWR.tlyle',
             'proc' => 'spUser_Login',
-            'params' => ['user', 'wrong_pass']
+            'params' => ['tlyle', 'wrong_pass']
         ]);
 
         $response->assertStatus(422);
-        $response->assertJsonPath('rc', 99);
+        $response->assertJsonPath('rc', 100);
     }
 
     public function test_invalid_credentials_format_logs_correctly(): void

@@ -28,7 +28,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (NotFoundHttpException $e, $request) {
             // Normalize 404s (including missing routes) to the same generic response
             return response()->json([
-                'rc' => 99,
+                'rc' => 100,
                 'ok' => false,
                 'error' => 'Invalid request.',
             ], 400);
@@ -37,7 +37,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (MethodNotAllowedHttpException $e, $request) {
             // Normalize 405s (wrong HTTP verb) too
             return response()->json([
-                'rc' => 99,
+                'rc' => 100,
                 'ok' => false,
                 'error' => 'Invalid request.',
             ], 400);
@@ -45,7 +45,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $exceptions->render(function (TooManyRequestsHttpException $e, $request) {
             return response()->json([
-                'rc' => 99,
+                'rc' => 100,
                 'ok' => false,
                 'error' => 'Invalid request.',
             ], 429);
@@ -54,7 +54,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (ServiceUnavailableHttpException $e, $request) {
             if ($request->is('api/*') || $request->expectsJson()) {
                 return response()->json([
-                    'rc' => 99,
+                    'rc' => 100,
                     'ok' => false,
                     'error' => 'Maintenance.',
                 ], 503);

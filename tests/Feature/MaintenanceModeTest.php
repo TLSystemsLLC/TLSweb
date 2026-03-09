@@ -22,6 +22,8 @@ class MaintenanceModeTest extends TestCase
         // Let's mock a method instead and assume the constructor passed (or was mocked/skipped).
 
         $mockClient = $this->mock(StoredProcedureClient::class);
+        $mockClient->shouldReceive('execMasterWithReturnCode')
+            ->andThrow(new \Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException(null, 'Database is down.'));
         $mockClient->shouldReceive('execWithReturnCode')
             ->andThrow(new \Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException(null, 'Database is down.'));
 
@@ -38,7 +40,7 @@ class MaintenanceModeTest extends TestCase
 
         $response->assertStatus(503)
                  ->assertJson([
-                     'rc' => 99,
+                     'rc' => 100,
                      'ok' => false,
                      'error' => 'Maintenance.'
                  ]);
@@ -71,7 +73,7 @@ class MaintenanceModeTest extends TestCase
 
         $response->assertStatus(503)
                  ->assertJson([
-                     'rc' => 99,
+                     'rc' => 100,
                      'ok' => false,
                      'error' => 'Maintenance.'
                  ]);

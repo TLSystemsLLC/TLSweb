@@ -93,7 +93,7 @@ class UserMenuSaveTest extends TestCase
 
         $response->assertStatus(400)
                  ->assertJson([
-                     'rc' => 99,
+                     'rc' => 100,
                      'ok' => false,
                      'error' => 'Invalid request.'
                  ]);
