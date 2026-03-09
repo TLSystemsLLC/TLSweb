@@ -16,7 +16,17 @@ class UserMaintenanceApiTest extends TestCase
 
     public function test_api_allows_spUser_Save2(): void
     {
+        \App\Support\TenantRegistry::clearTestCache();
         $mockClient = Mockery::mock(StoredProcedureClient::class);
+        $this->app->instance(StoredProcedureClient::class, $mockClient);
+
+        // Mock getTenants to include mrwr
+        $mockClient->shouldReceive('execMasterWithReturnCode')
+            ->with('getTenants', [])
+            ->andReturn([
+                'rc' => 0,
+                'rows' => [['tenant_id' => 'mrwr']]
+            ]);
 
         $params = [
             0,             // Key
@@ -50,13 +60,6 @@ class UserMaintenanceApiTest extends TestCase
                 'rows' => [['NewKey' => 123]]
             ]);
 
-        $this->app->instance(StoredProcedureClient::class, $mockClient);
-
-        // Seed tenant cache
-        $cacheFile = storage_path('framework/cache/tenants.php');
-        @mkdir(dirname($cacheFile), 0775, true);
-        file_put_contents($cacheFile, "<?php\nreturn ['mrwr' => true];\n");
-
         $response = $this->postJson('/api/sp', [
             'login' => 'mrwr.tlyle',
             'proc' => 'spUser_Save2',
@@ -70,13 +73,21 @@ class UserMaintenanceApiTest extends TestCase
                      'data' => [['NewKey' => 123]],
                      'error' => null
                  ]);
-
-        @unlink($cacheFile);
     }
 
     public function test_api_allows_webUserSearch(): void
     {
+        \App\Support\TenantRegistry::clearTestCache();
         $mockClient = Mockery::mock(StoredProcedureClient::class);
+        $this->app->instance(StoredProcedureClient::class, $mockClient);
+
+        // Mock getTenants to include mrwr
+        $mockClient->shouldReceive('execMasterWithReturnCode')
+            ->with('getTenants', [])
+            ->andReturn([
+                'rc' => 0,
+                'rows' => [['tenant_id' => 'mrwr']]
+            ]);
 
         $params = ['test', 1, 100];
 
@@ -95,13 +106,6 @@ class UserMaintenanceApiTest extends TestCase
                     'HasNextPage' => 0
                 ]]
             ]);
-
-        $this->app->instance(StoredProcedureClient::class, $mockClient);
-
-        // Seed tenant cache
-        $cacheFile = storage_path('framework/cache/tenants.php');
-        @mkdir(dirname($cacheFile), 0775, true);
-        file_put_contents($cacheFile, "<?php\nreturn ['mrwr' => true];\n");
 
         $response = $this->postJson('/api/sp', [
             'login' => 'mrwr.tlyle',
@@ -124,7 +128,5 @@ class UserMaintenanceApiTest extends TestCase
                      ]],
                      'error' => null
                  ]);
-
-        @unlink($cacheFile);
     }
 }

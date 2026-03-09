@@ -539,6 +539,10 @@
                         } else if (pageKey === 'mnuFactoringCo') {
                             // Initialized by its own IIFE in fragment, no extra call needed here
                             // unless we want to pass data.
+                        } else if (pageKey === 'mnuUserMaintenance') {
+                            // Initialized by its own IIFE in fragment
+                        } else if (pageKey === 'mnuCompanyMaintenance') {
+                            // Initialized by its own IIFE in fragment
                         } else if (pageKey === 'mnuUserSecurity') {
                             const userSelect = document.getElementById('user-select');
                             const loadingText = document.getElementById('loading-text');

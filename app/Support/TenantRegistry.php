@@ -13,15 +13,23 @@ final class TenantRegistry
      */
     private const CACHE_SECONDS = 600;
 
+    private static ?array $testCache = null;
+
     /**
      * @return array<string,bool> map of tenantCode => true
      */
     public static function allowedTenants(): array
     {
+        // Use a static variable for testing to avoid persistent side effects
+        if (app()->environment('testing') && self::$testCache !== null) {
+            return self::$testCache;
+        }
+
         $cacheFile = storage_path('framework/cache/tenants.php');
 
         // Use a simple file cache (no Laravel DB/cache driver dependency)
-        if (is_file($cacheFile) && (time() - filemtime($cacheFile)) < self::CACHE_SECONDS) {
+        // In testing, we skip reading from disk if we want a fresh start
+        if (!app()->environment('testing') && is_file($cacheFile) && (time() - filemtime($cacheFile)) < self::CACHE_SECONDS) {
             /** @var array $data */
             $data = include $cacheFile;
             if (is_array($data)) return $data;
@@ -63,11 +71,16 @@ final class TenantRegistry
         // Ensure cache directory exists
         @mkdir(dirname($cacheFile), 0775, true);
 
-        // Write as a PHP return file
-        file_put_contents(
-            $cacheFile,
-            "<?php\nreturn " . var_export($map, true) . ";\n"
-        );
+        // Write as a PHP return file if not in testing to avoid side effects
+        if (!app()->environment('testing')) {
+            file_put_contents(
+                $cacheFile,
+                "<?php\nreturn " . var_export($map, true) . ";\n"
+            );
+        } else {
+            // Keep it in memory for the rest of this test run
+            self::$testCache = $map;
+        }
 
         return $map;
     }
@@ -77,5 +90,13 @@ final class TenantRegistry
         $tenant = trim($tenant);
         $allowed = self::allowedTenants();
         return isset($allowed[$tenant]) || isset($allowed[strtolower($tenant)]);
+    }
+
+    /**
+     * Clear the in-memory cache for tests.
+     */
+    public static function clearTestCache(): void
+    {
+        self::$testCache = null;
     }
 }

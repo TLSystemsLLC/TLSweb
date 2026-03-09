@@ -67,8 +67,26 @@ class StoredProcedureGateway
                         $typed[] = (int) $val;
                     } elseif (is_float($val) && (int)$val == $val) {
                         $typed[] = (int) $val;
+                    } elseif ($val === null) {
+                        $typed[] = null;
                     } else {
                         logger()->warning('SP param type mismatch (int expected)', [
+                            'proc' => $proc,
+                            'name' => $name,
+                            'value' => $val,
+                            'type' => gettype($val)
+                        ]);
+                        throw new InvalidRequestException('Invalid request.');
+                    }
+                    break;
+
+                case 'float':
+                    if (is_numeric($val)) {
+                        $typed[] = (float) $val;
+                    } elseif ($val === null) {
+                        $typed[] = null;
+                    } else {
+                        logger()->warning('SP param type mismatch (float expected)', [
                             'proc' => $proc,
                             'name' => $name,
                             'value' => $val,

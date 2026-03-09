@@ -17,6 +17,18 @@ class LoginTest extends TestCase
     public function test_login_success(): void
     {
         $mockClient = Mockery::mock(StoredProcedureClient::class);
+        $this->app->instance(StoredProcedureClient::class, $mockClient);
+
+        \App\Support\TenantRegistry::clearTestCache();
+
+        // Mock getTenants to return mrwr
+        $mockClient->shouldReceive('execMasterWithReturnCode')
+            ->with('getTenants', [])
+            ->andReturn([
+                'rc' => 0,
+                'rows' => [['tenant_id' => 'mrwr']]
+            ]);
+
         $mockClient->shouldReceive('execWithReturnCode')
             ->once()
             ->with('mrwr', 'spUser_Login', ['tlyle', 'secret'])
@@ -24,12 +36,6 @@ class LoginTest extends TestCase
                 'rc' => 0,
                 'rows' => []
             ]);
-
-        $this->app->instance(StoredProcedureClient::class, $mockClient);
-
-        $cacheFile = storage_path('framework/cache/tenants.php');
-        @mkdir(dirname($cacheFile), 0775, true);
-        file_put_contents($cacheFile, "<?php\nreturn ['mrwr' => true];\n");
 
         $response = $this->postJson('/api/sp', [
             'login' => 'mrwr.tlyle',
@@ -44,13 +50,23 @@ class LoginTest extends TestCase
                      'data' => [],
                      'error' => null
                  ]);
-
-        @unlink($cacheFile);
     }
 
     public function test_login_failure(): void
     {
         $mockClient = Mockery::mock(StoredProcedureClient::class);
+        $this->app->instance(StoredProcedureClient::class, $mockClient);
+
+        \App\Support\TenantRegistry::clearTestCache();
+
+        // Mock getTenants to return mrwr
+        $mockClient->shouldReceive('execMasterWithReturnCode')
+            ->with('getTenants', [])
+            ->andReturn([
+                'rc' => 0,
+                'rows' => [['tenant_id' => 'mrwr']]
+            ]);
+
         $mockClient->shouldReceive('execWithReturnCode')
             ->once()
             ->with('mrwr', 'spUser_Login', ['tlyle', 'wrong'])
@@ -58,12 +74,6 @@ class LoginTest extends TestCase
                 'rc' => 99,
                 'rows' => []
             ]);
-
-        $this->app->instance(StoredProcedureClient::class, $mockClient);
-
-        $cacheFile = storage_path('framework/cache/tenants.php');
-        @mkdir(dirname($cacheFile), 0775, true);
-        file_put_contents($cacheFile, "<?php\nreturn ['mrwr' => true];\n");
 
         $response = $this->postJson('/api/sp', [
             'login' => 'mrwr.tlyle',
@@ -77,7 +87,5 @@ class LoginTest extends TestCase
                      'ok' => false,
                      'error' => ['code' => 99]
                  ]);
-
-        @unlink($cacheFile);
     }
 }
