@@ -6,7 +6,7 @@
                 <p class="text-muted small mb-0">Manage factoring company records and contact information.</p>
             </div>
             <button class="btn btn-primary btn-sm" id="btn-add-factoring">
-                <i class="bi bi-plus-lg"></i> Add New Company
+                <i class="bi bi-plus-lg"></i> Add New Factoring Co
             </button>
         </div>
 
@@ -32,7 +32,7 @@
                         <tr>
                             <td colspan="4" class="text-center py-4 text-muted">
                                 <div class="spinner-border spinner-border-sm me-2" role="status"></div>
-                                Loading companies...
+                                Loading factoring companies...
                             </td>
                         </tr>
                     </tbody>
@@ -55,7 +55,7 @@
                     <input type="hidden" id="f-id" value="0">
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <label class="form-label small fw-bold">Company Name</label>
+                            <label class="form-label small fw-bold">Factoring Co Name</label>
                             <input type="text" id="f-name" class="form-control form-control-sm" required>
                         </div>
                         <div class="col-md-8">
@@ -150,7 +150,7 @@
             allCompanies = res.data;
             renderTable(allCompanies);
         } else {
-            document.getElementById('factoring-list-body').innerHTML = `<tr><td colspan="4" class="text-center text-danger py-4">Failed to load companies (rc: ${res.rc})</td></tr>`;
+            document.getElementById('factoring-list-body').innerHTML = `<tr><td colspan="4" class="text-center text-danger py-4">Failed to load factoring companies (rc: ${res.rc})</td></tr>`;
         }
     }
 
@@ -170,7 +170,7 @@
 
         tbody.innerHTML = '';
         data.forEach(item => {
-            const name = (item.Name || '').trim() || '<em>Unnamed Company</em>';
+            const name = (item.Name || '').trim() || '<em>Unnamed Factoring Co</em>';
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><div class="fw-bold">${name}</div><div class="x-small text-muted">ID: ${item.ID}</div></td>
@@ -202,9 +202,14 @@
     async function showModal(id = 0) {
         form.reset();
         document.getElementById('f-id').value = id;
-        document.getElementById('factoringModalLabel').textContent = id === 0 ? 'Add Factoring Company' : 'Edit Factoring Company';
 
-        if (id !== 0) {
+        if (id === 0) {
+            document.getElementById('factoringModalLabel').textContent = 'Add Factoring Company';
+            document.getElementById('f-aba').value = '';
+            document.getElementById('f-account').value = '';
+            document.getElementById('f-email').value = '';
+        } else {
+            document.getElementById('factoringModalLabel').textContent = 'Edit Factoring Company';
             const res = await window.callSp('spFactoringCo_Get', [id]);
             if (res.ok && res.data.length > 0) {
                 const c = res.data[0];

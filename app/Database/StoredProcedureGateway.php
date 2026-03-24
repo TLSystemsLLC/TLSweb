@@ -97,7 +97,7 @@ class StoredProcedureGateway
                     break;
 
                 case 'string':
-                    $typed[] = ($val === null) ? null : (string) $val;
+                    $typed[] = ($val === null) ? '' : (string) $val;
                     break;
 
                 default:
