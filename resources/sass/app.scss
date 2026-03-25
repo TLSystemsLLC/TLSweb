@@ -1,7 +1,28 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 // Variables
 @import 'variables';
 
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
 // Custom TLS styles should follow here
+.bg-dark-tls {
+    background-color: #161616 !important;
+}
+
+.text-gold-tls {
+    color: #C49010 !important;
+}
+
+.btn-gold-tls {
+    background-color: #C49010;
+    border-color: #C49010;
+    color: #FFFFFF;
+    &:hover {
+        background-color: darken(#C49010, 10%);
+        border-color: darken(#C49010, 10%);
+        color: #FFFFFF;
+    }
+}

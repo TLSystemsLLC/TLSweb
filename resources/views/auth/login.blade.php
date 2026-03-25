@@ -29,7 +29,7 @@
             </div>
             <div class="mt-2">
                 <button type="submit" id="submit-btn"
-                    class="btn btn-primary w-100 py-2">
+                    class="btn btn-gold-tls w-100 py-2">
                     Sign in
                 </button>
             </div>

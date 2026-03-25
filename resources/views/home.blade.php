@@ -6,8 +6,8 @@
     <title>TL Systems, LLC</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/animate.css/animate.min.css">
@@ -39,18 +39,32 @@
         });
     </script>
     <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
         #home-nav .mbr-navbar__section {
-            background-color: rgba(0, 0, 0, 0.4) !important;
+            background-color: rgba(22, 22, 22, 0.8) !important;
         }
         .mbr-navbar__brand-img {
-            filter: brightness(1.2) contrast(1.1);
-            opacity: 0.9;
+            max-height: 80px;
         }
         section[id] {
-            scroll-margin-top: 98px;
+            scroll-margin-top: 128px;
         }
         .d-none {
             display: none !important;
+        }
+        .text-gold-tls {
+            color: #C49010 !important;
+        }
+        .btn-gold-tls {
+            background-color: #C49010 !important;
+            border-color: #C49010 !important;
+            color: #FFFFFF !important;
+        }
+        .btn-gold-tls:hover {
+            background-color: #A3780D !important;
+            border-color: #A3780D !important;
         }
     </style>
 </head>
@@ -61,8 +75,7 @@
                 <div class="mbr-navbar__container">
                     <div class="mbr-navbar__column mbr-navbar__column--m mbr-navbar__brand">
                         <span class="mbr-navbar__brand-link mbr-brand mbr-brand--inline">
-                            <span class="mbr-brand__logo"><a href="#"><img class="mbr-navbar__brand-img mbr-brand__img" src="assets/images/logo.png" alt="TL Systems"></a></span>
-                        <span class="mbr-brand__name"><a class="mbr-brand__name text-another" href="#">TL SYSTEMS</a></span>
+                            <span class="mbr-brand__logo"><a href="#"><img class="mbr-navbar__brand-img mbr-brand__img" src="assets/images/logo-transparent-dark.svg" alt="TL Systems"></a></span>
                         </span>
                     </div>
                     <div class="mbr-navbar__hamburger mbr-hamburger text-white"><span class="mbr-hamburger__line"></span></div>
@@ -70,11 +83,11 @@
                         <nav class="mbr-navbar__menu-box mbr-navbar__menu-box--inline-right">
                             <div class="mbr-navbar__column">
                                 <ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active">
-                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-another" href="#home">Home</a></li>
-                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-another" href="#features">Features</a></li>
-                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-another" href="#about">About</a></li>
-                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-another" href="#contact">Contact</a></li>
-                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-another" href="/login">Login</a></li>
+                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-gold-tls" href="#home">Home</a></li>
+                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-gold-tls" href="#features">Features</a></li>
+                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-gold-tls" href="#about">About</a></li>
+                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-gold-tls" href="#contact">Contact</a></li>
+                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-gold-tls" href="/login">Login</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -114,7 +127,7 @@
             <div class="row">
                 <div>
                     <div class="thumbnail">
-                        <div class="image"><i class="fa fa-calculator fa-5x" style="color:#43c0ff;"></i></div>
+                        <div class="image"><i class="fa fa-calculator fa-5x" style="color:#C49010;"></i></div>
                         <div class="caption">
                             <div>
                                 <h3>Accounting</h3>
@@ -125,7 +138,7 @@
                 </div>
                 <div>
                     <div class="thumbnail">
-                        <div class="image"><i class="fa fa-tasks fa-5x" style="color:#43c0ff;"></i></div>
+                        <div class="image"><i class="fa fa-tasks fa-5x" style="color:#C49010;"></i></div>
                         <div class="caption">
                             <div>
                                 <h3>Operations</h3>
@@ -136,7 +149,7 @@
                 </div>
                 <div>
                     <div class="thumbnail">
-                        <div class="image"><i class="fa fa-clipboard-check fa-5x" style="color:#43c0ff;"></i></div>
+                        <div class="image"><i class="fa fa-clipboard-check fa-5x" style="color:#C49010;"></i></div>
                         <div class="caption">
                             <div>
                                 <h3>Safety</h3>
@@ -149,7 +162,7 @@
             <div class="row">
                 <div>
                     <div class="thumbnail">
-                        <div class="image"><i class="fa fa-gas-pump fa-5x" style="color:#43c0ff;"></i></div>
+                        <div class="image"><i class="fa fa-gas-pump fa-5x" style="color:#C49010;"></i></div>
                         <div class="caption">
                             <div>
                                 <h3>Fuel Integration</h3>
@@ -160,7 +173,7 @@
                 </div>
                 <div>
                     <div class="thumbnail">
-                        <div class="image"><i class="fa fa-mobile-alt fa-5x" style="color:#43c0ff;"></i></div>
+                        <div class="image"><i class="fa fa-mobile-alt fa-5x" style="color:#C49010;"></i></div>
                         <div class="caption">
                             <div>
                                 <h3>Mobile App</h3>
@@ -171,7 +184,7 @@
                 </div>
                 <div>
                     <div class="thumbnail">
-                        <div class="image"><i class="fa fa-sync fa-5x" style="color:#43c0ff;"></i></div>
+                        <div class="image"><i class="fa fa-sync fa-5x" style="color:#C49010;"></i></div>
                         <div class="caption">
                             <div>
                                 <h3>EDI</h3>
@@ -198,8 +211,8 @@
                         <div class="row">
                             <div class=" col-sm-6">
                                 <div class="mbr-hero animated fadeInUp">
-                                    <h1 class="mbr-hero__text" style="color:#43c0ff;">About Us</h1>
-                                    <p class="mbr-hero__subtext" style="color:#43c0ff;">We have been working in the trucking industry for over 31 years.  Our software has been used by companies running 10 trucks to a company running over 500 trucks.  Our systems were built from the ground up to enable each member of your staff to do their job more efficiently.</p>
+                                    <h1 class="mbr-hero__text text-gold-tls">About Us</h1>
+                                    <p class="mbr-hero__subtext text-gold-tls">We have been working in the trucking industry for over 31 years.  Our software has been used by companies running 10 trucks to a company running over 500 trucks.  Our systems were built from the ground up to enable each member of your staff to do their job more efficiently.</p>
                                 </div>
                             </div>
                         </div>
@@ -244,7 +257,7 @@
                                     <textarea class="form-control" name="message" rows="4" placeholder="Message"></textarea>
                                 </div>
                                 <div class="mbr-buttons mbr-buttons--right">
-                                    <button type="submit" id="contact-submit" class="mbr-buttons__btn btn btn-lg btn-danger">CONTACT US</button>
+                                    <button type="submit" id="contact-submit" class="mbr-buttons__btn btn btn-lg btn-gold-tls">CONTACT US</button>
                                 </div>
                             </form>
                         </div>

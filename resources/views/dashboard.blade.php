@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - TLS</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -61,20 +62,43 @@
             width: 100%; /* Take full column width */
             float: none;
         }
-        @media (max-width: 991px) {
-            .masonry-grid {
-                column-count: 1;
-            }
+        .bg-dark-tls {
+            background-color: rgba(22, 22, 22, 0.8) !important;
+        }
+        .spinner-border.text-primary {
+            color: #C49010 !important;
+        }
+        .btn-primary {
+            background-color: #C49010 !important;
+            border-color: #C49010 !important;
+        }
+        .text-primary {
+            color: #C49010 !important;
+        }
+        /* Ensure navbar links and dropdown items are gold */
+        .navbar-dark .navbar-nav .nav-link,
+        .dropdown-item {
+            color: #C49010 !important;
+        }
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .dropdown-item:hover {
+            color: #A3780D !important;
+        }
+        .navbar-brand {
+            color: #C49010 !important;
         }
     </style>
 </head>
-<body class="bg-light min-vh-100">
+<body class="bg-light min-vh-100" style="font-family: 'Poppins', sans-serif;">
     <div id="wrapper">
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark-tls shadow">
                 <div class="container-fluid">
-                    <a class="navbar-brand fw-bold" href="#" id="brand-link">TLS Dashboard</a>
+                    <a class="navbar-brand fw-bold d-flex align-items-center" href="#" id="brand-link">
+                        <img src="assets/images/logo-transparent-dark.png" alt="TLS" height="50" class="me-2">
+                        <span>TLS Dashboard</span>
+                    </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -90,7 +114,7 @@
                             <span id="user-display" class="nav-link text-white-50 small me-3"></span>
                             <form action="/logout" method="POST" class="d-inline">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
+                                <button type="submit" class="btn btn-gold-tls btn-sm">Logout</button>
                             </form>
                         </div>
                     </div>
