@@ -146,7 +146,10 @@ class StoredProcedureGateway
                     'error' => $e->getMessage(),
                     'proc' => $proc
                 ]);
-                return $this->client->execMasterWithReturnCode($proc, $params);
+
+                // IMPORTANT: We must NOT bypass the gateway logic.
+                // Re-running call() with null login ensures it follows 'global' allowlist rules.
+                return $this->call(null, $proc, $params);
             }
             throw $e;
         }

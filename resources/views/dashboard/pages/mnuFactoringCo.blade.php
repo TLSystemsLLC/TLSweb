@@ -56,15 +56,15 @@
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label class="form-label small fw-bold">Factoring Co Name</label>
-                            <input type="text" id="f-name" class="form-control form-control-sm" required>
+                            <input type="text" id="f-name" class="form-control form-control-sm" required maxlength="50">
                         </div>
                         <div class="col-md-8">
                             <label class="form-label small fw-bold">Address</label>
-                            <input type="text" id="f-address" class="form-control form-control-sm">
+                            <input type="text" id="f-address" class="form-control form-control-sm" maxlength="50">
                         </div>
                         <div class="col-md-4">
                             <label class="form-label small fw-bold">City</label>
-                            <input type="text" id="f-city" class="form-control form-control-sm">
+                            <input type="text" id="f-city" class="form-control form-control-sm" maxlength="50">
                         </div>
                         <div class="col-md-4">
                             <label class="form-label small fw-bold">State</label>
@@ -72,11 +72,11 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label small fw-bold">Zip</label>
-                            <input type="text" id="f-zip" class="form-control form-control-sm" maxlength="10">
+                            <input type="text" id="f-zip" class="form-control form-control-sm" maxlength="10" placeholder="00000-0000">
                         </div>
                         <div class="col-md-4">
                             <label class="form-label small fw-bold">Email</label>
-                            <input type="email" id="f-email" class="form-control form-control-sm">
+                            <input type="email" id="f-email" class="form-control form-control-sm" maxlength="255">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label small fw-bold">ABA / Routing #</label>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label small fw-bold">Account #</label>
-                            <input type="text" id="f-account" class="form-control form-control-sm">
+                            <input type="text" id="f-account" class="form-control form-control-sm" maxlength="50">
                         </div>
                     </div>
                 </div>
@@ -104,6 +104,15 @@
     let form;
 
     let debounceTimer;
+
+    function formatZip(val) {
+        if (!val) return '';
+        const clean = val.replace(/[-\s]/g, '');
+        if (clean.length === 9) {
+            return clean.substring(0, 5) + '-' + clean.substring(5);
+        }
+        return clean;
+    }
 
     async function init() {
         console.log('mnuFactoringCo initializing...');
@@ -135,6 +144,15 @@
                 // Clear table if search is too short
                 allCompanies = [];
                 renderTable([]);
+            }
+        });
+
+        document.getElementById('f-zip').addEventListener('input', (e) => {
+            let val = e.target.value.replace(/[-\s]/g, '');
+            if (val.length > 5) {
+                e.target.value = val.substring(0, 5) + '-' + val.substring(5, 9);
+            } else {
+                e.target.value = val;
             }
         });
 
@@ -217,7 +235,7 @@
                 document.getElementById('f-address').value = c.Address || '';
                 document.getElementById('f-city').value = c.City || '';
                 document.getElementById('f-state').value = c.State || '';
-                document.getElementById('f-zip').value = c.Zip || '';
+                document.getElementById('f-zip').value = formatZip(c.Zip || '');
                 document.getElementById('f-aba').value = c.ABA || '';
                 document.getElementById('f-account').value = c.Account || '';
                 document.getElementById('f-email').value = c.Email || '';
@@ -228,13 +246,18 @@
 
     async function saveCompany() {
         const id = parseInt(document.getElementById('f-id').value);
+
+        // Clean zip: remove dashes and spaces. UI allows 10 (5+4 with dash), but DB wants 9.
+        const zipRaw = document.getElementById('f-zip').value || '';
+        const zipClean = zipRaw.replace(/[-\s]/g, '');
+
         const params = [
             id,
             document.getElementById('f-name').value,
             document.getElementById('f-address').value,
             document.getElementById('f-city').value,
             document.getElementById('f-state').value,
-            document.getElementById('f-zip').value,
+            zipClean,
             document.getElementById('f-aba').value,
             document.getElementById('f-account').value,
             document.getElementById('f-email').value
