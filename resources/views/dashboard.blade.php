@@ -72,17 +72,36 @@
             background-color: #C49010 !important;
             border-color: #C49010 !important;
         }
+        .btn-gold-tls {
+            background-color: #C49010 !important;
+            border-color: #C49010 !important;
+            color: #FFFFFF !important;
+        }
+        .btn-gold-tls:hover {
+            background-color: #A3780D !important;
+            border-color: #A3780D !important;
+            color: #FFFFFF !important;
+        }
         .text-primary {
             color: #C49010 !important;
         }
-        /* Ensure navbar links and dropdown items are gold */
+        /* Ensure navbar links and dropdown items are gold, consistent with home page */
         .navbar-dark .navbar-nav .nav-link,
         .dropdown-item {
             color: #C49010 !important;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
-        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #FFFFFF !important;
+        }
         .dropdown-item:hover {
-            color: #A3780D !important;
+            color: #FFFFFF !important;
+            background-color: #C49010 !important;
+        }
+        /* Special handling for dropdown items to maintain gold text unless hovered */
+        .dropdown-item:not(:hover) {
+            color: #C49010 !important;
         }
         .navbar-brand {
             color: #C49010 !important;
@@ -111,10 +130,10 @@
                             </li>
                         </ul>
                         <div class="navbar-nav align-items-center">
-                            <span id="user-display" class="nav-link text-white-50 small me-3"></span>
+                            <span id="user-display" class="nav-link text-white-50 small me-3" style="font-size: 0.9rem;"></span>
                             <form action="/logout" method="POST" class="d-inline">
                                 @csrf
-                                <button type="submit" class="btn btn-gold-tls btn-sm">Logout</button>
+                                <button type="submit" class="btn btn-gold-tls btn-sm fw-bold">Logout</button>
                             </form>
                         </div>
                     </div>

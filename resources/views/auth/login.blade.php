@@ -6,6 +6,18 @@
     <title>Login - TLS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <style>
+        .btn-gold-tls {
+            background-color: #C49010 !important;
+            border-color: #C49010 !important;
+            color: #FFFFFF !important;
+        }
+        .btn-gold-tls:hover {
+            background-color: #A3780D !important;
+            border-color: #A3780D !important;
+            color: #FFFFFF !important;
+        }
+    </style>
 </head>
 <body class="bg-light d-flex align-items-center justify-content-center min-vh-100">
     <div class="bg-white p-5 rounded shadow-sm w-100" style="max-width: 400px;">
